@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="gchatlg.css">
+  <title>帅郭们的聊天室</title>
+</head>
+<body>
+<form  name="form1" action="reguser" method="get" >
+  <div class="main" position:relative>
+    <h1 class="title">注册</h1>  
+    <p class="description" align="center">磨刀不误砍柴工</p>
+    <div class="cellphone">
+      <label>昵称</label>
+      <input name="nc" placeholder="请输入你的昵称">
+      <span class="help1">注意敏感词汇</span>
+    </div>
+    <div class="passwd">
+      <label>密码</label>
+      <input name ="password"type="password" placeholder="密码长度需要在6~24为之间">
+    </div>
+     <div class="passwd">
+      <label>确认密码</label>
+      <input name= "pa" type="password" placeholder="注意与第一次输入一致">
+    </div>
+    <div class="verify">
+      <label>验证码</label>
+      <img class="captcha" src="verify.png">
+      <input type="text" placeholder="请输入右侧验证码">
+      <span class="help2">如验证码难以识别可点击验证码图片进行更换。</span>
+    </div>
+   <div><button id="sub" type="submit" >本帅要申请</button></div>
+    <div class="agreement">
+      <span class="agreement">确认账号申请表示你同意</span>
+      <a class="agreement" id="agree">使用协议</a>
+    </div>
+  </div>
+  <div class="login" position:absolute>
+    已有账号，直接 
+    <a id="login" href='login.html'> 登录</a>
+  </div>
+       </form>  
+</body>
+</html>
