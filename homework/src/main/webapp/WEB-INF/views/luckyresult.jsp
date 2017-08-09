@@ -46,11 +46,10 @@
 		<table>
 			<c:forEach items="${list}" var="s">
 				<tr>
-					<td><c:out value="${s.tid}" /></td>
-					<td><c:out value="${s.itcode}" /></td>
-					<td><c:out value="${s.username}" /></td>
-					<td><c:out value="${s.volumn}" /></td>
-					<td><c:out value="${s.tradetime}" /></td>
+					<td><c:out value="${s.getRid()}" /></td>
+					<td><c:out value="${s.getWid()}" /></td>
+					<td><c:out value="${s.getLucky_money()}" /></td>
+					<td><c:out value="${s.round()}" /></td>
 				</tr>
 
 			</c:forEach>

@@ -104,7 +104,7 @@ public class LuckyRecordDAO {
 	 * @param jdbcTemplate
 	 * @return  成功后返回列表，失败返回null
 	 */
-	public static List<LuckyRecord> gelAllByRound(int round, JdbcTemplate jdbcTemplate) {
+	public static List<LuckyRecord> getAllByRound(int round, JdbcTemplate jdbcTemplate) {
 		try {
 			RowMapper<LuckyRecord> lucky_mapper = new BeanPropertyRowMapper<LuckyRecord>(LuckyRecord.class);
 			List<LuckyRecord> lucky = jdbcTemplate.query("select * from lucky_record where round=?", lucky_mapper, round);
@@ -120,7 +120,7 @@ public class LuckyRecordDAO {
 	 * @param jdbcTemplate
 	 * @return  成功后返回列表，失败返回null
 	 */
-	public static List<LuckyRecord> gelAllByWid(int wid, JdbcTemplate jdbcTemplate) {
+	public static List<LuckyRecord> getAllByWid(int wid, JdbcTemplate jdbcTemplate) {
 		try {
 			RowMapper<LuckyRecord> lucky_mapper = new BeanPropertyRowMapper<LuckyRecord>(LuckyRecord.class);
 			List<LuckyRecord> lucky = jdbcTemplate.query("select * from lucky_record where wid=?", lucky_mapper, wid);
@@ -136,10 +136,10 @@ public class LuckyRecordDAO {
 	 * @param jdbcTemplate
 	 * @return  成功后返回列表，失败返回null
 	 */
-	public static List<LuckyRecord> gelAllByUid(int uid, JdbcTemplate jdbcTemplate) {
+	public static List<LuckyRecord> getAllByUid(int uid, JdbcTemplate jdbcTemplate) {
 		try {
 			Wallet wallet=WalletDAO.getWalletByUid(uid, jdbcTemplate);
-			return LuckyRecordDAO.gelAllByWid(wallet.getWid(), jdbcTemplate);
+			return LuckyRecordDAO.getAllByWid(wallet.getWid(), jdbcTemplate);
 		} catch (Exception e) {
 			return null;
 		}

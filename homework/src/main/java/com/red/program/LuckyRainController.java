@@ -1,9 +1,15 @@
 package com.red.program;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.red.program.dao.LuckyRecordDAO;
+import com.red.program.model.LuckyRecord;
 
 import luckyThread.LuckyRainThread;
 /**
@@ -14,6 +20,7 @@ import luckyThread.LuckyRainThread;
 
 @Controller
 public class LuckyRainController {
+	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
 	int round=0;
@@ -29,9 +36,16 @@ public class LuckyRainController {
 		return "rainning";
 	}
 	
-	@RequestMapping("luckyreult")
+	@RequestMapping("luckyrecord")
+	public String luckyrrecord(String round,Model model) {
+		return "luckyresult";
+	}
+	
+	@RequestMapping("luckyresult")
 	public String luckyresult(String round,Model model) {
-	    
+		int r=Integer.parseInt(round);
+	    List<LuckyRecord> luckylist=LuckyRecordDAO.getAllByRound(r, jdbcTemplate);
+	    model.addAttribute("list",luckylist);
 		return "luckyresult";
 	}
 }
