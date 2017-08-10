@@ -91,15 +91,28 @@ public class ProgramDAO {
 		}
 	}
 	
-	
-	public static Program getProgramBonus(int pid, JdbcTemplate jdbcTemplate) {
+	/**
+	 * 插入节目单
+	 * @param name
+	 * @param performer
+	 * @param time
+	 * @param dept
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static boolean Createprogram(String name,String performer,String time,int dept,JdbcTemplate jdbcTemplate) {
 		try {
-			RowMapper<Program> program_mapper = new BeanPropertyRowMapper<Program>(Program.class);
-			Program program = jdbcTemplate.queryForObject("select bonus from program where pid=?", program_mapper, pid);
-			return program;
+			int i = jdbcTemplate.update("insert into program values(null,?,?,?,?);",
+					new Object[] { name, performer, time,dept });
+			if (i > 0) {
+				return true;
+			} else {
+				return false;
+			}
 		} catch (Exception e) {
-			return null;
+			return false;
 		}
+
 	}
 	
 	
