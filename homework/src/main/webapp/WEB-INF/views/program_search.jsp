@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,9 +32,30 @@ function check(n){
 	}
 	return false;
 }
-
 </script>
 
+<script>
+	function fun_program_id() {
+		document.form1.round.value = "1";
+		form1.submit();
+	}
+	function fun_program_name() {
+		document.form1.round.value = "2";
+		form1.submit();
+	}
+	function fun_perfomer() {
+		document.form1.round.value = "3";
+		form1.submit();
+	}
+	function fun_starttime() {
+		document.form1.round.value = "4";
+		form1.submit();
+	}
+	function fun_department() {
+		document.form1.round.value = "5";
+		form1.submit();
+	}
+</script>
 </head>
 <body bgcolor="#F4F4F4">
 <div>
@@ -45,10 +67,6 @@ function check(n){
 	</div>
 	
 	<div>
-	
-	
-	
-	
 		<!-- 中间右侧主界面 -->
 		
 		<form id="form1" name="form1" action="program_search" method="get" onsubmit="return check()">
@@ -91,10 +109,27 @@ function check(n){
 		<!-- submit把form里面的页面提交给程序 -->
 		</table>
 		</form>
-		
-		
-		
-		
+	</div>
+	<div>
+		<table cellpadding="10" border="0" width="90%"
+			background="img/beijing.jpg">
+			<tr>
+				<td>节目编号</td>
+				<td>节目名称</td>
+				<td>表演者</td>
+				<td>开始时间</td>
+				<td>报送单位</td>
+			</tr>
+			<c:forEach items="${list}" var="s">
+				<tr>
+					<td><c:out value="${s.getPid()}" /></td>
+					<td><c:out value="${s.getPro_name()}" /></td>
+					<td><c:out value="${s.getPerformer()}" /></td>
+					<td><c:out value="${s.getStart_time()}" /></td>
+					<td><c:out value="${s.getDept_id()}" /></td>
+				</tr>
+			</c:forEach>
+		</table>
 	</div>
 </div>
 <div>
