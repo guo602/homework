@@ -97,7 +97,20 @@ public class LuckyRecordDAO {
 			return false;
 		}
 	}        
-	
+	/**
+	 * 获取全部红包列表
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static List<LuckyRecord> getAll(JdbcTemplate jdbcTemplate) {
+		try {
+			RowMapper<LuckyRecord> lucky_mapper = new BeanPropertyRowMapper<LuckyRecord>(LuckyRecord.class);
+			List<LuckyRecord> lucky = jdbcTemplate.query("select * from lucky_record", lucky_mapper);
+			return lucky;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	/**
 	 * 获取指定轮次红包记录
 	 * @param round
