@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.red.program.dao.AlluserDAO;
+
 @Controller
 public class RedLoginController {
 
@@ -24,22 +26,16 @@ public class RedLoginController {
 	@RequestMapping(value = "validateuser", method = RequestMethod.GET)
 	public String validateRed(Model model) {
 		
-		boolean validate=true;
 		try {
 			request.setCharacterEncoding("UTF-8");
-			System.out.println(1);
+	
 			String itcode=request.getParameter("itcode");
 			String name=request.getParameter("name");
-			System.out.println(itcode);
-
-			if(itcode.equals(""))validate=false;
-			else if(name.equals(""))validate=false;
-			  
-
-			else;
-			System.out.println(2);
+			String verify=request.getParameter("verify");
+		
 			
-			if(validate)
+			
+			if(AlluserDAO.checkUserInfo(itcode,name,jdbcTemplate) && verify.equals("1234") )
 				
 				
 				return "room";
@@ -62,6 +58,16 @@ public class RedLoginController {
 		}
 
 	}
+	
+	
+
+	@RequestMapping(value = "rlproblem", method = RequestMethod.GET)
+	public String redlproblem(Model model) {
+		
+			return "redloginproblem";
+			
+	}
+	
 	
 	
 }

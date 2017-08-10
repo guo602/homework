@@ -3,25 +3,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
+	 <meta name="viewport" content="width=device-width">
 	<title>Home</title>
-	  <link rel="stylesheet" type="text/css" href="css/gchatlg.css">
+	  <link rel="stylesheet" type="text/css" href="css/home.css">
 </head>
 <body>
-<h1>
+<table>
+<div class="main" position:relative>
+<br>
+<h1  class="h">
 	Hello world!  
 </h1>
-<a href="admin" title="管理员界面">管理员界面</a> <br><br>
-<a href="chatlogin" title="聊天室登录">聊天室登录</a><br><br>
-<a href="redlogin" title="红包登录">红包登录</a><br><br>
 
-<a href="http://localhost:8080/homework_chat/gchatreg.html" title="另一个项目的聊天室入口">另一个项目的聊天室入口</a>
+<br>
+<a href="admin" class="h" title="管理员界面">管理员界面</a> <br><br>
+<a href="chatlogin"  class="h" title="聊天室登录">聊天室登录</a><br><br>
+<a href="redlogin"  class="h" title="红包登录">红包登录</a><br><br>
+
+<a href="http://localhost:8080/homework_chat/gchatreg.html"  class="h" title="另一个项目的聊天室入口">另一个项目的聊天室入口</a>
 
 <br><br>
- <div class="cellphone">
-      <label>随便说点什么吧</label>
-      <input name="nc"  placeholder="ICU">
-      <span class="help1">但要注意敏感词汇</span>
-    </div>
-<P>  The time on the server is ${serverTime}. </P>
+ 
+<P  class="h" >  The time on the server is ${serverTime}. </P>
+<br>
+</div>
+</table>
 </body>
 </html>

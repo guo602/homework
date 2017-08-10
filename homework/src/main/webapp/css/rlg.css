@@ -11,7 +11,7 @@ body {
 
 .main{
   display:block;
-  width:45%;
+  width:35%;
   margin:0 auto;
   background:#DC143C;
   border-radius:0 0 0 0;
@@ -19,7 +19,7 @@ body {
 
 .questionb {
   display:block;
-    width:45%;
+    width:35%;
 
   margin:0 auto;
   background-color:#FFE7BA;
@@ -29,7 +29,7 @@ body {
 }
 .redhead{
   display:block;
-  width:45%;
+  width:35%;
   margin:0 auto;
   background-color:#000000;
   padding:2em 0;
@@ -85,9 +85,9 @@ input {
 
 #sub {
 	 display:block;
-  width:80%;
+  width:75%;
   height:30px;
-  background-color:#4682B4;
+  background-color:#FF9900;
   border-radius:25px;
   cursor:pointer;
   margin:0 auto;
