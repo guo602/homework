@@ -45,14 +45,19 @@ function check(n){
 	</div>
 	
 	<div>
+	
+	
+	
+	
 		<!-- 中间右侧主界面 -->
 		
-		<form id="form1" name="form1" action="program_insert" method="get" onsubmit="return check()">
+		<form id="form1" name="form1" action="program_search" method="get" onsubmit="return check()">
 		<!-- get方式传输的数据会显示在地址栏里，不能提交文件（文本形式传输，有长度限制，但传输效率高，方便调试） -->
 		<!-- post方法传输的数据不会显示在地址栏里，而把数据封装成数据包，不希望传输的内容显示在地址栏里（如密码）时使用 -->
-		<p style="color:#FF0000">请输入至少一个查询信息</p>
-		<table>
 		
+		<p style="color:#FF0000">请输入至少一个查询信息</p>
+		
+		<table>
 		<tr>
 			<td>节目编号：<td/>
 			<td><input onblur = "check(0)" type="text" id="program_id" name="program_id"></td>

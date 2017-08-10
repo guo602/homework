@@ -112,6 +112,11 @@ function check(n){
 		<!-- submit把form里面的页面提交给程序 -->
 		</table>
 		</form>
+		
+		<p>
+		<img src="img/right.png" width="70" height="50" />
+		<img src="img/cross.png" width="40" height="50" />
+		</p>
 	</div>
 </div>
 
