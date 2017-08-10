@@ -23,7 +23,7 @@
     <p class="description" align="center">举身赴清池</p>
     <div class="itcode">
       <label class="whitetext">工号</label>
-      <input name="nc"  placeholder="请输入你的工号">
+      <input name="itcode"  placeholder="请输入你的工号">
       <span class="help1">别总习习哈哈</span>
     </div>
     <div class="name">
