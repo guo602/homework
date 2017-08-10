@@ -24,7 +24,7 @@
     </div>
     <div class="verify">
       <label>验证码</label>
-      <img class="captcha" src="verify.png">
+      <img class="captcha" src="img/verify.png">
       <input type="text" placeholder="请输入右侧验证码">
       <span class="help2">如验证码难以识别可点击验证码图片进行更换。</span>
     </div>
