@@ -43,9 +43,11 @@ public class LuckyRainController {
 	
 	@RequestMapping("luckyresult")
 	public String luckyresult(String round,Model model) {
+		System.out.println("roundList"+round);
 		int r=Integer.parseInt(round);
 	    List<LuckyRecord> luckylist=LuckyRecordDAO.getAllByRound(r, jdbcTemplate);
 	    model.addAttribute("list",luckylist);
 		return "luckyresult";
 	}
 }
+
