@@ -37,7 +37,7 @@ public class HomeController {
 	}
 	@RequestMapping(value = "chatlogin", method = RequestMethod.GET)
 	public String gotoChatLogin() {
-		return "chatlogin";
+		return "chat/logins";
 	}
 	
 	@RequestMapping(value = "program", method = RequestMethod.GET)
