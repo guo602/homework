@@ -6,17 +6,16 @@ public class Program {
 	String performer;
 	String start_time;
 	int dept_id;
-	int bonus;
 	
 	public Program() {}
-	public Program(int pid, String pro_name, String performer, String start_time, int dept_id, int bonus) {
+	public Program(int pid, String pro_name, String performer, String start_time, int dept_id) {
 		super();
 		this.pid = pid;
 		this.pro_name = pro_name;
 		this.performer = performer;
 		this.start_time = start_time;
 		this.dept_id = dept_id;
-		this.bonus = bonus;
+	
 	}
 
 	public int getPid() {
@@ -59,18 +58,11 @@ public class Program {
 		this.dept_id = dept_id;
 	}
 
-	public int getBonus() {
-		return bonus;
-	}
-
-	public void setBonus(int bonus) {
-		this.bonus = bonus;
-	}
 
 	@Override
 	public String toString() {
 		return "Program [pid=" + pid + ", pro_name=" + pro_name + ", performer=" + performer + ", start_time="
-				+ start_time + ", dept_id=" + dept_id + ", bonus=" + bonus + "]";
+				+ start_time + ", dept_id=" + dept_id + "]";
 	}
 	
 	
