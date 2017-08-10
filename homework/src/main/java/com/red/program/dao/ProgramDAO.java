@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.red.program.model.Program;
+import com.red.program.model.Wallet;
 
 
 public class ProgramDAO {
@@ -113,6 +114,21 @@ public class ProgramDAO {
 			return false;
 		}
 
+	}
+	
+	/**
+	 * 获取所有的节目列表
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static  List<Program> getAll(JdbcTemplate jdbcTemplate){
+		try {
+			RowMapper<Program> pro_mapper = new BeanPropertyRowMapper<Program>(Program.class);
+			List<Program> program = jdbcTemplate.query("select * from program ", pro_mapper);
+			return program;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 	

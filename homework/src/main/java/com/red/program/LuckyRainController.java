@@ -38,7 +38,7 @@ public class LuckyRainController {
 	}
 
 	@RequestMapping("luckyrecord")
-	public String luckyrrecord(String round, Model model) {
+	public String luckyrrecord( Model model) {
 		return "luckyresult";
 	}
 
