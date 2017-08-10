@@ -29,16 +29,20 @@ a:visited {
 	text-decoration: none;
 	color: blue;
 }
+table{
+    text-align:center;
+}
 -->
 </style>
 </head>
-<body bgcolor="#F4F4F4">
+<body >
 	<div>
 		<h1 align="center">管理员界面</h1>
 	</div>
 	<div>
-		<div id="admin" style="width:100px;">
-			<table>
+	    <div style="width: 30%;"></div>
+		<div id="admin" style="width: 30%; height: 50px; float: left;">
+			<table  bgcolor="#F4F4F4" width="200px" align="center" >
 				<tr>
 					<td>准备工作</td>
 				</tr>
@@ -74,6 +78,7 @@ a:visited {
 				</tr>
 			</table>
 		</div>
+		<div style="width: 70%; height: 50px; float: left;bgcolor:#F4F4F4;"></div>
 	</div>
 </body>
 </html>
