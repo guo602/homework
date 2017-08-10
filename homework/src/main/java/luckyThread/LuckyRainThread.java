@@ -1,3 +1,4 @@
+
 package luckyThread;
 
 import java.util.List;
@@ -91,3 +92,7 @@ public class LuckyRainThread extends Thread {
 		}
 	}
 }
+
+
+
+
