@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
-    function first(){
+    function firstone(){
     	document.form1.round.value="1";
     	form1.submit();
     }
@@ -25,19 +25,19 @@
 <body>
 	<div>
 		<form id="form1" name="form1" action="luckyresult">
-		    <input type="hidden" id="round" name="round" /> 
+		    <input type="hidden" id="round" name="round" value="0"/> 
 			<table>
 				<tr>
 					<td><input type="button" id="first" name="first"
-						value="first lucky rain" onclick="first()"/></td>
+						value="first lucky rain" onclick="firstone()"></td>
 				</tr>
 				<tr>
 					<td><input type="button" id="second" name="second"
-						value="second lucky rain" onclick="second()"/></td>
+						value="second lucky rain" onclick="second()"></td>
 				</tr>
 				<tr>
 					<td><input type="button" id="third" name="third"
-						value="third lucky rain" onclick="third()"/></td>
+						value="third lucky rain" onclick="third()"></td>
 				</tr>
 			</table>
 		</form>
@@ -49,7 +49,7 @@
 					<td><c:out value="${s.getRid()}" /></td>
 					<td><c:out value="${s.getWid()}" /></td>
 					<td><c:out value="${s.getLucky_money()}" /></td>
-					<td><c:out value="${s.round()}" /></td>
+					<td><c:out value="${s.getRound()}" /></td>
 				</tr>
 
 			</c:forEach>
@@ -57,3 +57,4 @@
 	</div>
 </body>
 </html>
+
