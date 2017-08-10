@@ -7,6 +7,14 @@
  <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" type="text/css" href="css/rlg.css">
 <title>帅郭们的年会</title>
+ <style type="text/css">
+body{
+background-image: url(img/j2.jpg);
+background-size:100% 100%;
+};
+
+
+</style>
 </head>
 <body>
 
@@ -20,7 +28,7 @@
           <br>
 
     <h1 class="title">为了红包与节目！</h1>  
-    <p class="description" align="center">举身赴清池</p>
+    <p class="description" align="center">举身赴清池,清池亦可平</p>
     <div class="itcode">
       <label class="whitetext">工号</label>
       <input name="itcode"  placeholder="请输入你的工号">
@@ -33,15 +41,15 @@
     <div class="verify">
       <label class="whitetext">验证码</label>
       <img class="captcha" src="img/verify.png">
-      <input type="text" placeholder="请输入右侧验证码">
+      <input name="verify" type="text" placeholder="请输入右侧验证码">
       <span class="help2">如验证码难以识别可点击验证码图片进行更换。</span>
     </div>
-    <div><button id="sub" type="submit" >本帅要登录</button></div>
+    <div><button id="sub" type="submit" >我来也！</button></div>
      <br>
   </div>
   <div class="questionb" position:absolute>
     有问题？
-    <a id="question" href='gchatreg.html'> 点击这里</a>
+    <a id="question" href='rlproblem'> 点击这里</a>
   </div>
 </body>
 </form>

@@ -1,0 +1,37 @@
+body {
+    background-color:#fff;
+}
+
+.title {
+  text-align:center;
+  font-size:25px;
+  padding:0.2em;
+  color:#DAA520;
+}
+
+.main{
+  display:block;
+  width:39%;
+  margin:0 auto;
+  background:#CCFFFF;
+  border-radius:50px 50px  50px 50px;
+}
+
+ 
+
+ 
+
+label {
+  font-weight:700;
+}
+
+ 
+
+ 
+
+.h{
+
+ display:block;
+ text-align:center;
+
+}
