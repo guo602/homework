@@ -12,6 +12,8 @@
 </h1>
 <a href="admin" title="管理员界面">管理员界面</a> <br><br>
 <a href="chatlogin" title="聊天室登录">聊天室登录</a><br><br>
+<a href="redlogin" title="红包登录">红包登录</a><br><br>
+
 <a href="http://localhost:8080/homework_chat/gchatreg.html" title="另一个项目的聊天室入口">另一个项目的聊天室入口</a>
 
 <br><br>

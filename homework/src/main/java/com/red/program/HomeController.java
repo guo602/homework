@@ -44,4 +44,11 @@ public class HomeController {
 	public String programLogin() {
 		return "program";
 	}
+	
+
+	@RequestMapping(value = "redlogin", method = RequestMethod.GET)
+	public String redLogin() {
+		return "redlogin";
+	}
+	
 }
