@@ -4,7 +4,7 @@
 <html>
 <head>
 	<title>Home</title>
-	  <link rel="stylesheet" type="text/css" href="../css/gchatlg.css">
+	  <link rel="stylesheet" type="text/css" href="css/gchatlg.css">
 </head>
 <body>
 <h1>

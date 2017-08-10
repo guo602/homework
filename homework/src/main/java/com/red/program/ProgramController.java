@@ -12,12 +12,18 @@ public class ProgramController {//节目单管理
 	JdbcTemplate jdbcTemplate;
 	
 	/**
-	 * home界面跳转到管理员界面
+	 * 
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("program")
-	public String home(Model model) {
-		return "admin";
+	@RequestMapping("program_insert")
+	public String program_insert(Model model) {
+		return "program_insert";
 	}
+	
+	@RequestMapping("program_search")
+	public String program_search(Model model) {
+		return "program_search";
+	}
+	
 }

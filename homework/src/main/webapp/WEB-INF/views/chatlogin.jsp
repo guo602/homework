@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" type="text/css" href="../css/gchatlg.css">
+  <link rel="stylesheet" type="text/css" href="css/gchatlg.css">
 <title>帅郭们的聊天室</title>
 </head>
 <body>
@@ -24,7 +24,7 @@
     </div>
     <div class="verify">
       <label>验证码</label>
-      <img class="captcha" src="verify.png">
+      <img class="captcha" src="img/verify.png">
       <input type="text" placeholder="请输入右侧验证码">
       <span class="help2">如验证码难以识别可点击验证码图片进行更换。</span>
     </div>
