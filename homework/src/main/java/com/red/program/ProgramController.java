@@ -17,7 +17,13 @@ public class ProgramController {//节目单管理
 	 * @return
 	 */
 	@RequestMapping("program_insert")
-	public String program(Model model) {
+	public String program_insert(Model model) {
 		return "program_insert";
 	}
+	
+	@RequestMapping("program_search")
+	public String program_search(Model model) {
+		return "program_search";
+	}
+	
 }

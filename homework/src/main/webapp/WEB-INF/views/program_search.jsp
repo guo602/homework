@@ -22,7 +22,8 @@ function check(n){
 	
 	//检查开始时间
 	if(n==3){
-		if(!patern3.exec(starttime)){
+		if(starttime==""){}
+		else if(!patern3.exec(starttime)){
 		document.getElementById("d3").innerText="开始时间格式不正确，正确格式形如：2018-11-11 21:21:21";
 		}else{
 		document.getElementById("d3").innerText="";

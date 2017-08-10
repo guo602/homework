@@ -6,7 +6,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>节目单界面</title>
 
+<style type="text/css">
+<!--
+body {
+	line-height: 200%
+}
 
+a:link {
+	text-decoration: none;
+	color: blue
+}
+
+a:active {
+	text-decoration: blink
+}
+
+a:hover {
+	text-decoration: none;
+	color: red
+}
+
+a:visited {
+	text-decoration: none;
+	color: blue;
+}
+-->
+</style>
 
 
 </head>
