@@ -10,13 +10,16 @@
 function check(n){
 	
 	//读取输入
-	var showname = document.getElementById("show_name").value;
-	var playername = document.getElementById("player_name").value;
-	var starttime = document.getElementById("start_time").value;
+	var program_name = document.getElementById("program_name").value;
+	var program_name = document.getElementById("program_name").value;
+	var perfomer = document.getElementById("perfomer").value;
+	var starttime = document.getElementById("starttime").value;
+	var program_name = document.getElementById("program_name").value;
 	
 	//检查时间输入的格式,当天的19-22点均可，2018-11-11 21:21:21是可以的
-	var patern3 = new RegExp("(\d{4}|\d{2})-((0?([1-9]))|(1[1|2]))-((0?[1-9])|([12]([1-9]))|(3[0|1]))[ ]((1|0?)[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])");  
-
+	var patern3 = new RegExp("(\\d{4}|\\d{2})-((0?([1-9]))|(1[1|2]))-((0?[1-9])|([12]([1-9]))|(3[0|1]))[ ]((1|0?)[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])");  
+	//(\d{4}|\d{2})-((0?([1-9]))|(1[1|2]))-((0?[1-9])|([12]([1-9]))|(3[0|1]))[ ]((1|0?)[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])
+	
 	//检查开始时间
 	if(n==3){
 		if(!patern3.exec(starttime)){
@@ -42,7 +45,7 @@ function check(n){
 	<div>
 		<!-- 中间右侧主界面 -->
 		
-		<form id="form1" name="form1" action="connhtmltojava" method="get" onsubmit="return check()">
+		<form id="form1" name="form1" action="program_insert" method="get" onsubmit="return check()">
 		<!-- get方式传输的数据会显示在地址栏里，不能提交文件（文本形式传输，有长度限制，但传输效率高，方便调试） -->
 		<!-- post方法传输的数据不会显示在地址栏里，而把数据封装成数据包，不希望传输的内容显示在地址栏里（如密码）时使用 -->
 		
