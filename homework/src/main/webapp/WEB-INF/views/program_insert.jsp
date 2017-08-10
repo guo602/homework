@@ -6,34 +6,66 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>新增节目单</title>
 
+
 <script type="text/javascript">
 function check(n){
 	
 	//读取输入
 	var program_name = document.getElementById("program_name").value;
-	var program_name = document.getElementById("program_name").value;
 	var perfomer = document.getElementById("perfomer").value;
 	var starttime = document.getElementById("starttime").value;
-	var program_name = document.getElementById("program_name").value;
+	var department = document.getElementById("department").value;
 	
 	//检查时间输入的格式,当天的19-22点均可，2018-11-11 21:21:21是可以的
 	var patern3 = new RegExp("(\\d{4}|\\d{2})-((0?([1-9]))|(1[1|2]))-((0?[1-9])|([12]([1-9]))|(3[0|1]))[ ]((1|0?)[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])");  
-	//(\d{4}|\d{2})-((0?([1-9]))|(1[1|2]))-((0?[1-9])|([12]([1-9]))|(3[0|1]))[ ]((1|0?)[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])
-	
+
+	//非空检查
+	//检查节目名
+	if(n==1){
+		if(program_name==""){
+			document.getElementById("d1").innerText="节目名不能为空";//输入为空时
+		}
+		else{
+			document.getElementById("d1").innerText="";
+		}
+	}
+	//检查表演者
+	if(n==2){
+		if(perfomer==""){
+			document.getElementById("d2").innerText="表演者不能为空";//输入为空时
+		}
+		else{
+			document.getElementById("d2").innerText="";
+		}
+	}
+ 
 	//检查开始时间
 	if(n==3){
-		if(!patern3.exec(starttime)){
+		if(starttime==""){
+			document.getElementById("d3").innerText="开始时间不能为空";
+		}
+		else if(!patern3.exec(starttime)){
 		document.getElementById("d3").innerText="开始时间格式不正确，正确格式形如：2018-11-11 21:21:21";
 		}else{
 		document.getElementById("d3").innerText="";
 		}
 	}
+	
+	//检查报送单位
+	if(n==4){
+		if(department==""){
+			document.getElementById("d4").innerText="报送单位不能为空";
+		}
+		else{
+		document.getElementById("d4").innerText="";
+		}
+	}
+	
 	return false;
 }
-
 </script>
-
 </head>
+
 <body bgcolor="#F4F4F4">
 <div>
 	<h1 align="center">新增节目单</h1>
@@ -52,11 +84,6 @@ function check(n){
 		
 		<table>
 		
-		<tr>
-			<td>节目编号：<td/>
-			<td><input onblur = "check(0)" type="text" id="program_id" name="program_id"></td>
-			<td><div id="d0" style="color:#FF0000"></div></td>
-		</tr>
 		<tr>
 			<td>节目名称：<td/>
 			<td><input onblur = "check(1)" type="text" id="program_name" name="program_name"></td>
@@ -85,12 +112,9 @@ function check(n){
 		<!-- submit把form里面的页面提交给程序 -->
 		</table>
 		</form>
-		
-		
-		
-		
 	</div>
 </div>
+
 <div>
 	<h1 align="center">网页页尾</h1>
 </div>
