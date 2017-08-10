@@ -60,11 +60,10 @@ public class LuckyRainThread extends Thread {
 		List<Wallet> wallets = WalletDAO.getAllSorted(jdbcTemplate);
 	
 		if (wallets != null) {
-			System.out.println("1");
+			System.out.println("round"+round);
 			Random money = new Random();
-			System.out.println("2");
+			System.out.println("money"+money);
 			if (round < 5) {
-				
 				for (Wallet wallet : wallets) {
 					int total = LuckyMoneyDAO.getTotalByRound(round, jdbcTemplate);
 					int luckynum = 0;
@@ -73,7 +72,16 @@ public class LuckyRainThread extends Thread {
 					} else {
 						luckynum = total;
 					}
-					int result = LuckyDAO.LuckyRain(wallet, luckynum, round, jdbcTemplate);
+					if(LuckyMoneyDAO.getTotalByRound(round, jdbcTemplate)>0) {
+						@SuppressWarnings("unused")
+						int result = LuckyDAO.LuckyRain(wallet, luckynum, round, jdbcTemplate);
+						wallet.toString();
+						continue;
+					}
+					else {
+						System.out.println("本轮结束");
+						return;
+					}
 				}
 
 			}
