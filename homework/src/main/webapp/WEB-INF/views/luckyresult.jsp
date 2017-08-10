@@ -58,7 +58,7 @@ table{
 	<div>
 		<h2 align="center">管理员界面·红包记录</h2>
 	</div>
-	<div style="background:#000;width:100%; height:90px">
+	<div style="width:100%; height:90px">
 		<div style="width: 30%; height: 50px; float: left;">
 			<form id="form1" name="form1" action="luckyresult">
 				<input type="hidden" id="round" name="round" value="0" />
