@@ -1,0 +1,48 @@
+ .zone{
+    width: 46%;
+
+ 	float: left;
+ }
+
+
+
+ .z1
+        {
+           
+            width: 98%;
+            margin:3px;
+            height:400px;
+            border: solid 1px;
+            background-color:#8EE5EE;
+        }
+         
+.z2
+        {
+            
+            width: 98%;
+            margin:3px;
+            height:200px;
+            border: solid 1px;
+            background-color:#ffffCB;
+        }
+         
+.z3
+        {
+            
+            width: 98%;
+            margin:3px;
+            height:300px;
+            border: solid 1px;
+            background-color:#CFCFCF;
+        }
+         
+.z4
+        {
+           
+            width: 98%;
+            margin:3px;
+            height:300px;
+            border: solid 1px;
+             background-color:#FFE4E1;
+        }
+         
