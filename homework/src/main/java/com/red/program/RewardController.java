@@ -105,10 +105,6 @@ public class RewardController {
 		return "rewardresult";
 	}
 	
-	@RequestMapping("rechargerecord")
-	public String gorechargeresult(Model model) {
-		return "rechargeresult";
-	}
 
 	@RequestMapping("rechargeresult")
 	public String rechargeresult(String all, Model model) {
