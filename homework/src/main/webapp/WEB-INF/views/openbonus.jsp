@@ -11,7 +11,7 @@
 		 var temp="reward"+value;
 		 document.getElementById(temp).disabled=true;
          document.form1.pid.value=value;
-         form1.submit;
+         form1.submit();
 	}
 </script>
 </head>
@@ -24,6 +24,12 @@
 		<div style="width: 70%; height: 50px; float: left;">
 			<form id="form1" name="form1" action="openbonus">
 			     <input type="hidden" id="pid" name="pid" value="0" />
+			     <p><input name="reward" id="reward" type="button"
+								value="开启全部节目打赏功能" onclick="check(0)" />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    ${result}
+				</p>
 				<table cellpadding="10" border="1" width="90%">
 					<tr>
 						<td>节目ID</td>
@@ -34,6 +40,7 @@
 					</tr>
 					<%
 						int i = 0;
+
 					%>
 					<c:forEach items="${list}" var="s">
 						<tr>
@@ -43,7 +50,8 @@
 							<td><c:out value="${s.getPerformer()}" /></td>
 							<td><c:out value="${s.getStart_time()}" /></td>
 							<td><input name="reward<%out.print(i);%>" id="reward<%out.print(i);%>" type="button"
-								value="开启节目打赏"  onclick="check(<%out.print(i);%>)" /></td>
+								value="开启节目打赏" onclick="check(<%out.print(i);%>)" /></td>
+							
 						</tr>
 
 					</c:forEach>

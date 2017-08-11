@@ -33,7 +33,7 @@ public class BonusDAO {
 	 */
 	public static boolean CreateBonus(int pid,JdbcTemplate jdbcTemplate) {
 		try {
-			int i = jdbcTemplate.update("insert into pro_bonus values(?,null);",pid);
+			int i = jdbcTemplate.update("insert into pro_bonus values(?,0);",pid);
 			if (i > 0) {
 				return true;
 			} else {
