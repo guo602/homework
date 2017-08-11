@@ -15,6 +15,10 @@ body {
   margin:0 auto;
   background:#DC143C;
   border-radius:0 0 0 0;
+  filter:alpha(opacity=83);   
+      -moz-opacity:0.83;   
+      -khtml-opacity: 0.83;   
+      opacity: 0.83; 
 }
 
 .questionb {
@@ -26,6 +30,10 @@ body {
   padding:2em 0;
   text-align:center;
   border-radius:0 0 15px 15px;
+    filter:alpha(opacity=79);   
+      -moz-opacity:0.79;   
+      -khtml-opacity: 0.79;   
+      opacity: 0.79; 
 }
 .redhead{
   display:block;
@@ -35,6 +43,10 @@ body {
   padding:2em 0;
   text-align:center;
   border-radius:10px 10px 0  0;
+  filter:alpha(opacity=59);   
+      -moz-opacity:0.59;   
+      -khtml-opacity: 0.59;   
+      opacity: 0.59; 
 
 }
 
