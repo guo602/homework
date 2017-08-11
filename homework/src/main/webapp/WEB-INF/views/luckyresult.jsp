@@ -86,12 +86,12 @@ table{
 					
 					<tr>
 						<td><input type="button" id="forth" name="forth"
-							value="third lucky rain" onclick="forthone()"></td>
+							value="forth lucky rain" onclick="forthone()"></td>
 					</tr>
 					
 					<tr>
 						<td><input type="button" id="fifth" name="fifth"
-							value="third lucky rain" onclick="fifthdone()"></td>
+							value="fifth lucky rain" onclick="fifthdone()"></td>
 					</tr>
 					<tr>
 						<td><input type="button" id="all" name="all"
