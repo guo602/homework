@@ -15,7 +15,7 @@ import com.red.program.model.Wallet;
 
 public class TradeDAO {
 	/**
-	 * 通过交易id查找dc_trade对象
+	 * 通过交易id查找trade对象
 	 * 
 	 * @param tid
 	 *            交易记录id
@@ -31,14 +31,58 @@ public class TradeDAO {
 			return null;
 		}
 	}
-
+	
 	/**
-	 * 查找账户账户id的充值记录
+	 * 获取所有的交易记录
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static List<Trade> getAll(JdbcTemplate jdbcTemplate){
+		try {
+			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
+			List<Trade> trades = jdbcTemplate.query("select * from trade", trade_mapper);
+			return trades;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	/**
+	 * 获取所有的充值记录
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static List<Trade> getAllRecharge(JdbcTemplate jdbcTemplate){
+		try {
+			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
+			List<Trade> trades = jdbcTemplate.query("select * from trade where property=0", trade_mapper);
+			return trades;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	/**
+	 * 获取所有的打赏记录
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static List<Trade> getAllReward(JdbcTemplate jdbcTemplate){
+		try {
+			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
+			List<Trade> trades = jdbcTemplate.query("select * from trade where property=1", trade_mapper);
+			return trades;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	/**
+	 * 查找账户账户id的交易记录
 	 * 
 	 * @param wid
 	 *            账户id
 	 * @param jdbcTemplate
-	 * @return 成功：账户id 充值记录列表 失败：null
+	 * @return 成功：账户id 交易记录列表 失败：null
 	 */
 	public static List<Trade> getTradeByWid(int wid, JdbcTemplate jdbcTemplate) {
 		try {
@@ -49,6 +93,45 @@ public class TradeDAO {
 			return null;
 		}
 	}
+
+	/**
+	 * 查找账户id的充值记录
+	 * 
+	 * @param wid
+	 *            账户id
+	 * @param jdbcTemplate
+	 * @return 成功：账户id 充值记录列表 失败：null
+	 */
+	public static List<Trade> getRechargeByWid(int wid, JdbcTemplate jdbcTemplate) {
+		try {
+			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
+			List<Trade> trade = jdbcTemplate.query("select * from trade where wid=? and property=0", trade_mapper, wid);
+			return trade;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	/**
+	 * 查找账户id的打赏记录
+	 * 
+	 * @param wid
+	 *            账户id
+	 * @param jdbcTemplate
+	 * @return 成功：账户id 打赏记录列表 失败：null
+	 */
+	public static List<Trade> getRewardByWid(int wid, JdbcTemplate jdbcTemplate) {
+		try {
+			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
+			List<Trade> trade = jdbcTemplate.query("select * from trade where wid=? and property=1", trade_mapper, wid);
+			return trade;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+
+	
 
 	/**
 	 * 通过用户id查询充值记录
@@ -69,12 +152,47 @@ public class TradeDAO {
 	}
 
 	/**
-	 * 通过用户工号it查询充值记录
+	 * 通过用户id查询充值记录
+	 * 
+	 * @param wid
+	 *            账户id
+	 * @param jdbcTemplate
+	 * @return 成功：用户id的 充值记录列表 失败：null
+	 */
+	public static List<Trade> getRechargeByUid(int uid, JdbcTemplate jdbcTemplate) {
+		try {
+			Wallet wallet = WalletDAO.getWalletByUid(uid, jdbcTemplate);
+			List<Trade> trade = TradeDAO.getRechargeByWid(wallet.getWid(), jdbcTemplate);
+			return trade;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	/**
+	 * 通过用户id查询打赏记录
+	 * 
+	 * @param wid
+	 *            账户id
+	 * @param jdbcTemplate
+	 * @return 成功：用户id的 打赏记录列表 失败：null
+	 */
+	public static List<Trade> getRewardByUid(int uid, JdbcTemplate jdbcTemplate) {
+		try {
+			Wallet wallet = WalletDAO.getWalletByUid(uid, jdbcTemplate);
+			List<Trade> trade = TradeDAO.getRewardByWid(wallet.getWid(), jdbcTemplate);
+			return trade;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	/**
+	 * 通过用户工号it查询交易记录
 	 * 
 	 * @param itcode
 	 *            用户工号
 	 * @param jdbcTemplate
-	 * @return 成功：用户id的 充值记录列表 失败：null
+	 * @return 成功：用户id的 交易记录列表 失败：null
 	 */
 	public static List<Trade> getTradesByItcode(String itcode, JdbcTemplate jdbcTemplate) {
 
@@ -86,7 +204,44 @@ public class TradeDAO {
 			return null;
 		}
 	}
+	/**
+	 * 通过用户工号it查询充值记录
+	 * 
+	 * @param itcode
+	 *            用户工号
+	 * @param jdbcTemplate
+	 * @return 成功：用户id的 充值记录列表 失败：null
+	 */
+	public static List<Trade> getRechargeByItcode(String itcode, JdbcTemplate jdbcTemplate) {
 
+		try {
+			All_user user = AlluserDAO.getUserByItcode(itcode, jdbcTemplate);
+			List<Trade> trade = TradeDAO.getRechargeByUid(user.getUid(), jdbcTemplate);
+			return trade;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	/**
+	 * 通过用户工号it查询充值记录
+	 * 
+	 * @param itcode
+	 *            用户工号
+	 * @param jdbcTemplate
+	 * @return 成功：用户id的 打赏记录列表 失败：null
+	 */
+	public static List<Trade> getRewardByItcode(String itcode, JdbcTemplate jdbcTemplate) {
+
+		try {
+			All_user user = AlluserDAO.getUserByItcode(itcode, jdbcTemplate);
+			List<Trade> trade = TradeDAO.getRewardByUid(user.getUid(), jdbcTemplate);
+			return trade;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 	/**
 	 * 通过用户对象查询充值记录
 	 * 
@@ -104,6 +259,7 @@ public class TradeDAO {
 		}
 	}
 
+	
 	/**
 	 * 查找充值数额在{volumn1，volumn2}的交易记录
 	 * 
