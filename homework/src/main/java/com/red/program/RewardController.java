@@ -20,12 +20,7 @@ public class RewardController {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
-	@RequestMapping("reward")
-	public String goreward(Model model) {
-		List<Program> luckylist = ProgramDAO.getAll(jdbcTemplate);
-		model.addAttribute("list", luckylist);
-		return "openbonus";
-	}
+	
 
 	@RequestMapping("openbonus")
 	public String openbonus(String pid, Model model) {
@@ -82,10 +77,6 @@ public class RewardController {
 		return "openbonus";
 	}
 
-	@RequestMapping("rewardrecord")
-	public String gorewardresult(Model model) {
-		return "rewardresult";
-	}
 
 	@RequestMapping("rewardresult")
 	public String rewardresult(String all, Model model) {
