@@ -48,6 +48,14 @@ table{
 		document.form1.round.value = "3";
 		form1.submit();
 	}
+	function forthone() {
+		document.form1.round.value = "4";
+		form1.submit();
+	}
+	function fifthone() {
+		document.form1.round.value = "5";
+		form1.submit();
+	}
 	function allone() {
 		document.form1.round.value = "0";
 		form1.submit();
@@ -74,6 +82,16 @@ table{
 					<tr>
 						<td><input type="button" id="third" name="third"
 							value="third lucky rain" onclick="thirdone()"></td>
+					</tr>
+					
+					<tr>
+						<td><input type="button" id="forth" name="forth"
+							value="third lucky rain" onclick="forthone()"></td>
+					</tr>
+					
+					<tr>
+						<td><input type="button" id="fifth" name="fifth"
+							value="third lucky rain" onclick="fifthdone()"></td>
 					</tr>
 					<tr>
 						<td><input type="button" id="all" name="all"
