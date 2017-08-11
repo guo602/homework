@@ -3,6 +3,7 @@ package com.red.program;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +16,7 @@ import luckyThread.LuckyRainThread;
 
 @Controller
 public class AdminController {
-	
+	@Autowired
 	 JdbcTemplate jdbcTemplate;
 	/**
 	 * home界面跳转到管理员界面
@@ -74,8 +75,9 @@ public class AdminController {
 	 */
 	@RequestMapping("reward")
 	public String goreward(Model model) {
-		List<Program> luckylist = ProgramDAO.getAll(jdbcTemplate);
-		model.addAttribute("list", luckylist);
+		List<Program> programlist = ProgramDAO.getAll(jdbcTemplate);
+		System.out.println();
+		model.addAttribute("list", programlist);
 		return "openbonus";
 	}
 	
