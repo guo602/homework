@@ -20,7 +20,7 @@
 <a href="chatlogin"  class="h" title="全程冒泡">全程冒泡</a><br><br>
 <a href="redlogin"  class="h" title="红包登录">红包登录</a><br><br>
 
-<a href="http://localhost:8080/homework_chat/gchatreg.html"  class="h" title="聊天室入口">聊天室入口</a>
+<a href="http://10.10.15.56:8080/homework_chat/gchatreg.html"  class="h" title="聊天室入口">聊天室入口</a>
 
 <br><br>
  
