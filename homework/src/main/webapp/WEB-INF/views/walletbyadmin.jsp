@@ -21,7 +21,7 @@
 					<td><div id="new1" style="color: #FF0000"></div></td>
 			</tr>
 			<tr>
-				<td><input type="submit" name="ok" id="ok" value="确认激活账户"></td>
+				<td><input type="submit" name="new_ok" id="new_ok" value="确认激活账户"></td>
 			</tr>
 			
 		</table>
@@ -41,7 +41,7 @@
 				<td><div id="lock2" style="color: #FF0000"></div></td>
 			</tr>
 			<tr>
-				<td><input type="submit" name="ok" id="ok" value="确认开启红包雨"></td>
+				<td><input type="submit" name="lock_ok" id="lock_ok" value="确认锁定账户"></td>
 			</tr>
 		</table>
 	</form>
@@ -57,11 +57,11 @@
 			<tr>
 				<td>请输入用户名</td>
 				<td><input name="name" id="name"></td>
-				<td><div id="unlock1" style="color: #FF0000"></div></td>
+				<td><div id="unlock2" style="color: #FF0000"></div></td>
 				
 			</tr>
 			<tr>
-				<td><input type="submit" name="ok" id="ok" value="确认开启红包雨"></td>
+				<td><input type="submit" name="unlock_ok" id="unlock_ok" value="确认解锁账户"></td>
 			</tr>
 		</table>
 	</form>
