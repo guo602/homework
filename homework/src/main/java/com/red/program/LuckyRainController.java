@@ -25,14 +25,14 @@ public class LuckyRainController {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
-	int round = 0;
-
+	//int round = 0;
+	
 	@RequestMapping("lucky_on")
-	public String lucky_on(Model model) {
-		round++;
+	public String lucky_on(String round,Model model) {
+		int r = Integer.parseInt(round);
 		LuckyRainThread t = new LuckyRainThread();
 		t.setTemplate(jdbcTemplate);
-		t.setRound(round);
+		t.setRound(r);
 		t.start();
 		return "rainning";
 	}
