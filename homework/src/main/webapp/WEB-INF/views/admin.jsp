@@ -50,7 +50,7 @@ table{
 					<td><a href="program" title="节目管理">节目单管理</a></td>
 				</tr>
 				<tr>
-					<td><a href="wallet" title="账户激活">手动激活账户</a></td>
+					<td><a href="wallet" title="账户激活">激活账户</a></td>
 				</tr>
 				<tr>
 					<td>现场管理</td>
