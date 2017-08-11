@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script>
 function checkRecharge(){
-	document.form1.all.value=1;
+	document.form1.all.value=0;
 	form1.submit();
 }
 </script>
@@ -35,10 +35,10 @@ function checkRecharge(){
 				background="img/beijing.jpg">
 				<tr>
 					<td>交易记录ID</td>
-					<td>打赏账户ID</td>
-					<td>打赏金额</td>
-					<td>打赏时间</td>
-					<td>打赏备注</td>
+					<td>充值账户ID</td>
+					<td>充值金额</td>
+					<td>充值时间</td>
+					<td>充值备注</td>
 				</tr>
 				<c:forEach items="${list}" var="s">
 					<tr>

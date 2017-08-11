@@ -83,7 +83,7 @@ public class RewardController {
 		String result = new String();
 		List<Trade> trades = null ;
 		int a = Integer.parseInt(all);
-		if (a == 0) {
+		if (a == 1) {
 			trades = TradeDAO.getAllReward(jdbcTemplate);
 			if (trades != null) {
 				result = "查询打赏记录成功";
@@ -111,7 +111,7 @@ public class RewardController {
 		String result = new String();
 		List<Trade> trades = null ;
 		int a = Integer.parseInt(all);
-		if (a == 1) {
+		if (a == 0) {
 			trades = TradeDAO.getAllRecharge(jdbcTemplate);
 			if (trades != null) {
 				result = "查询充值记录成功";
