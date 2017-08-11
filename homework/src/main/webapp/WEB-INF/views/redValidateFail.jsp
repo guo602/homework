@@ -7,6 +7,22 @@
 <title>Insert title here</title>
 </head>
 <style>
+#one
+{
+float:left;
+width:30%;
+}
+#two
+{
+float:left;
+width:40%;
+background-color:#FF5151;
+}
+#three
+{
+float:left;
+width:30%;
+}
 #returnred
 {
 font-size:16pt;
@@ -17,13 +33,22 @@ p
 color:#FFFFAA;
 font-size:23pt;
 }
+html
+{
+height:100%;
+}
 body
 {
-background-color:#FF5151;
 text-align:center;
+height:100%;
+margin:0;
 }
 </style>
 <body>
+<div id="one" >
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+<div id="two">
 <br>
 <br>
 <br>
@@ -31,9 +56,17 @@ text-align:center;
 <br>
 <br>
 <p>
-
 <b>不好意思，登录失败，请重新登录</b>
 </p>
 <a id="returnred" href=redlogin><b>返回</b></a>
+<br>
+<br>
+<br>
+<br><br>
+<br><br><br><br><br><br><br>
+</div>
+<div id="three">
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
 </body>
 </html>
