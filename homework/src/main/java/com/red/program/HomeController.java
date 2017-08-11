@@ -40,11 +40,6 @@ public class HomeController {
 		return "chat/logins";
 	}
 	
-	@RequestMapping(value = "program", method = RequestMethod.GET)
-	public String programLogin() {
-		return "program";
-	}
-	
 
 	@RequestMapping(value = "redlogin", method = RequestMethod.GET)
 	public String redLogin() {

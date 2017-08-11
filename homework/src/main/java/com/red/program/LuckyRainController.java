@@ -37,11 +37,7 @@ public class LuckyRainController {
 		return "rainning";
 	}
 
-	@RequestMapping("luckyrecord")
-	public String luckyrrecord( Model model) {
-		return "luckyresult";
-	}
-
+	
 	@RequestMapping("luckyresult")
 	public String luckyresult(String round, Model model) {
 		System.out.println("roundList" + round);
