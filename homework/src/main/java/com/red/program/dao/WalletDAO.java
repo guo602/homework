@@ -249,4 +249,56 @@ public class WalletDAO {
 			return false;
 		}
 	}
+	
+	/**
+	 * 通过用户工号对账户上锁
+	 * @param itcode  用户工号
+	 * @param jdbcTemplate
+	 * @return result==1,上锁成功 result==0,上锁失败  result==-1,其他问题
+	 */
+	public static int lockUserByItcode(String itcode, JdbcTemplate jdbcTemplate) {
+		try {
+			All_user user=AlluserDAO.getUserByItcode(itcode, jdbcTemplate);
+			int result = jdbcTemplate.update("update wallet set islock=1 where uid=?", user.getUid());
+			return result;
+		} catch (Exception e) {
+			return -1;
+		}
+	}
+	
+	/**
+	 * 通过用户工号解锁用户禁言
+	 * @param itcode  用户工号
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static int unlockUserByItcode(String itcode, JdbcTemplate jdbcTemplate) {
+		try {
+			All_user user=AlluserDAO.getUserByItcode(itcode, jdbcTemplate);
+			int result = jdbcTemplate.update("update wallet set islock=0 where uid=?", user.getUid());
+			return result;
+		} catch (Exception e) {
+			return -1;
+		}
+	}
+	/**
+	 * 通过工号判断当前用户是否禁言
+	 * @param itcode  用户工号
+	 * @param jdbcTemplate
+	 * @return true  禁言   false  允许发言
+	 */
+	public static boolean isLock(String itcode, JdbcTemplate jdbcTemplate) {
+		try {
+			All_user user=AlluserDAO.getUserByItcode(itcode, jdbcTemplate);
+			int result = jdbcTemplate.update("select islock from wallet where uid=? ", user.getUid());
+			if(result==1){
+			    return true;
+			}
+			else {
+				return false;
+			}
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }
