@@ -81,7 +81,6 @@ public class ChatInfoDAO {
 	 */
 	public static int lockUserById(int uid, JdbcTemplate jdbcTemplate) {
 		try {
-
 			int result = jdbcTemplate.update("update chat_info set islock=1 where uid=?", uid);
 			return result;
 		} catch (Exception e) {
