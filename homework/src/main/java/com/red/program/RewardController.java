@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.red.program.dao.BonusDAO;
 import com.red.program.dao.ProgramDAO;
 import com.red.program.dao.TradeDAO;
-import com.red.program.model.LuckyRecord;
+
 import com.red.program.model.Program;
 import com.red.program.model.Trade;
 
@@ -79,27 +79,30 @@ public class RewardController {
 
 
 	@RequestMapping("rewardresult")
-	public String rewardresult(String all, Model model) {
+	public String rewardresult(String itcode,String minvol,String maxvol,String beghour,String begmin,String endhour,String endmin, Model model) {
 		String result = new String();
 		List<Trade> trades = null ;
-		int a = Integer.parseInt(all);
-		if (a == 1) {
-			trades = TradeDAO.getAllReward(jdbcTemplate);
-			if (trades != null) {
-				result = "查询打赏记录成功";
-			} else {
-				result = "查询打赏记录失败或打赏记录为空";
+		String begtime="2017-08-08 "+beghour+":"+begmin+":00";
+		String endtime="2017-08-08 "+endhour+":"+endmin+":00";
+		int min = Integer.parseInt(minvol);
+		int max = Integer.parseInt(maxvol);
+		if (itcode!= "") {
+			trades = TradeDAO.getRewardByIt_Time_Volumn(itcode, begtime, endtime, min, max, jdbcTemplate);
+		}
+		else {
+			trades =TradeDAO.getRewardByTime_Volumn(begtime, endtime, min, max, jdbcTemplate);	
+		}
+		if(trades!=null) {
+			if(trades.size()!=0) {
+			    result="查询成功";
+			}
+			else {
+				result="当前条件下无记录";
 			}
 		}
 		else {
-			trades = TradeDAO.getAll(jdbcTemplate);
-			if (trades != null) {
-				result = "哪里失败";
-			} else {
-				result = "交易记录为空";
-			}
+			result="查询失败";
 		}
-		
 		model.addAttribute("list", trades);
 		model.addAttribute("result", result);
 		return "rewardresult";
@@ -107,27 +110,30 @@ public class RewardController {
 	
 
 	@RequestMapping("rechargeresult")
-	public String rechargeresult(String all, Model model) {
+	public String rechargeresult(String itcode,String minvol,String maxvol,String beghour,String begmin,String endhour,String endmin, Model model) {
 		String result = new String();
 		List<Trade> trades = null ;
-		int a = Integer.parseInt(all);
-		if (a == 0) {
-			trades = TradeDAO.getAllRecharge(jdbcTemplate);
-			if (trades != null) {
-				result = "查询充值记录成功";
-			} else {
-				result = "查询充值记录失败或充值记录为空";
+		String begtime="2017-08-08 "+beghour+":"+begmin+":00";
+		String endtime="2017-08-08 "+endhour+":"+endmin+":00";
+		int min = Integer.parseInt(minvol);
+		int max = Integer.parseInt(maxvol);
+		if (itcode!= "") {
+			trades = TradeDAO.getRechargeByIt_Time_Volumn(itcode, begtime,endtime, min, max, jdbcTemplate);
+		}
+		else {
+			trades =TradeDAO.getRechargeByTime_Volumn(begtime, endtime, min, max, jdbcTemplate);	
+		}
+		if(trades!=null) {
+			if(trades.size()!=0) {
+			    result="查询成功";
+			}
+			else {
+				result="当前条件下无记录";
 			}
 		}
 		else {
-			trades = TradeDAO.getAll(jdbcTemplate);
-			if (trades != null) {
-				result = "哪里失败";
-			} else {
-				result = "交易记录为空";
-			}
+			result="查询失败";
 		}
-		
 		model.addAttribute("list", trades);
 		model.addAttribute("result", result);
 		return "rechargeresult";

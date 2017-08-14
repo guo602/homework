@@ -30,35 +30,15 @@ a:visited {
 	text-decoration: none;
 	color: blue;
 }
-table{
-    text-align:center;
+
+table {
+	text-align: center;
 }
 -->
 </style>
 <script>
-	function firstone() {
-		document.form1.round.value = "1";
-		form1.submit();
-	}
-	function secondone() {
-		document.form1.round.value = "2";
-		form1.submit();
-	}
-	function thirdone() {
-		document.form1.round.value = "3";
-		form1.submit();
-	}
-	function forthone() {
-		document.form1.round.value = "4";
-		form1.submit();
-	}
-	function fifthone() {
-		document.form1.round.value = "5";
-		form1.submit();
-	}
-	function allone() {
-		document.form1.round.value = "0";
-		form1.submit();
+	function check() {
+		form1.submit()
 	}
 </script>
 </head>
@@ -66,36 +46,57 @@ table{
 	<div>
 		<h2 align="center">管理员界面·红包记录</h2>
 	</div>
-	<div style="width:100%; height:90px">
+	<div style="width: 100%; height: 90px">
 		<div style="width: 30%; height: 50px; float: left;">
 			<form id="form1" name="form1" action="luckyresult">
-				<input type="hidden" id="round" name="round" value="0" />
-				<table cellpadding="10" width="30%">
+				<table>
 					<tr>
-						<td><input type="button" id="first" name="first"
-							value="first lucky rain" onclick="firstone()"></td>
+						<td>请输入用户编号</td>
+						<td><input name="itcode" id="itcode" style="width: 150px"></td>
+						<td><div id="textit" style="color: #FF0000"></div></td>
 					</tr>
 					<tr>
-						<td><input type="button" id="second" name="second"
-							value="second lucky rain" onclick="secondone()"></td>
+						<td>请选择红包雨</td>
+						<td><input type="radio" name="round" id="round" value="1">第一轮红包雨</td>
 					</tr>
 					<tr>
-						<td><input type="button" id="third" name="third"
-							value="third lucky rain" onclick="thirdone()"></td>
-					</tr>
-					
-					<tr>
-						<td><input type="button" id="forth" name="forth"
-							value="forth lucky rain" onclick="forthone()"></td>
-					</tr>
-					
-					<tr>
-						<td><input type="button" id="fifth" name="fifth"
-							value="fifth lucky rain" onclick="fifthdone()"></td>
+						<td></td>
+						<td><input type="radio" name="round" id="round" value="2">第二轮红包雨</td>
 					</tr>
 					<tr>
-						<td><input type="button" id="all" name="all"
-							value="all lucky rain" onclick="allone()"></td>
+						<td></td>
+						<td><input type="radio" name="round" id="round" value="3">第三轮红包雨</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="radio" name="round" id="round" value="4">第四轮红包雨</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="radio" name="round" id="round" value="5">第五轮红包雨</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="radio" name="round" id="round" value="0"
+							checked="checked">显示所有记录</td>
+					</tr>
+					<tr>
+						<td>请选择查询数量</td>
+						<td><select id="number" name="number" style="width: 155px">
+								<option value="10">10</option>
+								<option value="30">30</option>
+								<option value="50">50</option>
+								<option value="100">100</option>
+								<option value="0" selected="selected">无限制</option>
+
+						</select></td>
+
+					</tr>
+					<tr>
+						<td><input type="button" name="ok" id="ok" value="确认搜索"
+							onclick="check()"></td>
+						<td><div style="color: blue">${result}</div></td>
+
 					</tr>
 				</table>
 			</form>
@@ -104,8 +105,8 @@ table{
 			<table cellpadding="10" border="1" width="90%"
 				background="img/beijing.jpg">
 				<tr>
-					<td>红包记录ID</td>
-					<td>用户账户ID</td>
+					<td>红包ID</td>
+					<td>账户ID</td>
 					<td>红包金额</td>
 					<td>红包轮次</td>
 				</tr>
