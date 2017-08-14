@@ -159,4 +159,54 @@ public class LuckyRecordDAO {
 	}
 	
 	
+	/**
+	 * 获取指定it在指定轮次获得的红包雨
+	 * @param itcode
+	 * @param round
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static List<LuckyRecord> getByit_round(String itcode,int round,JdbcTemplate jdbcTemplate) {
+		try {
+			Wallet wallet=WalletDAO.getWalletByItcode(itcode, jdbcTemplate);
+			RowMapper<LuckyRecord> lucky_mapper = new BeanPropertyRowMapper<LuckyRecord>(LuckyRecord.class);
+			List<LuckyRecord> lucky = jdbcTemplate.query("select * from lucky_record where wid=? and round=?", lucky_mapper,new Object[] {wallet.getWid(),round});
+			return lucky;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	/**
+	 * 获取指定轮次最新n条数据
+	 * @param num
+	 * @param round
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static List<LuckyRecord> getLatestByRound(int num,int round,JdbcTemplate jdbcTemplate) {
+		try {
+			RowMapper<LuckyRecord> lucky_mapper = new BeanPropertyRowMapper<LuckyRecord>(LuckyRecord.class);
+			List<LuckyRecord> lucky = jdbcTemplate.query("select * from lucky_record where  round=?  limit ? ", lucky_mapper,new Object[] {round,num});
+			return lucky;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	/**
+	 * 获取最新n条数据
+	 * @param num
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static List<LuckyRecord> getLatest(int num,JdbcTemplate jdbcTemplate) {
+		try {
+			RowMapper<LuckyRecord> lucky_mapper = new BeanPropertyRowMapper<LuckyRecord>(LuckyRecord.class);
+			List<LuckyRecord> lucky = jdbcTemplate.query("select * from lucky_record  limit ? ", lucky_mapper,num);
+			return lucky;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 }

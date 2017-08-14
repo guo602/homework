@@ -325,7 +325,111 @@ public class TradeDAO {
 			return null;
 		}
 	}
-
+	/**
+	 * 查找充值时间在{time1，time2},金额在{minv,maxv}的充值记录
+	 * 
+	 * @param time1
+	 *            时间下限
+	 * @param time2
+	 *            时间上限
+	 * @param min
+	 *            金额下限
+	 * @param max
+	 *            金额上限          
+	 * @param jdbcTemplate
+	 * @return 成功：充值时间在{time1，time2}充值记录列表 失败：null
+	 */
+	public static List<Trade> getRechargeByTime_Volumn(String time1, String time2, int min,int max,JdbcTemplate jdbcTemplate) {
+		try {
+			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
+			List<Trade> trade = jdbcTemplate.query("select * from trade where tradetime>=? and tradetime<=? and volumn>? and volumn <? and property=0", trade_mapper,
+					new Object[] { time1, time2,min,max });
+			return trade;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+    
+	/**
+	 * 查找充值时间在{time1，time2},金额在指定区间的充值记录
+	 * @param itcode  用户工号
+	 * @param time1
+	 *            时间下限
+	 * @param time2
+	 *            时间上限
+	 * @param min
+	 *            金额下限
+	 * @param max
+	 *            金额上限          
+	 * @param jdbcTemplate
+	 * @return 成功：充值时间在{time1，time2}充值记录列表 失败：null
+	 */
+	public static List<Trade> getRechargeByIt_Time_Volumn(String itcode,String time1, String time2, int min,int max,JdbcTemplate jdbcTemplate) {
+		try {
+			Wallet wallet=WalletDAO.getWalletByItcode(itcode, jdbcTemplate);
+			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
+			List<Trade> trade = jdbcTemplate.query("select * from trade where wid=? and tradetime>=? and tradetime<=? and volumn>? and volumn <? and property=0 ", trade_mapper,
+					new Object[] { wallet.getWid(),time1, time2,min,max });
+			return trade;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	/**
+	 * 查找打赏时间在{time1，time2},金额在{minv,maxv}的打赏记录
+	 * 
+	 * @param time1
+	 *            时间下限
+	 * @param time2
+	 *            时间上限
+	 * @param min
+	 *            金额下限
+	 * @param max
+	 *            金额上限          
+	 * @param jdbcTemplate
+	 * @return 成功：打赏时间在{time1，time2}打赏记录列表 失败：null
+	 */
+	public static List<Trade> getRewardByTime_Volumn(String time1, String time2, int min,int max,JdbcTemplate jdbcTemplate) {
+		try {
+			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
+			List<Trade> trade = jdbcTemplate.query("select * from trade where tradetime>=? and tradetime<=? and volumn>? and volumn <? and property=1", trade_mapper,
+					new Object[] { time1, time2,min,max });
+			return trade;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+    
+	/**
+	 * 查找充值时间在{time1，time2},金额在指定区间的打赏记录
+	 * @param itcode  用户工号
+	 * @param time1
+	 *            时间下限
+	 * @param time2
+	 *            时间上限
+	 * @param min
+	 *            金额下限
+	 * @param max
+	 *            金额上限          
+	 * @param jdbcTemplate
+	 * @return 成功：打赏时间在{time1，time2}打赏记录列表 失败：null
+	 */
+	public static List<Trade> getRewardByIt_Time_Volumn(String itcode,String time1, String time2, int min,int max,JdbcTemplate jdbcTemplate) {
+		try {
+			Wallet wallet=WalletDAO.getWalletByItcode(itcode, jdbcTemplate);
+			System.out.println(wallet.getWid());
+			System.out.println(time1);
+			System.out.println(time2);
+			System.out.println(min);
+			System.out.println(max);
+			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
+			List<Trade> trade = jdbcTemplate.query("select * from trade where wid=? and tradetime>=? and tradetime<=? and volumn>? and volumn <? and property=1 ", trade_mapper,
+					new Object[] { wallet.getWid(),time1, time2,min,max });
+			return trade;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	/**
 	 * 查找账户wid充值时间在{time1，time2}的交易记录
 	 * 
