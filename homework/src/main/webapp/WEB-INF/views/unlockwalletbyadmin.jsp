@@ -1,50 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-function unlockwallet() {
+	function unlockwallet() {
 
-	var is_submit = 1;
-	var itcode = document.form3.itcode.value
-	var name = document.form3.name.value
-	if (itcode.trim().length == 0) {
-		document.getElementById("unlock1").innerHTML = "用户编号不能为空 ";
-		is_submit = 0;
-	} else {
-		if (itcode.length > 10) {
-			document.getElementById("unlock1").innerHTML = "用户编号过长，请检查输入是否正确 ";
+		var is_submit = 1;
+		var itcode = document.form3.itcode.value
+		var name = document.form3.name.value
+		if (itcode.trim().length == 0) {
+			document.getElementById("unlock1").innerHTML = "用户编号不能为空 ";
 			is_submit = 0;
 		} else {
-			document.getElementById("unlock1").innerHTML = "";
+			if (itcode.length > 10) {
+				document.getElementById("unlock1").innerHTML = "用户编号过长，请检查输入是否正确 ";
+				is_submit = 0;
+			} else {
+				document.getElementById("unlock1").innerHTML = "";
+			}
 		}
-	}
-	if (name.trim().length == 0) {
-		document.getElementById("unlock2").innerHTML = "用户名不能为空 ";
-		is_submit = 0;
-	} else {
-		if (name.length > 10) {
-			document.getElementById("unlock2").innerHTML = "用户名过长，请检查输入是否正确";
+		if (name.trim().length == 0) {
+			document.getElementById("unlock2").innerHTML = "用户名不能为空 ";
 			is_submit = 0;
 		} else {
-			document.getElementById("unlock2").innerHTML = "";
+			if (name.length > 10) {
+				document.getElementById("unlock2").innerHTML = "用户名过长，请检查输入是否正确";
+				is_submit = 0;
+			} else {
+				document.getElementById("unlock2").innerHTML = "";
+			}
+		}
+		if (is_submit == 1) {
+			form3.submit();
+		} else {
+			return false;
 		}
 	}
-	if (is_submit == 1) {
-		form3.submit();
-	} else {
-		return false;
-	}
-}
 </script>
 </head>
 <body>
-<form name="form3" id="form3" action="unlockwallet">
-	 
+	<form name="form3" id="form3" action="unlockwallet">
+
 		<h2>解锁用户账户</h2>
 		<table>
 			<tr>

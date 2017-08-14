@@ -55,7 +55,7 @@ public class AdminController {
 	 */
 	@RequestMapping("comment")
 	public String gocomment(Model model) {
-		return "comment_admin";
+		return "commentbyadmin";
 	}
 	
 	/**
