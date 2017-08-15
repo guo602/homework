@@ -53,6 +53,9 @@ table{
 					<td><a href="wallet" title="账户激活">激活账户</a></td>
 				</tr>
 				<tr>
+					<td><a href="addadmin" title="添加管理员">添加管理员</a></td>
+				</tr>
+				<tr>
 					<td>现场管理</td>
 				</tr>
 				<tr>

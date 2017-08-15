@@ -39,6 +39,16 @@ public class AdminController {
 	}
 	
 	/**
+	 * 跳转到添加管理员界面
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("addadmin")
+	public String goaddadmin(Model model) {
+		return "addadminbyadmin";
+	}
+	
+	/**
 	 * 跳转到激活用户账户界面
 	 * @param model
 	 * @return
