@@ -18,7 +18,7 @@ background-size:100% 100%;
 </head>
 <body>
 
-<form  name="form1" action="validateuser" method="get" >
+<form  name="form1" action="toUsersRoom" method="get" >
 
 <div class="redhead" position:relative >
 	  <br>
