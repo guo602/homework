@@ -13,6 +13,8 @@ function check() {
 	var bm = document.form1.begmin.value;
 	var eh = document.form1.endhour.value;
 	var em = document.form1.endmin.value;
+	var minv=document.form1.minvol.value;
+	var maxv=document.form1.maxvol.value;
 	if (bh > eh) {
 		is_submit = 0;
 		document.getByElement("time").innerText = "开始时间晚于截止时间，请重新选择"
@@ -21,6 +23,10 @@ function check() {
 			is_submit = 0;
 			document.getByElement("time").innerText = "开始时间晚于截止时间，请重新选择"
 		}
+	}
+	if(mivn>maxv){
+		document.getByElement("money").innerText = "金额下限大于上限，请重新选择"
+	    is_submit = 0;
 	}
 	if (is_submit == 1) {
 		form1.submit();
@@ -69,6 +75,7 @@ function check() {
 								<option value="200000" selected="selected">2000元</option>	
 						    </select>
 						</td>
+						<td><div id="money" style="color: red"></div></td>
 					</tr>
 					<tr>
 				<td>充值时间</td>

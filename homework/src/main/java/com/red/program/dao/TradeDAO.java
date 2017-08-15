@@ -342,7 +342,7 @@ public class TradeDAO {
 	public static List<Trade> getRechargeByTime_Volumn(String time1, String time2, int min,int max,JdbcTemplate jdbcTemplate) {
 		try {
 			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
-			List<Trade> trade = jdbcTemplate.query("select * from trade where tradetime>=? and tradetime<=? and volumn>? and volumn <? and property=0", trade_mapper,
+			List<Trade> trade = jdbcTemplate.query("select * from trade where tradetime>=? and tradetime<=? and volumn>=? and volumn <=? and property=0", trade_mapper,
 					new Object[] { time1, time2,min,max });
 			return trade;
 		} catch (Exception e) {
@@ -368,7 +368,7 @@ public class TradeDAO {
 		try {
 			Wallet wallet=WalletDAO.getWalletByItcode(itcode, jdbcTemplate);
 			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
-			List<Trade> trade = jdbcTemplate.query("select * from trade where wid=? and tradetime>=? and tradetime<=? and volumn>? and volumn <? and property=0 ", trade_mapper,
+			List<Trade> trade = jdbcTemplate.query("select * from trade where wid=? and tradetime>=? and tradetime<=? and volumn>=? and volumn <=? and property=0 ", trade_mapper,
 					new Object[] { wallet.getWid(),time1, time2,min,max });
 			return trade;
 		} catch (Exception e) {
@@ -392,7 +392,7 @@ public class TradeDAO {
 	public static List<Trade> getRewardByTime_Volumn(String time1, String time2, int min,int max,JdbcTemplate jdbcTemplate) {
 		try {
 			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
-			List<Trade> trade = jdbcTemplate.query("select * from trade where tradetime>=? and tradetime<=? and volumn>? and volumn <? and property=1", trade_mapper,
+			List<Trade> trade = jdbcTemplate.query("select * from trade where tradetime>=? and tradetime<=? and volumn>=? and volumn <=? and property=1", trade_mapper,
 					new Object[] { time1, time2,min,max });
 			return trade;
 		} catch (Exception e) {
@@ -423,7 +423,7 @@ public class TradeDAO {
 			System.out.println(min);
 			System.out.println(max);
 			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
-			List<Trade> trade = jdbcTemplate.query("select * from trade where wid=? and tradetime>=? and tradetime<=? and volumn>? and volumn <? and property=1 ", trade_mapper,
+			List<Trade> trade = jdbcTemplate.query("select * from trade where wid=? and tradetime>=? and tradetime<=? and volumn>=? and volumn <=? and property=1 ", trade_mapper,
 					new Object[] { wallet.getWid(),time1, time2,min,max });
 			return trade;
 		} catch (Exception e) {
