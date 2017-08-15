@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.ui.Model;
 
+import com.red.program.model.All_user;
 import com.red.program.model.Program;
 import com.red.program.model.Wallet;
 
@@ -131,6 +133,96 @@ public class ProgramDAO {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param program_id
+	 * @param program_name
+	 * @param department
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static List<Program> getAllPrograms(int program_id, String program_name,int department, JdbcTemplate jdbcTemplate) {
+		try {
+			Program pro=ProgramDAO.getProgramByPid(program_id, jdbcTemplate);
+			RowMapper<Program> programs_mapper = new BeanPropertyRowMapper<Program>(Program.class);
+			List<Program> programs = jdbcTemplate.query("select * from program where pid=? and pro_name=? and dept_id=?",
+					programs_mapper,new Object[] {program_id,program_name,department});
+		    return programs;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
+	public static List<Program> getWithoutDepartment(int program_id, String program_name, JdbcTemplate jdbcTemplate) {
+		try {
+			Program pro=ProgramDAO.getProgramByPid(program_id, jdbcTemplate);
+			RowMapper<Program> programs_mapper = new BeanPropertyRowMapper<Program>(Program.class);
+			List<Program> programs = jdbcTemplate.query("select * from program where pid=? and pro_name=?",
+					programs_mapper,new Object[] {program_id,program_name});
+		    return programs;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public static List<Program> getWithoutName(int program_id, int department, JdbcTemplate jdbcTemplate) {
+		try {
+			Program pro=ProgramDAO.getProgramByPid(program_id, jdbcTemplate);
+			RowMapper<Program> programs_mapper = new BeanPropertyRowMapper<Program>(Program.class);
+			List<Program> programs = jdbcTemplate.query("select * from program where pid=? and dept_id=?",
+					programs_mapper,new Object[] {program_id,department});
+		    return programs;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public static List<Program> getWithoutId( String program_name,int department, JdbcTemplate jdbcTemplate) {
+		try {
+			Program pro=ProgramDAO.getProgramByName(program_name, jdbcTemplate);
+			RowMapper<Program> programs_mapper = new BeanPropertyRowMapper<Program>(Program.class);
+			List<Program> programs = jdbcTemplate.query("select * from program where pro_name=? and dept_id=?",
+					programs_mapper,new Object[] {program_name,department});
+		    return programs;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public static List<Program> getByPidOnly(int program_id,JdbcTemplate jdbcTemplate) {
+		try {
+			Program pro=ProgramDAO.getProgramByPid(program_id, jdbcTemplate);
+			RowMapper<Program> programs_mapper = new BeanPropertyRowMapper<Program>(Program.class);
+			List<Program> programs = jdbcTemplate.query("select * from program where pid=?",
+					programs_mapper,new Object[] {program_id});
+		    return programs;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public static List<Program> getByNameOnly(String program_name,JdbcTemplate jdbcTemplate) {
+		try {
+			Program pro=ProgramDAO.getProgramByName(program_name, jdbcTemplate);
+			RowMapper<Program> programs_mapper = new BeanPropertyRowMapper<Program>(Program.class);
+			List<Program> programs = jdbcTemplate.query("select * from program where pro_name=?",
+					programs_mapper,new Object[] {program_name});
+		    return programs;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public static List<Program> getByDepartmentOnly(int department, JdbcTemplate jdbcTemplate) {
+		try {
+			//Program pro=ProgramDAO.getProgramByWid(department, jdbcTemplate);
+			RowMapper<Program> programs_mapper = new BeanPropertyRowMapper<Program>(Program.class);
+			List<Program> programs = jdbcTemplate.query("select * from program where dept_id=?",
+					programs_mapper,new Object[] {department});
+		    return programs;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
 }

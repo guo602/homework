@@ -8,55 +8,22 @@
 <title>节目单查询</title>
 
 <script type="text/javascript">
-	function check(n) {
-
-		//读取输入
-		var program_name = document.getElementById("program_name").value;
-		var program_name = document.getElementById("program_name").value;
-		var perfomer = document.getElementById("perfomer").value;
-		var starttime = document.getElementById("starttime").value;
-		var program_name = document.getElementById("program_name").value;
-
-		//检查时间输入的格式,当天的19-22点均可，2018-11-11 21:21:21是可以的
-		var patern3 = new RegExp(
-				"(\\d{4}|\\d{2})-((0?([1-9]))|(1[1|2]))-((0?[1-9])|([12]([1-9]))|(3[0|1]))[ ]((1|0?)[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])");
-		//(\d{4}|\d{2})-((0?([1-9]))|(1[1|2]))-((0?[1-9])|([12]([1-9]))|(3[0|1]))[ ]((1|0?)[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])
-
-		//检查开始时间
-		if (n == 3) {
-			if (starttime == "") {
-			} else if (!patern3.exec(starttime)) {
-				document.getElementById("d3").innerText = "开始时间格式不正确，正确格式形如：2018-11-11 21:21:21";
-			} else {
-				document.getElementById("d3").innerText = "";
-			}
+	function check() {
+		var id = document.getElementById("program_id").value
+		var name = document.getElementById("program_name").value
+		var dept = document.getElementById("department").value
+		var is_submit = 1
+		if (id == "" && name == "" && dept == "0") {
+			document.getElementById("warn").innerText = "请输入至少一个查询信息";
+			is_submit = 0
 		}
-		return false;
+		if (is_submit == 1) {
+			form1.submit();
+		}
+
 	}
 </script>
 
-<script>
-	function fun_program_id() {
-		document.form1.round.value = "1";
-		form1.submit();
-	}
-	function fun_program_name() {
-		document.form1.round.value = "2";
-		form1.submit();
-	}
-	function fun_perfomer() {
-		document.form1.round.value = "3";
-		form1.submit();
-	}
-	function fun_starttime() {
-		document.form1.round.value = "4";
-		form1.submit();
-	}
-	function fun_department() {
-		document.form1.round.value = "5";
-		form1.submit();
-	}
-</script>
 </head>
 <body bgcolor="#F4F4F4">
 	<div id="container">
@@ -71,24 +38,22 @@
 			<div style="width: 70%; height: 220px; float: left;">
 				<!-- 中间右侧主界面 -->
 
-				<form id="form1" name="form1" action="program_search" method="get">
+				<form id="form1" name="form1" action="program_search">
 					<!-- get方式传输的数据会显示在地址栏里，不能提交文件（文本形式传输，有长度限制，但传输效率高，方便调试） -->
 					<!-- post方法传输的数据不会显示在地址栏里，而把数据封装成数据包，不希望传输的内容显示在地址栏里（如密码）时使用 -->
 
-					<p style="color: black">请输入至少一个查询信息</p>
-
+					<div id="warn" style="color: red"></div>
+                    ${result}
 					<table>
 						<tr>
-							<td>节目编号：
-							<td />
+							<td>节目编号：</td>
 							<td><input type="text" id="program_id" name="program_id"></td>
 						</tr>
 						<tr>
-							<td>节目名称：
-							<td />
+							<td>节目名称：</td>
 							<td><input type="text" id="program_name" name="program_name"></td>
 						</tr>
-						<tr>
+						<!-- 					<tr>
 							<td>表演者：
 							<td />
 							<td><input type="text" id="perfomer" name="perfomer"></td>
@@ -98,16 +63,23 @@
 							<td />
 							<td><input type="text" id="starttime" name="starttime"></td>
 						</tr>
+-->
 						<tr>
-							<td>报送单位：
-							<td />
-							<td><input type="text" id="department" name="department"></td>
+							<td>报送单位：</td>
+							<td><select id="department" name="department">
+									<option value="1">技术部</option>
+									<option value="2">后勤部</option>
+									<option value="3">营销部</option>
+									<option value="0" selected="selected">无限制</option>
+							    </select>
+							</td>
 						</tr>
 
 
 						<!-- 这是一个不跳转页面的submit -->
 						<tr>
-							<td><input type="submit" value="提交"></td>
+							<td><input type="button" value="提交" onclick="check()"></td>
+					
 						</tr>
 						<!-- reset把它所在form里面的其他input清空 -->
 						<!-- submit把form里面的页面提交给程序 -->
@@ -116,8 +88,8 @@
 			</div>
 			<div>
 				<div style="width: 70%; height: 230px; float: left;">
-					<table cellpadding="10" border="0" width="90%"
-						background="img/beijing.jpg">
+					<table cellpadding="10" border="0" width="90%">
+						<!--background="img/beijing.jpg"-->
 						<tr>
 							<td>节目编号</td>
 							<td>节目名称</td>
@@ -140,6 +112,7 @@
 			<div id="footer">
 				<h1 align="center">网页页尾</h1>
 			</div>
+		</div>
 		</div>
 </body>
 </html>
