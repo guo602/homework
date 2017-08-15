@@ -43,9 +43,17 @@ public class ProgramController {// 节目单管理
 	@RequestMapping("program_search")
 	public String program_search(String program_id, String program_name, String department, Model model) {
 		String result = new String();
-
+		System.out.println(program_name);
+		System.out.println(program_id);
+		System.out.println(department);
 		List<Program> programs = null;
-		int id = Integer.parseInt(program_id);
+		int id=0;
+		if(program_id!="") {
+		    id = Integer.parseInt(program_id);
+		}
+		else {
+			id=0;
+		}
 		int dept = Integer.parseInt(department);
 		if (id != 0) {
 			if (program_name != "") {
