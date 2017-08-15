@@ -1,5 +1,7 @@
 package com.red.program.dao;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -301,4 +303,28 @@ public class WalletDAO {
 			return false;
 		}
 	}
+	public static boolean awardToProgram(String username,int amount, String pro_name,JdbcTemplate jdbcTemplate)
+	{
+		try 
+		{
+			Date date = new Date();
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String formattedDate = formatter.format(date);
+			RowMapper<All_user> all_user_mapper = new BeanPropertyRowMapper<All_user>(All_user.class);
+			All_user user=jdbcTemplate.queryForObject("select * from all_user where username=?;", all_user_mapper,username);
+			int uid=user.getUid();
+			RowMapper<Wallet> wallet_mapper = new BeanPropertyRowMapper<Wallet>(Wallet.class);
+			Wallet wallet=jdbcTemplate.queryForObject("select * from wallet where uid=?;",wallet_mapper,uid);
+			int wid=wallet.getWid();
+			jdbcTemplate.update("update wallet set amount=amount-? where uid=?;",new Object[] {amount,uid});
+			jdbcTemplate.update("update program set bonus=bonus+? where pro_name=?;",new Object[] {amount,pro_name});
+			jdbcTemplate.update("insert into trade values(null,?,?,?,1,'打赏');",new Object[] {wid,amount,date});
+			return true;
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
+	}
+
 }

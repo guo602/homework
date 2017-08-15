@@ -633,4 +633,32 @@ public class TradeDAO {
 			return false;
 		}
 	}
+	public static boolean addMoneyToWallet(String username,int amount,JdbcTemplate jdbcTemplate)
+	{
+		try 
+		{
+			Date date = new Date();
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String formattedDate = formatter.format(date);
+			if(jdbcTemplate==null) {
+				System.out.println(true);
+			}
+			RowMapper<All_user> all_user_mapper = new BeanPropertyRowMapper<All_user>(All_user.class);
+			All_user user=jdbcTemplate.queryForObject("select * from all_user where username=?;", all_user_mapper,username);
+			int uid=user.getUid();
+			jdbcTemplate.update("update wallet set amount=amount+? where uid=?;",new Object[]{amount,uid});
+			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
+			RowMapper<Wallet> wallet_mapper = new BeanPropertyRowMapper<Wallet>(Wallet.class);
+			Wallet wallet=jdbcTemplate.queryForObject("select * from wallet where uid=?;",wallet_mapper,uid);
+			int wid=wallet.getWid();
+			jdbcTemplate.update("insert into trade values(null,?,?,?,0,'充值');",new Object[] {wid,amount,date});
+			return true;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 }
