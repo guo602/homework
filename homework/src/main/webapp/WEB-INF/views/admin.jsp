@@ -5,83 +5,212 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>管理员界面</title>
+<meta name="viewport" content="width=device-width">
+<title></title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/admin.css">
 <style type="text/css">
 <!--
 body {
 	line-height: 200%
 }
 
-a:link {
-	text-decoration: none;
-	color: blue
-}
-
-a:active {
-	text-decoration: blink
-}
-
-a:hover {
-	text-decoration: none;
-	color: red
-}
-
-a:visited {
-	text-decoration: none;
-	color: blue;
-}
-table{
-    text-align:center;
+table {
+	text-align: center;
 }
 -->
 </style>
 </head>
-<body >
-	<div>
-		<h1 align="center">管理员界面</h1>
+<body>
+	<!--  <div class="blockdis">
+	  <div class="col-xs-8">
+	     <img alt="网络可能炸了" src="img/jammy.jpg" class="img-circle midimg">
+	  </div>
+		<h1 style="float:left">管理员界面</h1>
+		
 	</div>
-	<div>
-	    <div style="width: 30%;"></div>
-		<div id="admin" style="width: 30%; height: 50px; float: left;">
-			<table  bgcolor="#F4F4F4" width="200px" align="center" >
-				<tr>
-					<td>准备工作</td>
-				</tr>
-				<tr>
-					<td><a href="program" title="节目管理">节目单管理</a></td>
-				</tr>
-				<tr>
-					<td><a href="wallet" title="账户激活">激活账户</a></td>
-				</tr>
-				<tr>
-					<td><a href="addadmin" title="添加管理员">添加管理员</a></td>
-				</tr>
-				<tr>
-					<td>现场管理</td>
-				</tr>
-				<tr>
-					<td><a href="comment" title="评论区管理">评论区管理</a></td>
-				</tr>
-				<tr>
-					<td><a href="luckyrain" title="红包雨管理">红包雨管理</a></td>
-				</tr>
-				<tr>
-					<td><a href="reward" title="打赏管理">打赏管理</a></td>
-				</tr>
-				<tr>
-					<td>收尾工作</td>
-				</tr>
-				<tr>
-					<td><a href="luckyrecord" title="红包记录">红包记录</a></td>
-				</tr>
-				<tr>
-					<td><a href="rewardrecord" title="打赏记录">打赏记录</a></td>
-				</tr>
-				<tr>
-					<td><a href="rechargerecord" title="充值记录">充值记录</a></td>
-				</tr>
-			</table>
+    -->
+	<!-- 模板 -->
+	<!-- 标题栏-->
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-xs-12">
+				<ul class="nav nav-pills nav-justified bar">
+					<li class="active"><a id="home" class="bar" href="#">Home</a></li>
+					<li class="dropdown"><a class=" bar dropdown-toggle"
+						data-toggle="dropdown" href="program">节目单 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a class="bar" href="program_insert">插入节目单</a></li>
+							<li><a class="bar" href="program_search">查找节目单</a></li>
+						</ul></li>
+					<li class="dropdown"><a class="bar" class="dropdown-toggle"
+						data-toggle="dropdown" href="wallet">激活账户<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="newbyadmin">激活账户</a></li>
+							<li><a href="lockbyadmin">锁定账户</a></li>
+							<li><a href="unlockbyadmin">解锁账户</a></li>
+						</ul></li>
+					<li><a class="bar" href="addadmin">用户管理</a></li>
+					<li><a class="bar" href="comment">评论区</a></li>
+					<li><a class="bar" href="luckyrain">红包雨</a></li>
+					<li><a class="bar" href="reward">打赏管理</a></li>
+					<li><a class="bar" href="luckyrecord">红包记录</a></li>
+					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
+					<li><a class="bar" href="rechargerecord">充值记录</a></li>
+					<li><a class="bar" href="user">返回年会</a></li>
+
+
+				</ul>
+
+
+				<!--幻灯片-->
+				<div class="carousel slide" id="carousel-712824">
+					<ol class="carousel-indicators">
+						<li class="active" data-slide-to="0"
+							data-target="#carousel-712824"></li>
+						<li data-slide-to="1" data-target="#carousel-712824"></li>
+						<li data-slide-to="2" data-target="#carousel-712824"></li>
+					</ol>
+					<div class="carousel-inner">
+						<div class="item active">
+							<img alt="" src="img/jammy.jpg" />
+							<div class="carousel-caption">
+								<h4></h4>
+								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+									quam. Donec id elit non mi porta gravida at eget metus. Nullam
+									id dolor id nibh ultricies vehicula ut id elit.</p>
+							</div>
+						</div>
+						<div class="item">
+							<img alt="" src="img/jammy.jpg" />
+							<div class="carousel-caption">
+								<h4>Second Thumbnail label</h4>
+								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+									quam. Donec id elit non mi porta gravida at eget metus. Nullam
+									id dolor id nibh ultricies vehicula ut id elit.</p>
+							</div>
+						</div>
+						<div class="item">
+							<img alt="" src="img/jammy.jpg" />
+							<div class="carousel-caption">
+								<h4>Third Thumbnail label</h4>
+								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
+									quam. Donec id elit non mi porta gravida at eget metus. Nullam
+									id dolor id nibh ultricies vehicula ut id elit.</p>
+							</div>
+						</div>
+					</div>
+					<a class="left carousel-control" href="#carousel-712824"
+						data-slide="prev"><span
+						class="glyphicon glyphicon-chevron-left"></span></a> <a
+						class="right carousel-control" href="#carousel-712824"
+						data-slide="next"><span
+						class="glyphicon glyphicon-chevron-right"></span></a>
+				</div>
+
+				<!--标题栏-->
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+						<div class="row clearfix">
+							<div class="col-md-12 column">
+							      <img alt="140x140" src="img/jammy.jpg"
+									class="img-rounded bigimg" />
+							</div>
+						</div>
+						<div class="row clearfix">
+							<div class="col-md-3 column"></div>
+							<div class="col-md-6 column">
+								<img alt="140x140" src="img/adminprogram.png"
+									class="img-rounded bigimg" />
+							</div>
+							<div class="col-md-3 column"></div>
+						</div>
+						<div class="row clearfix">
+							<div class="col-md-4 column">
+								<a href="program">> <img alt="140x140"
+									src="img/adminprogram.png" class="img-circle midimg" />
+								</a>
+							</div>
+							<div class="col-md-4 column">
+								<a href="wallet">> <img alt="140x140"
+									src="img/adminmoney.png" class="img-circle midimg" />
+								</a>
+							</div>
+							<div class="col-md-4 column">
+								<a href="addadmin"> <img alt="140x140"
+									src="img/adminmoney.png" class="img-circle midimg" />
+								</a>
+							</div>
+						</div>
+						<div class="row clearfix">
+							<div class="col-md-12 column">
+							      <img alt="140x140" src="img/jammy.jpg"
+									class="img-rounded bigimg" />
+							</div>
+						</div>
+						<div class="row clearfix">
+							<div class="col-md-3 column"></div>
+							<div class="col-md-6 column">
+								<img alt="140x140" src="img/adminadd.png"
+									class="img-rounded bigimg" />
+							</div>
+							<div class="col-md-3 column"></div>
+						</div>
+						<div class="row clearfix">
+							<div class="col-md-4 column">
+								<a href="comment"> <img alt="140x140" src="img/adminadd.png"
+									class="img-circle midimg" />
+								</a>
+							</div>
+							<div class="col-md-4 column">
+								<a href="luckyrain"> <img alt="140x140"
+									src="img/adminadd.png" class="img-circle bigimg" />
+								</a>
+							</div>
+							<div class="col-md-4 column">
+								<a href="reward"> <img alt="140x140" src="img/adminadd.png"
+									class="img-circle midimg" />
+								</a>
+							</div>
+						</div>
+						<div class="row clearfix">
+							<div class="col-md-12 column">
+							      <img alt="140x140" src="img/jammy.jpg"
+									class="img-rounded bigimg" />
+							</div>
+						</div>
+						<div class="row clearfix">
+							<div class="col-md-3 column"></div>
+							<div class="col-md-6 column">
+								<img alt="140x140" src="img/adminadd.png"
+									class="img-rounded bigimg" />
+							</div>
+							<div class="col-md-3 column"></div>
+						</div>
+						<div class="row clearfix">
+							<div class="col-md-4 column">
+								<a href="luckyrecord"> <img alt="140x140"
+									src="img/adminadd.png" class="img-circle midimg" />
+								</a>
+							</div>
+							<div class="col-md-4 column">
+								<a href="rewardrecord"> <img alt="140x140"
+									src="img/adminadd.png" class="img-circle midimg" />
+								</a>
+							</div>
+							<div class="col-md-4 column">
+								<a href="rechargerecord"> <img alt="140x140"
+									src="img/adminadd.png" class="img-circle midimg" />
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div style="width: 70%; height: 50px; float: left;bgcolor:#F4F4F4;"></div>
 	</div>
 </body>
 </html>
