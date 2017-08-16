@@ -317,8 +317,14 @@ public class WalletDAO {
 			Wallet wallet=jdbcTemplate.queryForObject("select * from wallet where uid=?;",wallet_mapper,uid);
 			int wid=wallet.getWid();
 			jdbcTemplate.update("update wallet set amount=amount-? where uid=?;",new Object[] {amount,uid});
-			jdbcTemplate.update("update program set bonus=bonus+? where pro_name=?;",new Object[] {amount,pro_name});
+		    int id=ProgramDAO.getProgramByName(pro_name, jdbcTemplate).getPid();
+			
 			jdbcTemplate.update("insert into trade values(null,?,?,?,1,'打赏');",new Object[] {wid,amount,date});
+
+			System.out.println(id);
+			System.out.println(amount);
+			
+			BonusDAO.AddBonus(id, amount, jdbcTemplate);
 			return true;
 		}
 		catch(Exception e)

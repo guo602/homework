@@ -50,7 +50,7 @@ public class BonusDAO {
 	 * @param jdbcTemplate
 	 * @return
 	 */
-	public static boolean ChangeBonus(int pid,int bonus ,JdbcTemplate jdbcTemplate) {
+	public static boolean AddBonus(int pid,int bonus ,JdbcTemplate jdbcTemplate) {
 		try {
 			int i = jdbcTemplate.update("update pro_bonus set bonus=bonus+? where pid=?",new Object[] {bonus,pid});
 			if (i > 0) {

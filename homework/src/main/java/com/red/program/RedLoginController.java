@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -77,36 +78,22 @@ public class RedLoginController {
 	
 	@RequestMapping(value = "toUsersRoom", method = RequestMethod.GET)
 	public String ToUsersRoom(Model model) {
+		
+		
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		String itcode=request.getParameter("itcode");
-		String name=request.getParameter("name");
-		String verify=request.getParameter("verify");
-	
-		
-		
-		if(AlluserDAO.checkUserInfo(itcode,name,jdbcTemplate) && verify.equals("1234") ) {
-//			
-			List<Program> pl=ProgramDAO.getAll(jdbcTemplate);
+		HttpSession session=request.getSession();
+		if(session.getAttribute("itcode")!=null) {
+			
+	List<Program> pl=ProgramDAO.getAll(jdbcTemplate);
 			
 			List<Each_program> epl=new ArrayList<Each_program>();
-			int index=0;
+			
 			for (Program p:pl) {
-				
-				System.out.println(p.getPid());
-				System.out.println(p.getPro_name());
-				System.out.println(p.getPerformer());
-				
-				System.out.println(p.getStart_time());
-				System.out.println(DepartmentDAO.getDepartmentByDid(p.getDept_id(),
-						jdbcTemplate).getDeptname());
-				
-				
 				
 				
 				
@@ -117,9 +104,46 @@ public class RedLoginController {
 						DepartmentDAO.getDepartmentByDid(p.getDept_id(),
 								jdbcTemplate).getDeptname());
 				
-				epl.add( e);                                 
+				epl.add(e);                                 
 				
-				index++;
+				
+				
+			}
+			
+			model.addAttribute("pro", epl);
+			
+			return "users_room";
+		}
+		else {
+		String itcode=request.getParameter("itcode");
+		String name=request.getParameter("name");
+		String verify=request.getParameter("verify");
+	
+		
+		
+		if(AlluserDAO.checkUserInfo(itcode,name,jdbcTemplate) && verify.equals("1234") ) {
+//			
+			
+			session.setAttribute("itcode", itcode);
+			
+			
+			List<Program> pl=ProgramDAO.getAll(jdbcTemplate);
+			
+			List<Each_program> epl=new ArrayList<Each_program>();
+			
+			for (Program p:pl) {
+				
+				
+				
+				Each_program e =new Each_program(p.getPid(),
+						p.getPro_name() , 
+						p.getPerformer(),
+						p.getStart_time(), 
+						DepartmentDAO.getDepartmentByDid(p.getDept_id(),
+								jdbcTemplate).getDeptname());
+				
+				epl.add(e);                                 
+				
 				
 				
 			}
@@ -137,6 +161,7 @@ public class RedLoginController {
 		else return "redValidateFail";
 			
 	}
+		}
 	
 	
 	
