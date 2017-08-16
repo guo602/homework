@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.red.program.model.Admin_user;
+import com.red.program.model.All_user;
 
 public class AdminUserDAO {
 	
@@ -27,6 +28,27 @@ public class AdminUserDAO {
 		}
 	}
 
+	/**
+	 * 通过管理员删除用户
+	 * @param itcode	聊天记录编号id
+	 * @param jdbcTemplate
+	 * @return	成功返回1，失败返回0或-1
+	 */
+	public static int AdminDelete(String itcode, JdbcTemplate jdbcTemplate) {
+		try {
+			RowMapper<All_user> user_mapper = new BeanPropertyRowMapper<All_user>(All_user.class);
+			All_user user = jdbcTemplate.queryForObject("select * from all_user where itcode=?",
+					user_mapper, itcode);
+			int i=jdbcTemplate.update("delete from all_user where uid=? ",user.getUid());
+			if (i > 0) {
+				return 1;
+			} else {
+				return 0;
+			}
+		} catch (Exception e) {
+			return -1;
+		}
+	}
 	/**
 	 * 检查用户名和工号是否匹配，且存在于数据库中
 	 * @param itcode 工号

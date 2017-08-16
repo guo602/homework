@@ -18,6 +18,7 @@ import luckyThread.LuckyRainThread;
 public class AdminController {
 	@Autowired
 	 JdbcTemplate jdbcTemplate;
+
 	/**
 	 * home界面跳转到管理员界面
 	 * @param model
@@ -45,7 +46,7 @@ public class AdminController {
 	 */
 	@RequestMapping("addadmin")
 	public String goaddadmin(Model model) {
-		return "addadminbyadmin";
+		return "adminmodify";
 	}
 	
 	/**
