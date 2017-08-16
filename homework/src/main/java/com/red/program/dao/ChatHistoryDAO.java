@@ -139,7 +139,7 @@ public class ChatHistoryDAO {
 	 * @param jdbcTemplate
 	 * @return	成功返回1，失败返回0，其他问题返回-1
 	 */
-	public static int createHistory(String uid, String word, JdbcTemplate jdbcTemplate) {
+	public static int createHistory(int uid, String word, JdbcTemplate jdbcTemplate) {
 		try {
 			Date date = new Date();
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
