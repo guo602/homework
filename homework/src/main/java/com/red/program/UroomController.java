@@ -110,6 +110,14 @@ public class UroomController {
 		
 		if( !word.equals("")) {
 			
+			word.replace("甘道夫", "大眼帅哥");
+			word.replace("妈的", "*");
+			word.replace("冒泡组", "坠吼的");
+			word.replace("shit", "OMG");
+			word.replace("fuck", "nice");
+			word=new String(word.replaceAll("fuck", "nice"));
+
+			
 		ChatHistoryDAO.createHistory(AlluserDAO.getUserByItcode(itcode, jdbcTemplate).getUid(), word, jdbcTemplate);	
 			
 		}
@@ -180,6 +188,8 @@ public class UroomController {
 		}
 		HttpSession session=request.getSession();
 		String itcode=(String)session.getAttribute("itcode");
+	
+		
 		System.out.println(recharge);
 
 		
@@ -196,6 +206,14 @@ public class UroomController {
 		
 		return "n";
 	}
+	
+	
+	/**
+	 * 返回页面的充值
+	 * @param model
+	 * @param recharge
+	 * @return
+	 */
 	@RequestMapping(value = "recharge2", method = RequestMethod.GET)
 	public String recharge2(Model model,String recharge) {
 		
@@ -228,6 +246,27 @@ public class UroomController {
 			
 			String pro_name=request.getParameter("pro_name");
 			String amount_s=request.getParameter("rewardamount");
+			
+			if(amount_s.equals("")) {
+				
+				List<Program> pl=ProgramDAO.getAll(jdbcTemplate);
+				List<Each_program> epl=new ArrayList<Each_program>();
+				for (Program p:pl) {
+					Each_program e =new Each_program(p.getPid(),
+							p.getPro_name() , 
+							p.getPerformer(),
+							p.getStart_time(), 
+							DepartmentDAO.getDepartmentByDid(p.getDept_id(),
+									jdbcTemplate).getDeptname());
+					epl.add(e);                            
+				}
+				model.addAttribute("pro", epl);
+				
+				
+				
+					return "users_room";
+				
+			};
 		
 			
 			System.out.println(amount_s);
