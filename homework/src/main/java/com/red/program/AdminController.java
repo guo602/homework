@@ -36,6 +36,9 @@ public class AdminController {
 	 */
 	@RequestMapping("program")
 	public String goprogram(Model model) {
+		
+		List<Program> programs=ProgramDAO.getAll(jdbcTemplate);
+		model.addAttribute("list", programs);
 		return "program";
 	}
 	
