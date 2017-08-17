@@ -56,6 +56,7 @@ public class RedTableController {
 		System.out.println("i get this");
 		RedPacketGet rpg=new RedPacketGet();
 		String rednumber="0";
+		rpg.setJdbcTemplate(jdbcTemplate);
 		if(rpg.StillHave()) {rednumber=rpg.robRed(itcode);}
 		else {return "no_red_left";}
 		
