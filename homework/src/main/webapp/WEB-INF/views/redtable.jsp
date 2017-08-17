@@ -96,9 +96,9 @@
 	<h3 id="h3titile">雷谋</h3>
 	
 	<input type="button" value="查看我的红包记录" onclick="clickon_redlist()">
-	
 	<br>
-	
+	<div id="getlist">
+	</div>
 	<img src="img/red/redgif/timg7.gif"  alt="red" />
 	
 	

@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.red.program.dao.LuckyRecordDAO;
 import com.red.program.dao.TradeDAO;
+import com.red.program.model.LuckyRecord;
 import com.red.program.model.Trade;
 
 import redPacketGet.RedPacketGet;
@@ -66,31 +68,20 @@ public class RedTableController {
 		
 		return "getmsg";
 	}
-	
 	@RequestMapping(value ="get_redlist_ajax", method = RequestMethod.GET)
 	public String get_redlist_ajax(Model model) {
-		
-	
-		
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		System.out.println("req:get_redlist_ajax");
-		
-		
-		
-		
-		
-		
-		
-		model.addAttribute("msg", "1");
-		
+		HttpSession session=request.getSession();
+		String itcode=(String)session.getAttribute("itcode");
+		List<LuckyRecord> lucky=LuckyRecordDAO.getRecordByItcode(itcode, jdbcTemplate);
+		model.addAttribute("lucky_record",lucky);
+		//System.out.println(lucky.get(0).getLucky_money());
 		return "redlist";
-	}
-	
-	
+	}	
 }

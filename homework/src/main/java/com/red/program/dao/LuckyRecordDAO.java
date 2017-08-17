@@ -209,7 +209,7 @@ public class LuckyRecordDAO {
 			return null;
 		}
 	}
-	public static List<LuckyRecord> getRecordByItcode(int itcode,JdbcTemplate jdbcTemplate)
+	public static List<LuckyRecord> getRecordByItcode(String itcode,JdbcTemplate jdbcTemplate)
 	{
 		try
 		{
