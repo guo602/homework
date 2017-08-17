@@ -5,6 +5,7 @@ import java.lang.annotation.Repeatable;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.red.program.dao.TradeDAO;
 import com.red.program.model.Trade;
+
+import redPacketGet.RedPacketGet;
 
 
 @Controller
@@ -47,15 +50,18 @@ public class RedTableController {
 			e.printStackTrace();
 		}
 		
+		HttpSession session=request.getSession();
+		String itcode=(String)session.getAttribute("itcode");
+		
 		System.out.println("i get this");
+		RedPacketGet rpg=new RedPacketGet();
+		String rednumber="0";
+		if(rpg.StillHave()) {rednumber=rpg.robRed(itcode);}
+		else {return "no_red_left";}
 		
 		
 		
-		
-		
-		
-		
-		model.addAttribute("msg", "1");
+		model.addAttribute("msg", rednumber);
 		
 		return "getmsg";
 	}

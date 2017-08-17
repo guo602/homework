@@ -35,6 +35,17 @@ public class RedPacketGet {
 		this.round = round;
 	}
 
+	public boolean StillHave() {
+		
+		return true;
+		
+	}
 	
+	public String robRed(String itcode ) {
+		
+		
+		return "0";
+		
+	}
 
 }
