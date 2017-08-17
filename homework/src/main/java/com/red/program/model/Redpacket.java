@@ -4,14 +4,8 @@ public class Redpacket {
 	int times;
 	int amount;
     int isOpen;
-    public Redpacket(){}
-    public Redpacket(int times,int amount,int isOpen)
-    {
-    	super();
-    	this.times=times;
-    	this.amount=amount;
-    	this.isOpen=isOpen;
-    }
+    int numbers;
+    Redpacket(){}
 	public int getTimes() {
 		return times;
 	}
@@ -30,5 +24,12 @@ public class Redpacket {
 	public void setIsOpen(int isOpen) {
 		this.isOpen = isOpen;
 	}
+	public int getNumbers() {
+		return numbers;
+	}
+	public void setNumbers(int numbers) {
+		this.numbers = numbers;
+	}
+	
     
 }
