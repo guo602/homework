@@ -1,9 +1,13 @@
 package redPacketGet;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.red.program.dao.RedpacketDAO;
+
+import maopaoMethod.Mmp;
 
 public class RedPacketGet {
 	@Autowired
@@ -46,11 +50,23 @@ public class RedPacketGet {
 	
 	public String robRed(String itcode ) {
 		
+		int money;
+		int fenshu=RedpacketDAO.GetNumber(jdbcTemplate);
+		if(fenshu==1) {money=RedpacketDAO.GetOpenTotal(jdbcTemplate);}
+		else {
+		int max=2*RedpacketDAO.GetOpenTotal(jdbcTemplate)/fenshu;
+		
+		Random r=new Random();
+		
+		 money=r.nextInt(max);
+		if(money==0)money=1;
+		}
+		RedpacketDAO.ReduceAmount(  itcode,money, jdbcTemplate);
 		
 		
 		
 		
-		return "0";
+		return Mmp.moneyToString(money);
 		
 	}
 

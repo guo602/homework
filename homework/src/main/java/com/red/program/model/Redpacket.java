@@ -5,7 +5,7 @@ public class Redpacket {
 	int amount;
     int isOpen;
     int numbers;
-    Redpacket(){}
+    public Redpacket(){}
 	public int getTimes() {
 		return times;
 	}

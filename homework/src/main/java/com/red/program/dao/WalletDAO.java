@@ -152,6 +152,8 @@ public class WalletDAO {
 		}
 	}
 	
+	
+	
 	/**
 	 * 通过账户id更新账户id红包雨的次数
 	 * @param wid  账户id
