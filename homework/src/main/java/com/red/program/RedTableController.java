@@ -83,5 +83,26 @@ public class RedTableController {
 		model.addAttribute("lucky_record",lucky);
 		//System.out.println(lucky.get(0).getLucky_money());
 		return "redlist";
-	}	
+	}
+	
+	
+	@RequestMapping(value ="admin_robred_open", method = RequestMethod.GET)
+	public String Admin_robred_open(Model model) {
+		
+		
+		return "n";
+		
+		
+	}
+	
+	
+	@RequestMapping(value ="admin_robred_close", method = RequestMethod.GET)
+	public String Admin_robred_close(Model model) {
+	
+		return "n";
+	}
+	
+	
+	
+	
 }
