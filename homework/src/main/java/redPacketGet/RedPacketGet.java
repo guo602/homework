@@ -3,6 +3,8 @@ package redPacketGet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.red.program.dao.RedpacketDAO;
+
 public class RedPacketGet {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
@@ -36,12 +38,16 @@ public class RedPacketGet {
 	}
 
 	public boolean StillHave() {
+		if(RedpacketDAO.StillHave(jdbcTemplate))return true;
+		else return false;
 		
-		return true;
 		
 	}
 	
 	public String robRed(String itcode ) {
+		
+		
+		
 		
 		
 		return "0";
