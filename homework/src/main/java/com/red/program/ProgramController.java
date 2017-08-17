@@ -26,7 +26,9 @@ public class ProgramController {// 节目单管理
 	 */
 	@RequestMapping("program_1")
 	public String program_1(Model model) {
-		return "program_insert";
+		List<Program> programs=ProgramDAO.getAll(jdbcTemplate);
+		model.addAttribute("list", programs);
+		return "program";
 	}
 
 	/**
@@ -37,32 +39,35 @@ public class ProgramController {// 节目单管理
 	 */
 	@RequestMapping("program_2")
 	public String program_2(Model model) {
-		return "program_search";
+		List<Program> programs=ProgramDAO.getAll(jdbcTemplate);
+		model.addAttribute("list", programs);
+		return "program";
 	}
 
 	@RequestMapping("program_search")
-	public String program_search(String program_id, String program_name, String department, Model model) {
+	public String program_search(String program_id1, String program_name1, String department1, Model model) {
 		String result = new String();
-		System.out.println(program_name);
-		System.out.println(program_id);
-		System.out.println(department);
+		String sign="some";
+		System.out.println(program_name1);
+		System.out.println(program_id1);
+		System.out.println(department1);
 		List<Program> programs = null;
 		int id=0;
-		if(program_id!="") {
-		    id = Integer.parseInt(program_id);
+		if(program_id1!="") {
+		    id = Integer.parseInt(program_id1);
 		}
 		else {
 			id=0;
 		}
-		int dept = Integer.parseInt(department);
+		int dept = Integer.parseInt(department1);
 		if (id != 0) {
-			if (program_name != "") {
+			if (program_name1 != "") {
 				if (dept != 0) {
 					System.out.println("error1");
-					programs = ProgramDAO.getAllPrograms(id, program_name, dept, jdbcTemplate);
+					programs = ProgramDAO.getAllPrograms(id, program_name1, dept, jdbcTemplate);
 				} else {// department is empty
 					System.out.println("error2");
-					programs = ProgramDAO.getWithoutDepartment(id, program_name, jdbcTemplate);
+					programs = ProgramDAO.getWithoutDepartment(id, program_name1, jdbcTemplate);
 				}
 			} else {// program_name is empty
 				if (dept != 0) {
@@ -76,13 +81,13 @@ public class ProgramController {// 节目单管理
 				}
 			}
 		} else {// program_id is empty
-			if (program_name != "") {
+			if (program_name1 != "") {
 				if (dept != 0) {
 					System.out.println("error5");
-					programs = ProgramDAO.getWithoutId(program_name, dept, jdbcTemplate);
+					programs = ProgramDAO.getWithoutId(program_name1, dept, jdbcTemplate);
 				} else {// department is empty
 					System.out.println("error6");
-					programs = ProgramDAO.getByNameOnly(program_name, jdbcTemplate);
+					programs = ProgramDAO.getByNameOnly(program_name1, jdbcTemplate);
 				}
 			} else {// program_name is empty
 				if (dept != 0) {
@@ -99,24 +104,31 @@ public class ProgramController {// 节目单管理
 		if (programs != null) {
 			if (programs.size() != 0) {
 				result = "查询成功";
-				model.addAttribute("list", programs);
+				sign = "ok";
 			} else {
 				result = "当前条件下无记录";
+				programs=ProgramDAO.getAll(jdbcTemplate);
+				sign = "ok";
 			}
 		} else {
 			result = "查询失败";
+			sign = "no";
+			programs=ProgramDAO.getAll(jdbcTemplate);
+			
 		}
 		System.out.println(result);
-
+		model.addAttribute("list", programs);
 		model.addAttribute("result", result);
-		return "program_search";
+		
+		model.addAttribute("sign", sign);
+		return "program";
 	}
 
 	@RequestMapping("program_insert")
 	public String program_insert(String performer, String program_name, String starttime, String department,
 			Model model) {
 		String result = new String();
-		String sign = new String();
+		String sign = "some";
 		int dept = Integer.parseInt(department);
 		System.out.println(program_name);
 		System.out.println(performer);
@@ -133,7 +145,9 @@ public class ProgramController {// 节目单管理
 		System.out.println(result);
 
 		model.addAttribute("result", result);
-		model.addAttribute("sign", sign);
-		return "program_insert";
+		model.addAttribute("sign1", sign);
+		List<Program> programs=ProgramDAO.getAll(jdbcTemplate);
+		model.addAttribute("list", programs);
+		return "program";
 	}
 }

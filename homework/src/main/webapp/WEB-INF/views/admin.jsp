@@ -12,17 +12,7 @@
 <script src="js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/admin.css">
-<style type="text/css">
-<!--
-body {
-	line-height: 200%
-}
 
-table {
-	text-align: center;
-}
--->
-</style>
 </head>
 <body>
 	<!--  <div class="blockdis">
@@ -89,30 +79,23 @@ table {
 						</ol>
 						<div class="carousel-inner">
 							<div class="item active">
-								<img alt="" src="img/ppt4.jpg" />
+								<img alt="" src="img/ppt1.jpg" class="img-rounded" />
 								<div class="carousel-caption">
-									<h4></h4>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus. Nullam
-										id dolor id nibh ultricies vehicula ut id elit.</p>
+									<h4>First</h4>
+									<p></p>
 								</div>
 							</div>
 							<div class="item">
-								<img alt="" src="img/ppt2.jpg" />
-								<div class="carousel-caption">
-									<h4>Second Thumbnail label</h4>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus. Nullam
-										id dolor id nibh ultricies vehicula ut id elit.</p>
+								<img alt="" src="img/ppt1.jpg" class="img-rounded"/>								<div class="carousel-caption">
+									<h4>Second </h4>
+									<p></p>
 								</div>
 							</div>
 							<div class="item">
-								<img alt="" src="img/ppt2.jpg" />
+								<img alt="" src="img/ppt1.jpg" class="img-rounded"/>
 								<div class="carousel-caption">
-									<h4>Third Thumbnail label</h4>
-									<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-										quam. Donec id elit non mi porta gravida at eget metus. Nullam
-										id dolor id nibh ultricies vehicula ut id elit.</p>
+									<h4>Third </h4>
+									<p></p>
 								</div>
 							</div>
 						</div>
@@ -128,16 +111,9 @@ table {
 					<div class="row clearfix">
 						<div class="col-md-12 column">
 							<div class="row clearfix">
-								<div class="col-md-12 column">
-									<img alt="140x140" src="img/jammy.jpg"
-										class="img-rounded bigimg" />
-								</div>
-							</div>
-							<div class="row clearfix">
 								<div class="col-md-3 column"></div>
 								<div class="col-md-6 column">
-									<img alt="140x140" src="img/adminprogram.png"
-										class="img-rounded bigimg" />
+									<img alt="140x140" src="img/title1.png"/>
 								</div>
 
 								<div class="col-md-3 column"></div>
@@ -166,21 +142,15 @@ table {
 									</div>
 								</div>
 							</div>
-							<div class="row clearfix">
-								<div class="col-md-12 column">
-									<img alt="140x140" src="img/jammy.jpg"
-										class="img-rounded bigimg" />
-								</div>
-							</div>
+							
 							<div class="row clearfix">
 								<div class="col-md-3 column"></div>
 								<div class="col-md-6 column">
-									<img alt="140x140" src="img/adminadd.png"
-										class="img-rounded bigimg" />
+									<img alt="140x140" src="img/title2.png"/>
 								</div>
 								<div class="col-md-3 column"></div>
 							</div>
-							<div class="row clearfix" style="background-color: #FFF7DE;">
+							<div class="row clearfix" >
 								<div class="col-md-4 column">
 									<a href="comment"> <img alt="140x140"
 										src="img/adminchat.png" class="img-circle midimg" />
@@ -206,17 +176,11 @@ table {
 									</div>
 								</div>
 							</div>
-							<div class="row clearfix">
-								<div class="col-md-12 column">
-									<img alt="140x140" src="img/jammy.jpg"
-										class="img-rounded bigimg" />
-								</div>
-							</div>
+							
 							<div class="row clearfix">
 								<div class="col-md-3 column"></div>
 								<div class="col-md-6 column">
-									<img alt="140x140" src="img/adminadd.png"
-										class="img-rounded bigimg" />
+									<img alt="140x140" src="img/title3.png" />
 								</div>
 								<div class="col-md-3 column"></div>
 							</div>

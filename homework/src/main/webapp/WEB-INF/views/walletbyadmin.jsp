@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>管理员界面</title>
+<title>账户管理界面</title>
 <meta name="viewport" content="width=device-width">
 <title></title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -114,18 +114,7 @@
 </script>
 </head>
 <body>
-	<!-- <table>
-		<tr>
-			<td><a href="newbyadmin">账户激活</a></td>
-		</tr>
-		<tr>
-			<td><a href="lockbyadmin">账户锁定</a></td>
-		</tr>
-		<tr>
-			<td><a href="unlockbyadmin">账户解锁</a></td>
-		</tr>
-	</table>
- -->
+<body>
 	<div class="container">
 		<div class="row clearfix">
 			<div class="col-md-12 column">
@@ -134,10 +123,10 @@
 						<img alt="140x140" src="img/sss.img" class="smaimg img-rounded " />
 					</div>
 					<div class="col-md-6 column">
-						<div class="page-header">
-							<h1>
+						<div>
+							<h3>
 								Example page header <small>Subtext for header</small>
-							</h1>
+							</h3>
 						</div>
 					</div>
 					<div class="col-md-2 column"></div>
@@ -178,10 +167,17 @@
 					<div class="col-md-12 column">
 						<p></p>
 						<p></p>
+						<hr />
 					</div>
 				</div>
+
 				<div class="row clearfix">
 					<div class="col-md-3 column">
+						<div class="row clearfix">
+							<div class="col-md-12 column">
+								<img src="img/fenge.png" width="150px" />
+							</div>
+						</div>
 						<div class="panel panel-info">
 							<div class="panel-footer">
 								<h3>准备活动</h3>
@@ -211,7 +207,41 @@
 							<div class="col-md-10 column">
 								<div class="row clearfix">
 									<div class="col-md-12 column">
+										<!--  <table class="table table-hover table-striped">
+											<thead>
+												<tr>
+													<th>节目编号</th>
+													<th>节目名称</th>
+													<th>表演者</th>
+													<th>开始时间</th>
+													<th>报送单位</th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:forEach items="${list}" var="s">
+													<tr class="error">
+														<td><c:out value="${s.getPid()}" /></td>
+														<td><c:out value="${s.getPro_name()}" /></td>
+														<td><c:out value="${s.getPerformer()}" /></td>
+														<td><c:out value="${s.getStart_time()}" /></td>
+														<td><c:out value="${s.getDept_id()}" /></td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+										-->
+									</div>
+								</div>
+							</div>
+							<div class="col-md-2 column">
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<img src="img/fenge.png" width="100px" />
+									</div>
+								</div>
+								<div class="row clearfix">
 
+									<div class="col-md-12 column">
 										<button class="btn btn-primary btn-lg" data-toggle="modal"
 											data-target="#newwallet">激活账户</button>
 										<div style="color: blue">${result}</div>
@@ -263,12 +293,17 @@
 											<!-- /.modal-dialog -->
 										</div>
 										<!-- /.modal -->
+									</div>
+								</div>
 
+
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<img src="img/fenge.png" width="100px" />
 									</div>
 								</div>
 								<div class="row clearfix">
 									<div class="col-md-12 column">
-
 										<button class="btn btn-primary btn-lg" data-toggle="modal"
 											data-target="#lockwallet">锁定账户</button>
 										<div style="color: blue">${result1}</div>
@@ -314,6 +349,13 @@
 										</div>
 										<!-- /.modal -->
 
+
+									</div>
+
+								</div>
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<img src="img/fenge.png" width="100px" />
 									</div>
 								</div>
 								<div class="row clearfix">
@@ -366,7 +408,6 @@
 
 									</div>
 								</div>
-								<div class="col-md-2 column"></div>
 							</div>
 						</div>
 					</div>
@@ -385,8 +426,8 @@
 						<div class="col-md-1 column"></div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 </body>
+
 </html>

@@ -16,17 +16,17 @@ public class WalletAdminController {
 
 	@RequestMapping("newbyadmin")
 	public String newbyadmin(Model model) {
-		return "newwalletbyadmin";
+		return "walletbyadmin";
 	}
 
 	@RequestMapping("lockbyadmin")
 	public String lockbyadmin(Model model) {
-		return "lockwalletbyadmin";
+		return "walletbyadmin";
 	}
 
 	@RequestMapping("unlockbyadmin")
 	public String unlockbyadmin(Model model) {
-		return "unlockwalletbyadmin";
+		return "walletbyadmin";
 	}
 
 	@RequestMapping("newwallet")

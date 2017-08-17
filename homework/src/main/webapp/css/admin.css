@@ -92,6 +92,11 @@ a.lessbig:hover {
 	width: 300px;
 	vertical-align: middle;
 }
+
+.repeatimg{
+    background-image:url('img/bian.png');
+	background-repeat:repeat-x;
+}
 .leftimg{
 	height: 300px;
 	width: 300px;
@@ -104,4 +109,6 @@ a.lessbig:hover {
 
 div {
 	text-align: center;
+	margin-left:auto;
+	margin-right:auto;
 }

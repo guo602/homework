@@ -16,17 +16,17 @@ public class AddadminController {
 	
 	@RequestMapping("newadminby")
 	public String addad(Model model) {
-		return "addadminbyadmin";
+		return "adminmodify";
 	}
 	
 	@RequestMapping("adduser")
 	public String addus(Model model) {
-		return "adduserbyadmin";
+		return "adminmodify";
 	}
 	
 	@RequestMapping("deleteby")
 	public String delete(Model model) {
-		return "deletebyadmin";
+		return "adminmodify";
 	}
 	/**
 	 * 响应管理员界面请求，添加管理员
@@ -57,7 +57,7 @@ public class AddadminController {
 //			result="管理员确认密码错误";
 //		}
 		model.addAttribute("result",result);
-		return "addadminbyadmin";
+		return "adminmodify";
 	}
 	
 	/**
@@ -66,14 +66,14 @@ public class AddadminController {
 	 * @return
 	 */
 	@RequestMapping("adduserbyadmin")
-	public String adduser(String itcode,String name,Model model) {
+	public String adduser(String itcode1,String name1,Model model) {
 		String result = null;
 		
 		//System.out.println(password);
 		//if(password=="maopao") {
-			if(!AlluserDAO.checkUserInfo(itcode, name, jdbcTemplate)) {
-				    AlluserDAO.createUser(itcode, name, jdbcTemplate);
-				    result="成功添加用户" +name;
+			if(!AlluserDAO.checkUserInfo(itcode1, name1, jdbcTemplate)) {
+				    AlluserDAO.createUser(itcode1, name1, jdbcTemplate);
+				    result="成功添加用户" +name1;
 			}
 			else {
 				result="当前用户已存在";
@@ -82,8 +82,8 @@ public class AddadminController {
 //		else {
 //			result="管理员确认密码错误";
 //		}
-		model.addAttribute("result",result);
-		return "adduserbyadmin";
+		model.addAttribute("result1",result);
+		return "adminmodify";
 	}
 	
 	/**
@@ -92,17 +92,17 @@ public class AddadminController {
 	 * @return
 	 */
 	@RequestMapping("deletebyadmin")
-	public String deleteuser(String itcode,String name,Model model) {
+	public String deleteuser(String itcode2,String name2,Model model) {
 		String result = null;
-		
-		//System.out.println(password);
+		System.out.println("itcode2"+itcode2);
+		System.out.println("name2"+name2);
 		//if(password=="maopao") {
-			if(AlluserDAO.checkUserInfo(itcode, name, jdbcTemplate)) {
-				    if(AdminUserDAO.AdminDelete(itcode, jdbcTemplate)==1) {
-				    result="成功删除用户" +name;
+			if(AlluserDAO.checkUserInfo(itcode2, name2, jdbcTemplate)) {
+				    if(AdminUserDAO.AdminDelete(itcode2, jdbcTemplate)==1) {
+				    result="成功删除用户" +name2;
 				    }
 				    else {
-				    	result="删除用户" +name+"失败";
+				    	result="删除用户" +name2+"失败";
 				    }
 			}
 			else {
@@ -112,7 +112,7 @@ public class AddadminController {
 //		else {
 //			result="管理员确认密码错误";
 //		}
-		model.addAttribute("result",result);
-		return "deletebyadmin";
+		model.addAttribute("result2",result);
+		return "adminmodify";
 	}
 }
