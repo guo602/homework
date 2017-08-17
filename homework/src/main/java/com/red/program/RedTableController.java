@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.red.program.dao.LuckyRecordDAO;
+import com.red.program.dao.RedpacketDAO;
 import com.red.program.dao.TradeDAO;
 import com.red.program.model.LuckyRecord;
 import com.red.program.model.Trade;
@@ -34,9 +35,11 @@ public class RedTableController {
 	@RequestMapping(value ="check_open_ajax", method = RequestMethod.GET)
 	@ResponseBody
 	public String checkopen(Model model) {
-		
-		
+		System.out.println("in check open");
+
+		if(RedpacketDAO.HasOpen(jdbcTemplate))
 		return "1";
+		else return "0";
 	}
 	
 
@@ -86,20 +89,22 @@ public class RedTableController {
 	}
 	
 	
-	@RequestMapping(value ="admin_robred_open", method = RequestMethod.GET)
+	@RequestMapping(value ="admin_rob_red_open", method = RequestMethod.GET)
 	public String Admin_robred_open(Model model) {
 		
+		RedpacketDAO.OpenByAdmin(jdbcTemplate);
 		
-		return "n";
+		return "luckyrain";
 		
 		
 	}
 	
 	
-	@RequestMapping(value ="admin_robred_close", method = RequestMethod.GET)
+	@RequestMapping(value ="admin_rob_red_close", method = RequestMethod.GET)
 	public String Admin_robred_close(Model model) {
-	
-		return "n";
+		RedpacketDAO.CloseByAdmin(jdbcTemplate);
+
+		return "luckyrain";
 	}
 	
 	
