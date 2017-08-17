@@ -42,8 +42,8 @@ function deleteuser() {
 </script>
 </head>
 <body>
-<form name="form1" id="form1" action="newadmin">
-		<h2>添加管理员账户</h2>
+<form name="form1" id="form1" action="deletebyadmin">
+		<h2>删除用户</h2>
 		<table>
 			<tr>
 				<td>请输入用户编号</td>

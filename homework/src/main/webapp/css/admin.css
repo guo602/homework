@@ -15,43 +15,70 @@ a.title:hover {
 	text-decoration: none;
 }
 
-a.navigation:link, a.navigation:visited {
-	display: block;
-	font-weight: bold;
-	font-size: 14px;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	color: #FFFFFF;
-	background-color: #98bf21;
-	width: 120px;
-	text-align: center;
-	padding: 4px;
-	text-decoration: none;
-}
 
-a.navigation:hover {
-	background-color: #7A991A;
-}
 
 a.bigger:link {
-	color: #ff0000;
+	font-size: 20px;
+	font-weight: bold;
+	font-family:'宋体';
+	color: #000000;
+	text-decoration: none;
+	
 }
 
 a.bigger:visited {
-	color: #0000ff;
+	font-size: 20px;
+	font-weight: bold;
+	font-family:'宋体';
+	color: #000000;
+	text-decoration: none;
 }
 
 a.bigger:hover {
+	font-weight: bold;
+	font-family:'宋体';
 	color: #ffcc00;
-	width: 120%;
-	height: 120%;
 	font-size: 150%;
+	text-decoration: none;
 }
+
+a.lessbig:link {
+	font-size: 18px;
+	font-weight: bold;
+	font-family:'宋体';
+	color: #000000;
+	text-decoration: none;
+	
+}
+
+a.lessbig:visited {
+	font-size: 18px;
+	font-weight: bold;
+	font-family:'宋体';
+	color: #000000;
+	text-decoration: none;
+}
+
+a.lessbig:hover {
+	font-weight: bold;
+	font-family:'宋体';
+	color: #ffcc00;
+	font-size: 150%;
+	text-decoration: none;
+}
+
 
 .bar {
 	font-weight: bold;
 	font-size: 16px;
 	color: #8000ff;
 	font-family: '宋体', Verdana, Arial, Helvetica, sans-serif;
+}
+
+.smaimg{
+	height: 100px;
+	width: 200px;
+	vertical-align: middle;
 }
 
 .midimg {
