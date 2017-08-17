@@ -137,8 +137,6 @@
 				</ul>
 				<div class="row clearfix">
 					<div class="col-md-12 column">
-						<p></p>
-						<p></p>
 						<hr />
 					</div>
 				</div>
@@ -177,8 +175,8 @@
 						<div class="row clearfix">
 							<div class="col-md-10 column">
 								<div class="row clearfix">
-									<div class="col-md-12 column">
-										<table class="table table-hover table-striped">
+									<div class="col-md-12 column" style="height:450px;overflow:scroll;">
+										<table class="table table-hover table-striped" cellpadding="10">
 											<thead>
 												<tr>
 													<th>节目编号</th>

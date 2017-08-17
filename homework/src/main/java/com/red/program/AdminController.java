@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.red.program.dao.AdminCommentDAO;
 import com.red.program.dao.ProgramDAO;
+import com.red.program.model.ChatHistory;
 import com.red.program.model.Program;
 
 import luckyThread.LuckyRainThread;
@@ -69,6 +71,8 @@ public class AdminController {
 	 */
 	@RequestMapping("comment")
 	public String gocomment(Model model) {
+		List<ChatHistory> chat=AdminCommentDAO.getLatest(jdbcTemplate);
+		model.addAttribute("list", chat);
 		return "commentbyadmin";
 	}
 	

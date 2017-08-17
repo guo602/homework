@@ -213,6 +213,30 @@
 						</div>
 					</div>
 				</div>
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+						<hr />
+					</div>
+				</div>
+				<div class="row clearfix">
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column">WCH</div>
+					<div class="col-md-1 column">WYZ</div>
+					<div class="col-md-1 column">GY</div>
+					<div class="col-md-1 column">ZYQ</div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+				</div>
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+						<hr />
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
