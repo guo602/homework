@@ -1,5 +1,7 @@
 package com.red.program;
 
+import java.io.UnsupportedEncodingException;
+import java.lang.annotation.Repeatable;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,11 +27,62 @@ public class RedTableController {
 	  HttpServletRequest request;  
 	
 	@RequestMapping(value ="check_open_ajax", method = RequestMethod.GET)
+	@ResponseBody
 	public String checkopen(Model model) {
 		
-		model.addAttribute("isopen", "1");
 		
-		return "n";
+		return "1";
+	}
+	
+
+	@RequestMapping(value ="get_red_ajax", method = RequestMethod.GET)
+	public String cget_red_ajaxn(Model model) {
+		
+		//model.addAttribute("isopen", "1");
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("i get this");
+		
+		
+		
+		
+		
+		
+		
+		model.addAttribute("msg", "1");
+		
+		return "getmsg";
+	}
+	
+	@RequestMapping(value ="get_redlist_ajax", method = RequestMethod.GET)
+	public String get_redlist_ajax(Model model) {
+		
+	
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("req:get_redlist_ajax");
+		
+		
+		
+		
+		
+		
+		
+		model.addAttribute("msg", "1");
+		
+		return "redlist";
 	}
 	
 	
