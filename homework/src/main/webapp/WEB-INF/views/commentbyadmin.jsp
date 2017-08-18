@@ -84,7 +84,7 @@
 							<li><a class="bar" href="deleteby">删除用户</a></li>
 						</ul></li>
 					<li><a class="bar" href="comment">评论区</a></li>
-					<li><a class="bar" href="luckyrain">红包雨</a></li>
+					<li><a class="bar" href="luckyrain">红包发放</a></li>
 					<li><a class="bar" href="reward">节目打赏</a></li>
 					<li><a class="bar" href="luckyrecord">红包记录</a></li>
 					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
@@ -114,12 +114,12 @@
 								<a class="bigger" href="luckyrain">开启红包雨 </a>
 							</div>
 							<div class="panel-footer">
-								<a class="bigger" href="comment">评论区管理</a>
+								<a class="bigger" href="">评论区管理</a>
 							</div>
 							<ul class="list-group">
-								<li class="list-group-item"><a class="bigger" href="">查找评论记录</a></li>
-								<li class="list-group-item"><a class="bigger" href="">禁言用户</a></li>
-								<li class="list-group-item"><a class="bigger" href="">删除评论</a></li>
+								<li class="list-group-item"><a class="bigger" href="comment">查找评论记录</a></li>
+								<li class="list-group-item"><a class="bigger" href="comment">禁言用户</a></li>
+								<li class="list-group-item"><a class="bigger" href="comment">删除评论</a></li>
 							</ul>
 							<div class="panel-heading">
 								<a class="bigger" href="reward">开启节目打赏 </a>

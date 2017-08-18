@@ -113,7 +113,7 @@
 	}
 </script>
 </head>
-<body>
+
 <body>
 	<div class="container">
 		<div class="row clearfix">
@@ -154,7 +154,7 @@
 							<li><a class="bar" href="deleteby">删除用户</a></li>
 						</ul></li>
 					<li><a class="bar" href="comment">评论区</a></li>
-					<li><a class="bar" href="luckyrain">红包雨</a></li>
+					<li><a class="bar" href="luckyrain">红包发放</a></li>
 					<li><a class="bar" href="reward">节目打赏</a></li>
 					<li><a class="bar" href="luckyrecord">红包记录</a></li>
 					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
@@ -428,6 +428,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 
 </html>

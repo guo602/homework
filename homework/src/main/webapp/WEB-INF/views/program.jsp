@@ -95,7 +95,7 @@
 						<img alt="140x140" src="img/sss.img" class="smaimg img-rounded " />
 					</div>
 					<div class="col-md-6 column">
-						<div >
+						<div>
 							<h3>
 								Example page header <small>Subtext for header</small>
 							</h3>
@@ -126,7 +126,7 @@
 							<li><a class="bar" href="deleteby">删除用户</a></li>
 						</ul></li>
 					<li><a class="bar" href="comment">评论区</a></li>
-					<li><a class="bar" href="luckyrain">红包雨</a></li>
+					<li><a class="bar" href="luckyrain">红包发放</a></li>
 					<li><a class="bar" href="reward">节目打赏</a></li>
 					<li><a class="bar" href="luckyrecord">红包记录</a></li>
 					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
@@ -175,8 +175,10 @@
 						<div class="row clearfix">
 							<div class="col-md-10 column">
 								<div class="row clearfix">
-									<div class="col-md-12 column" style="height:450px;overflow:scroll;">
-										<table class="table table-hover table-striped" cellpadding="10">
+									<div class="col-md-12 column"
+										style="height: 450px; overflow: scroll;">
+										<table class="table table-hover table-striped"
+											cellpadding="10">
 											<thead>
 												<tr>
 													<th>节目编号</th>
@@ -259,12 +261,14 @@
 
 																<tr>
 																	<td>报送单位：</td>
-																	<td><select id="department" name="department">
-																			<option value="1">技术部</option>
-																			<option value="2">后勤部</option>
-																			<option value="3">营销部</option>
-																			<option value="0" selected="selected">无限制</option>
-																	</select></td>
+																	<td><a class="btn-select" id="btn_select"> <span
+																			class="cur-select">请选择</span> <select id="department"
+																			name="department">
+																				<option value="1">技术部</option>
+																				<option value="2">后勤部</option>
+																				<option value="3">营销部</option>
+																				<option value="0" selected="selected">无限制</option>
+																		</select></a></td>
 																	<td><div id="d4" style="color: #FF0000"></div></td>
 																</tr>
 															</table>

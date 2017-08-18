@@ -36,7 +36,8 @@ public class LuckyRainController {
 		t.setTemplate(jdbcTemplate);
 		t.setRound(r);
 		t.start();
-		return "rainning";
+		model.addAttribute("result", "第"+round+"红包雨成功开启");
+		return "luckyrain";
 	}
 
 	@RequestMapping("luckyresult")

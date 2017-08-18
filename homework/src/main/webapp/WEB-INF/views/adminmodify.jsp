@@ -152,7 +152,7 @@
 							<li><a class="bar" href="deleteby">删除用户</a></li>
 						</ul></li>
 					<li><a class="bar" href="comment">评论区</a></li>
-					<li><a class="bar" href="luckyrain">红包雨</a></li>
+					<li><a class="bar" href="luckyrain">红包发放</a></li>
 					<li><a class="bar" href="reward">节目打赏</a></li>
 					<li><a class="bar" href="luckyrecord">红包记录</a></li>
 					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
@@ -244,7 +244,7 @@
 										<!-- 模态框（Modal） -->
 										<div class="modal fade " id="newadmin" tabindex="-1"
 											role="dialog" aria-labelledby="newModalLabel"
-											aria-hidden="true">
+											aria-hidden="true" >
 											<div class="modal-dialog">
 												<div class="modal-content">
 													<div class="modal-header">
@@ -252,7 +252,7 @@
 															aria-hidden="true">×</button>
 														<h4 class="modal-title" id="newModalLabel">添加管理员</h4>
 													</div>
-													<div class="modal-body">
+													<div class="modal-body" >
 														<form name="form1" id="form1" action="newadmin">
 
 															<table>
