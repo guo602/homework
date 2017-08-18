@@ -5,7 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>打赏管理界面</title>
+<meta name="viewport" content="width=device-width">
+<title></title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/admin.css">
 <script type="text/javascript">
 	function check(value) {
 		 var temp="reward"+value;
@@ -13,53 +19,192 @@
          document.form1.pid.value=value;
          form1.submit();
 	}
+	
+	function checkall(){
+		form1.submit();
+	}
 </script>
 </head>
+
 <body>
-	<div>
-		<h2 align="center">管理员界面·开启打赏</h2>
-	</div>
-	<div style="width: 100%; height: 90px">
-		<div style="width: 30%; height: 50px; float: left;"></div>
-		<div style="width: 70%; height: 50px; float: left;">
-			<form id="form1" name="form1" action="openbonus">
-			     <input type="hidden" id="pid" name="pid" value="0" />
-			     <p><input name="reward" id="reward" type="button"
-								value="开启全部节目打赏功能" onclick="check(0)" />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				    ${result}
-				</p>
-				<table cellpadding="10" border="1" width="90%">
-					<tr>
-						<td>节目ID</td>
-						<td>节目名称</td>
-						<td>表演者</td>
-						<td>开始时间</td>
-						<td>开启打赏</td>
-					</tr>
-					<%
-						int i = 0;
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-12 column">
+				<div class="row clearfix">
+					<div class="col-md-4 column">
+						<img alt="140x140" src="img/sss.img" class="smaimg img-rounded " />
+					</div>
+					<div class="col-md-6 column">
+						<div>
+							<h3>
+								Example page header <small>Subtext for header</small>
+							</h3>
+						</div>
+					</div>
+					<div class="col-md-2 column"></div>
+				</div>
+				<ul class="nav nav-pills nav-justified bar">
+					<li class="active"><a id="home" class="bar" href="#">Home</a></li>
+					<li class="dropdown"><a class=" bar dropdown-toggle"
+						data-toggle="dropdown" href="program">节目单 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a class="bar" href="program_1">插入节目单</a></li>
+							<li><a class="bar" href="program_2">查找节目单</a></li>
+						</ul></li>
+					<li class="dropdown"><a class="bar" class="dropdown-toggle"
+						data-toggle="dropdown" href="wallet">账户<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="newbyadmin">激活账户</a></li>
+							<li><a href="lockbyadmin">锁定账户</a></li>
+							<li><a href="unlockbyadmin">解锁账户</a></li>
+						</ul></li>
+					<li class="dropdown"><a class=" bar dropdown-toggle"
+						data-toggle="dropdown" href="addadmin">用户 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a class="bar" href="newadminby">添加管理员</a></li>
+							<li><a class="bar" href="adduser">添加用户</a></li>
+							<li><a class="bar" href="deleteby">删除用户</a></li>
+						</ul></li>
+					<li><a class="bar" href="comment">评论区</a></li>
+					<li><a class="bar" href="luckyrain">红包发放</a></li>
+					<li><a class="bar" href="reward">节目打赏</a></li>
+					<li><a class="bar" href="luckyrecord">红包记录</a></li>
+					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
+					<li><a class="bar" href="rechargerecord">充值记录</a></li>
+					<li><a class="bar" href="user">返回年会</a></li>
 
-					%>
-					<c:forEach items="${list}" var="s">
-						<tr>
-						    <%i++; %>
-							<td><c:out value="${s.getPid()}" /></td>
-							<td><c:out value="${s.getPro_name()}" /></td>
-							<td><c:out value="${s.getPerformer()}" /></td>
-							<td><c:out value="${s.getStart_time()}" /></td>
-							<td><input name="reward<%out.print(i);%>" id="reward<%out.print(i);%>" type="button"
-								value="开启节目打赏" onclick="check(<%out.print(i);%>)" /></td>
-							
-						</tr>
 
-					</c:forEach>
-					<tr></tr>
+				</ul>
+				<div class="row clearfix">
+					<div class="col-md-12 column">
+						<hr />
+					</div>
+				</div>
 
-				</table>
-			</form>
+				<div class="row clearfix">
+					<div class="col-md-3 column">
+						<div class="row clearfix">
+							<div class="col-md-12 column">
+								<img src="img/fenge.png" width="150px" />
+							</div>
+						</div>
+						<div class="panel panel-info">
+							<div class="panel-footer">
+								<h3>现场管理</h3>
+							</div>
+							<div class="panel-heading">
+								<a class="bigger" href="luckyrain">开启红包雨 </a>
+							</div>
+							<div class="panel-footer">
+								<a class="bigger" href="">开启节目打赏</a>
+							</div>
+							<ul class="list-group">
+								<li class="list-group-item"><a class="bigger" href="reward">指定节目打赏</a></li>
+								<li class="list-group-item"><a class="bigger" href="reward">全部节目打赏</a></li>
+							</ul>
+							<div class="panel-heading">
+								<a class="bigger" href="comment"> 评论区管理</a>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-md-9 column">
+						<div class="row clearfix">
+							<div class="col-md-10 column">
+								<div class="row clearfix">
+									<div class="col-md-12 column"
+										style="height: 450px; overflow: scroll;">
+										<table class="table table-hover table-striped"
+											cellpadding="10">
+											<thead>
+												<tr>
+													<th>节目编号</th>
+													<th>节目名称</th>
+													<th>表演者</th>
+													<th>开始时间</th>
+													<th>开启打赏</th>
+												</tr>
+											</thead>
+											<tbody>
+												<%
+													int i = 0;
+												%>
+												<c:forEach items="${list}" var="s">
+													<tr class="error">
+														<%
+															i++;
+														%>
+														<td><c:out value="${s.getPid()}" /></td>
+														<td><c:out value="${s.getPro_name()}" /></td>
+														<td><c:out value="${s.getPerformer()}" /></td>
+														<td><c:out value="${s.getStart_time()}" /></td>
+													<td><input name="reward<%out.print(i);%>"
+															id="reward<%out.print(i);%>"
+															class="btn btn-primary btn-xs but_in_table" type="button"
+															value="节目打赏" onclick="check(<%out.print(i);%>)"
+															style="padding=1px;" /></td>
+													</tr>
+													
+												</c:forEach>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-2 column">
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<img src="img/fenge.png" width="100px" />
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<form id="form1" name="form1" action="openbonus">
+											<input type="hidden" id="pid" name="pid" value="0" />
+										</form>
+										<button type="button" class="btn btn-primary btn-lg" onclick="checkall()">一键开启</button>
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<img src="img/fenge.png" width="100px" />
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<div style="color: blue">${result}</div>
+									</div>
+
+								</div>
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<img src="img/fenge.png" width="100px" />
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-md-12 column"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row clearfix">
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+					<div class="col-md-1 column"></div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
+
 </html>

@@ -26,6 +26,7 @@ public class RewardController {
 	public String openbonus(String pid, Model model) {
 		String result = new String();
 		int p = Integer.parseInt(pid);
+		System.out.println("pid"+pid);
 		if (p == 0) {
 			List<Program> programs = ProgramDAO.getAll(jdbcTemplate);
 			int sign = 1;
@@ -53,20 +54,21 @@ public class RewardController {
 			}
 		} else {
 			int isopen = BonusDAO.Isopen(p, jdbcTemplate);
-
+            Program pro=ProgramDAO.getProgramByPid(p, jdbcTemplate);
+            String name=pro.getPro_name();
 			System.out.println(isopen);
 			if (isopen == 1) {
-				result = "节目已开启打赏功能";
+				result = "节目"+name+"已开启打赏功能";
 			} else {
 				if (isopen == 0) {
 					boolean isok = BonusDAO.CreateBonus(p, jdbcTemplate);
 					if (isok == true) {
-						result = "成功开启打赏功能";
+						result = "成功开启节目"+name+"打赏功能";
 					} else {
-						result = "打赏功能开启失败，请重试";
+						result = "节目"+name+"打赏功能开启失败，请重试";
 					}
 				} else {
-					result = "打赏功能开启失败，请重试";
+					result = "节目"+name+"打赏功能开启失败，请重试";
 				}
 			}
 		}

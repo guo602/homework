@@ -120,6 +120,12 @@ input {
   border-radius:10px;
 }
 
+.but_in_table{
+	margin:0cm 0.5cm 0cm 0.5cm;
+}
+td,th{
+	text-align:center;
+}
 
 .btn-select { 
 position: relative; 
