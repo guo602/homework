@@ -9,7 +9,7 @@
 <title>帅郭们的年会</title>
  <style type="text/css">
 body{
-background-image: url(img/j2.jpg);
+background-image: url(img/blueDeye.PNG);
 background-size:100% 100%;
 };
 
@@ -21,7 +21,7 @@ background-size:100% 100%;
 <form  name="form1" action="toUsersRoom" method="get" >
 
 <div class="redhead" position:relative >
-	  <br>
+	  
 </div>
 
  <div class="main" position:relative>

@@ -11,7 +11,7 @@ body {
 
 .main{
   display:block;
-  width:35%;
+  width:95%;
   margin:0 auto;
   background:#DC143C;
   border-radius:0 0 0 0;
@@ -23,7 +23,7 @@ body {
 
 .questionb {
   display:block;
-    width:35%;
+    width:95%;
 
   margin:0 auto;
   background-color:#FFE7BA;
@@ -37,12 +37,12 @@ body {
 }
 .redhead{
   display:block;
-  width:35%;
+  width:95%;
   margin:0 auto;
   background-color:#000000;
-  padding:2em 0;
+  padding:1em 0;
   text-align:center;
-  border-radius:10px 10px 0  0;
+  border-radius:20px 20px 0  0;
   filter:alpha(opacity=59);   
       -moz-opacity:0.59;   
       -khtml-opacity: 0.59;   

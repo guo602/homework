@@ -2,7 +2,7 @@
 <%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
-<head>
+<head> 
 	<title>帅郭们滴room</title>
     <script src="js/jquery-3.2.1.min.js">
    </script>
@@ -110,7 +110,7 @@
 	        $.ajax({   
 	        	url:'gethistory',   
 	        	type:'get',   
-	         	dataType:'html',   
+	         	  
 	     
 	        	error:function(){   
 	        		alert('error');   

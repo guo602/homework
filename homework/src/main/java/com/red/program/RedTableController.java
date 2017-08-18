@@ -94,6 +94,9 @@ public class RedTableController {
 		
 		RedpacketDAO.OpenByAdmin(jdbcTemplate);
 		
+		model.addAttribute("result1","红包已开");
+
+		
 		return "luckyrain";
 		
 		
@@ -104,6 +107,8 @@ public class RedTableController {
 	public String Admin_robred_close(Model model) {
 		RedpacketDAO.CloseByAdmin(jdbcTemplate);
 
+		model.addAttribute("result2","红包已关");
+		
 		return "luckyrain";
 	}
 	
