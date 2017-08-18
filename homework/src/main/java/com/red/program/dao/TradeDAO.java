@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.red.program.model.All_user;
+import com.red.program.model.LuckyRecord;
 import com.red.program.model.Trade;
 import com.red.program.model.Wallet;
 
@@ -47,6 +48,21 @@ public class TradeDAO {
 		}
 	}
 	
+	/**
+	 * 获取最新10条交易记录
+	 * @param num
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static List<Trade> getLatest(int num,JdbcTemplate jdbcTemplate) {
+		try {
+			RowMapper<Trade> trade_mapper = new BeanPropertyRowMapper<Trade>(Trade.class);
+			List<Trade> trades = jdbcTemplate.query("select * from trade order by tradetime desc limit ? ", trade_mapper,num);
+			return trades;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	/**
 	 * 获取所有的充值记录
 	 * @param jdbcTemplate

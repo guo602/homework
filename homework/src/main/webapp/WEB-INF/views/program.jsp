@@ -11,7 +11,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/admin.css">
+<link rel="stylesheet" type="text/css" href="css/admin.css"> 
 
 
 
@@ -129,8 +129,8 @@
 					<li><a class="bar" href="luckyrain">红包发放</a></li>
 					<li><a class="bar" href="reward">节目打赏</a></li>
 					<li><a class="bar" href="luckyrecord">红包记录</a></li>
-					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
-					<li><a class="bar" href="rechargerecord">充值记录</a></li>
+					<li><a class="bar" href="traderecord">打赏记录</a></li>
+					<li><a class="bar" href="traderecord">充值记录</a></li>
 					<li><a class="bar" href="user">返回年会</a></li>
 
 

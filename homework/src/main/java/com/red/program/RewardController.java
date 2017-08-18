@@ -94,20 +94,25 @@ public class RewardController {
 		else {
 			trades =TradeDAO.getRewardByTime_Volumn(begtime, endtime, min, max, jdbcTemplate);	
 		}
+		String sign;
 		if(trades!=null) {
 			if(trades.size()!=0) {
 			    result="查询成功";
+			    sign="ok";
 			}
 			else {
 				result="当前条件下无记录";
+				sign="ok";
 			}
 		}
 		else {
 			result="查询失败";
+			sign="no";
 		}
 		model.addAttribute("list", trades);
-		model.addAttribute("result", result);
-		return "rewardresult";
+		model.addAttribute("result1", result);
+		model.addAttribute("sign1", sign);
+		return "traderecord";
 	}
 	
 
@@ -125,19 +130,24 @@ public class RewardController {
 		else {
 			trades =TradeDAO.getRechargeByTime_Volumn(begtime, endtime, min, max, jdbcTemplate);	
 		}
+		String sign;
 		if(trades!=null) {
 			if(trades.size()!=0) {
 			    result="查询成功";
+			    sign="ok";
 			}
 			else {
 				result="当前条件下无记录";
+				sign="ok";
 			}
 		}
 		else {
 			result="查询失败";
+			sign="no";
 		}
 		model.addAttribute("list", trades);
 		model.addAttribute("result", result);
-		return "rechargeresult";
+		model.addAttribute("sign", sign);
+		return "traderecord";
 	}
 }

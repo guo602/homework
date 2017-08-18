@@ -10,9 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.red.program.dao.AdminCommentDAO;
+import com.red.program.dao.LuckyRecordDAO;
 import com.red.program.dao.ProgramDAO;
+import com.red.program.dao.TradeDAO;
 import com.red.program.model.ChatHistory;
+import com.red.program.model.LuckyRecord;
 import com.red.program.model.Program;
+import com.red.program.model.Trade;
 
 import luckyThread.LuckyRainThread;
 
@@ -106,6 +110,8 @@ public class AdminController {
 	 */
 	@RequestMapping("luckyrecord")
 	public String luckyrrecord( Model model) {
+		List<LuckyRecord> luckylist = LuckyRecordDAO.getLatest(10, jdbcTemplate);
+		model.addAttribute("list", luckylist);
 		return "luckyresult";
 	}
 
@@ -127,6 +133,19 @@ public class AdminController {
 	@RequestMapping("rechargerecord")
 	public String gorechargeresult(Model model) {
 		return "rechargeresult";
+	}
+
+	/**
+	 * 跳转到充值/打赏记录界面
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("traderecord")
+	public String gotrade(Model model) {
+		List<Trade> trades=TradeDAO.getLatest(10, jdbcTemplate);
+		model.addAttribute("list", trades);
+		System.out.println("trades");
+		return "traderecord";
 	}
 
 }

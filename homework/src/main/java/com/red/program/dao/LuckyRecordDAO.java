@@ -187,7 +187,7 @@ public class LuckyRecordDAO {
 	public static List<LuckyRecord> getLatestByRound(int num,int round,JdbcTemplate jdbcTemplate) {
 		try {
 			RowMapper<LuckyRecord> lucky_mapper = new BeanPropertyRowMapper<LuckyRecord>(LuckyRecord.class);
-			List<LuckyRecord> lucky = jdbcTemplate.query("select * from lucky_record where  round=?  limit ? ", lucky_mapper,new Object[] {round,num});
+			List<LuckyRecord> lucky = jdbcTemplate.query("select * from lucky_record where  round=?  limit ? order by rid desc;", lucky_mapper,new Object[] {round,num});
 			return lucky;
 		} catch (Exception e) {
 			return null;
@@ -203,12 +203,13 @@ public class LuckyRecordDAO {
 	public static List<LuckyRecord> getLatest(int num,JdbcTemplate jdbcTemplate) {
 		try {
 			RowMapper<LuckyRecord> lucky_mapper = new BeanPropertyRowMapper<LuckyRecord>(LuckyRecord.class);
-			List<LuckyRecord> lucky = jdbcTemplate.query("select * from lucky_record  limit ? ", lucky_mapper,num);
+			List<LuckyRecord> lucky = jdbcTemplate.query("select * from lucky_record  limit ? order by rid desc;", lucky_mapper,num);
 			return lucky;
 		} catch (Exception e) {
 			return null;
 		}
 	}
+	
 	public static List<LuckyRecord> getRecordByItcode(String itcode,JdbcTemplate jdbcTemplate)
 	{
 		try

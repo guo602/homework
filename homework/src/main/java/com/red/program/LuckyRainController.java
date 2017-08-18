@@ -62,7 +62,7 @@ public class LuckyRainController {
 			if (n == 0) {
 				if (r == 0) {
 					System.out.println("error3");
-					luckylist = LuckyRecordDAO.getAll(jdbcTemplate);
+					luckylist = LuckyRecordDAO.getLatest(10, jdbcTemplate);
 				} else {
 					System.out.println("error4");
 					luckylist = LuckyRecordDAO.getAllByRound(r, jdbcTemplate);
@@ -80,19 +80,24 @@ public class LuckyRainController {
 			}
 		}
 		String result;
+		String sign;
 		if(luckylist!=null) {
 			if(luckylist.size()!=0) {
 			    result="查询成功";
+			    sign="ok";
 			}
 			else {
 				result="当前条件下无记录";
+				sign="ok";
 			}
 		}
 		else {
 			result="查询失败";
+			sign="no";
 		}
 		model.addAttribute("list", luckylist);
 		model.addAttribute("result", result);
+		model.addAttribute("sign", sign);
 		return "luckyresult";
 	}
 }
