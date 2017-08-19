@@ -79,7 +79,7 @@
 						</ol>
 						<div class="carousel-inner">
 							<div class="item active">
-								<img alt="" src="img/ppt1.png" class="img-rounded" />
+								<img alt="" src="img/ppt112.png" class="img-rounded" />
 								<div class="carousel-caption">
 									<h4>First</h4>
 									<p></p>
@@ -92,7 +92,7 @@
 								</div>
 							</div>
 							<div class="item">
-								<img alt="" src="img/ppt3.jpg" class="img-rounded"/>
+								<img alt="" src="img/ppt3.gif" class="img-rounded"/>
 								<div class="carousel-caption">
 									<h4>Third </h4>
 									<p></p>
