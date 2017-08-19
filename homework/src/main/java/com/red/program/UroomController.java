@@ -26,17 +26,47 @@ import com.red.program.dao.WalletDAO;
 import com.red.program.model.ChatHistory;
 import com.red.program.model.Each_program;
 import com.red.program.model.Program;
+import com.red.program.model.Wallet;
+
+import maopaoMethod.Mmp;
 
 @Controller
 public class UroomController {
-
+ 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
 	@Autowired  
 	  HttpServletRequest request;  
 	
+	public static final int ROWS=7;
 	
+	
+	@RequestMapping("n")
+	public String nn(Model model) {
+		return "n";
+	}
+	
+	
+	
+	@RequestMapping("tixian")
+	public String tixian(Model model) {
+		
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		HttpSession session=request.getSession();
+		String itcode=(String)session.getAttribute("itcode");
+		
+		Wallet w=WalletDAO.getWalletByItcode(itcode, jdbcTemplate);
+		WalletDAO.ChangeAmountByWallet(w, -(w.getAmount()), jdbcTemplate);
+		
+		return "tixian";
+	}
 	
 	@RequestMapping("redtable")
 	public String newtable(Model model) {
@@ -107,15 +137,14 @@ public class UroomController {
 	public String up_words_ajax(Model model,String word) {
 		HttpSession session=request.getSession();
 		String itcode=(String)session.getAttribute("itcode");
-		
+		if(word==null)return "n";
 		if( !word.equals("")) {
 			
 			word.replace("甘道夫", "大眼帅哥");
-			word.replace("妈的", "*");
-			word.replace("冒泡组", "坠吼的");
-			word.replace("shit", "OMG");
-			word.replace("fuck", "nice");
+	
 			word=new String(word.replaceAll("fuck", "nice"));
+			word=new String(word.replaceAll("shit", "OMG"));
+			word=new String(word.replaceAll("冒泡组", "坠吼的"));
 
 			
 		ChatHistoryDAO.createHistory(AlluserDAO.getUserByItcode(itcode, jdbcTemplate).getUid(), word, jdbcTemplate);	
@@ -388,16 +417,37 @@ public class UroomController {
 
 	}
 	
+	@SuppressWarnings("null")
 	@RequestMapping(value = "gethistory", method = RequestMethod.GET)
-	public String gethistory( Model model) {
+	public String gethistory( Model model,int pagenum,int current) {
 	
 		List<ChatHistory> his=ChatHistoryDAO.getAll(jdbcTemplate);
-		
+		if(his.isEmpty())return "silence";
 	//	System.out.println("request get");
+		else {
+			int amount=his.size();
+		System.out.println(amount);
+		int new_pagenum=amount/ROWS;
+		if(amount%ROWS==0);
+		else new_pagenum+=1;
 		
-		model.addAttribute("history", his);
+		if(new_pagenum>12)new_pagenum=12;
 		
-		return "reviewlist";
+		System.out.println(new_pagenum);
+		
+		List<ChatHistory> hisre=new ArrayList<ChatHistory>();
+		for(int i=current*ROWS-ROWS;(i<current*ROWS&&i<his.size());i++)
+		{hisre.add(his.get(i));
+		System.out.println(hisre.get(i).getWord());
+		}
+	//	List<Integer> pn=null;
+	//	for(int i=0;i<new_pagenum;++i)pn.add(i+1);
+		model.addAttribute("history", hisre);
+	//	model.addAttribute("num", pn);
+		System.out.println("addAttribute sussecc!");
+
+		
+		return "reviewlist";}
 	}
 	
 	@RequestMapping(value = "getbalance", method = RequestMethod.GET)
@@ -416,7 +466,9 @@ public class UroomController {
 		
 		int balance=WalletDAO.getWalletByItcode(itcode, jdbcTemplate).getAmount();
 		
-		model.addAttribute("balance", balance);
+		String balanceS=Mmp.moneyToString(balance);
+		
+		model.addAttribute("balance", balanceS);
 		
 		return "balanceshow";
 	}

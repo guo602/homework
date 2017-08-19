@@ -1,0 +1,111 @@
+body{
+
+  
+  
+}
+
+.walletdivcss{
+
+  width:96%;
+  margin:0 auto;
+  background-color:#FFE7BA;
+
+  padding:1.5em 1em;
+  border-radius:5px 5px 16px 16px  ;
+  filter:alpha(opacity=83);   
+  -moz-opacity:0.83;   
+  -khtml-opacity: 0.83;   
+  opacity: 0.83; 
+
+}
+
+.programdivcss{
+ 
+  width:96%;
+
+  margin:0 auto;
+  background:#DC143C;
+  padding:1em 1em;
+ 
+  border-radius:6px 6px 25px 25px;
+  filter:alpha(opacity=64);   
+  -moz-opacity:0.64;   
+  -khtml-opacity: 0.64;   
+  opacity: 0.64; 
+}
+
+.talkdivcss{
+ width:96%;
+ margin:0 auto;
+ background-color:#97FFFF;
+ padding:3px 4px;
+ 
+ border-radius:6px 6px 30px  30px;
+ filter:alpha(opacity=63);   
+ -moz-opacity:0.63;   
+ -khtml-opacity: 0.63;   
+ opacity: 0.63;
+ height:600px; 
+}
+
+
+.walletop{
+
+  padding:3px 3px 3px 3px;
+
+  margin: 3px 3px 3px 3px;
+}
+
+.myBalance{
+ width: 43%;
+ height: 96px;
+ text-align:center;
+ line-height: 30px;
+
+
+
+}
+
+#beStronger{
+
+   margin: 5px 0px 0px 3px;
+
+}
+
+.polaroid {
+  width: 89%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+.container {
+  text-align: center;
+  padding: 10px 9px;
+}
+
+.panel panel-success{
+
+
+width:200px;
+
+}
+
+.talklog{
+ width:200px;
+   padding:0.5em 1em;
+
+  margin: 1em 0em;
+  background-color:#FFFFFF;
+  line-height: 30px;
+ border:3px dashed #000;
+     border-radius:1px 19px 26px 19px  ;
+
+}
+
+.kuang{
+ height: 580px;
+ padding:1em 2em;
+ border:2px solid #3A5FCD;
+   border-radius:10px 10px 26px 26px  ;
+
+}

@@ -1,20 +1,34 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<table>
+
+<html>
+<head>
+<meta charset="utf-8"> 
+	
+</head>
+
+<body>
 
 
 
 
+
+<div style="{ text-align:left;height:520px;}">
 	<c:forEach items="${history}" var="eh" >
 
-		<tr>
+		
+		 
+    <div class="talklog" ><b style="font-size:28px; color:#0000CD;">${eh.word}</b>
 
-			<td>${eh.word}</td>
-
-
-		</tr>
-
+ </div>
+ 
+		
 	</c:forEach>
+</div>
 
 
-</table>
+
+
+
+</body>
+</html>

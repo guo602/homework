@@ -2,6 +2,7 @@ package com.red.program.dao;
 
 import java.util.List;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -71,31 +72,38 @@ public class RedpacketDAO {
 		 
 			RowMapper<Redpacket> lucky_mapper = new BeanPropertyRowMapper<Redpacket>(Redpacket.class);
 
+			try {
 		Redpacket rpthis = jdbcTemplate.queryForObject("select * from redpacket where amount!=0 and isOpen=1 order by times", lucky_mapper );
-		
-		
-		if(rpthis!=null)      //钱没发完
+			
 		 {    
 				List<Redpacket> havebalance = jdbcTemplate.query("select * from redpacket where amount!=0 order by times", lucky_mapper );
-                if(havebalance.size()==1) 
-                //这是最后一次红包
-                {
-                	//do nothing
-                	
-                }
-                
-                 else //把余额加到下一次抢红包中
-                {
-                	
-                	Redpacket rpnext = havebalance.get(1);
-                	jdbcTemplate.update("update redpacket set amount=amount+? where times=?;",new Object[] {rpthis.getAmount(),rpnext.getTimes()});
-        			jdbcTemplate.update("update redpacket set amount=0 where times=?;",rpthis.getTimes());
+             if(havebalance.size()==1) 
+             //这是最后一次红包
+             {
+             	//do nothing
+             	Close( jdbcTemplate);
+             }
+             
+              else //把余额加到下一次抢红包中
+             {
+             	
+             	Redpacket rpnext = havebalance.get(1);
+             	jdbcTemplate.update("update redpacket set amount=amount+? where times=?;",new Object[] {rpthis.getAmount(),rpnext.getTimes()});
+     			jdbcTemplate.update("update redpacket set amount=0 where times=?;",rpthis.getTimes());
 
-                	Close( jdbcTemplate);
-                }
+             	Close( jdbcTemplate);
+             }
 			 
 		 }
-		 else;
+			} catch (EmptyResultDataAccessException e) {
+	            // e.printStackTrace(); // 可以选择打印信息
+	         System.out.println("  kong"); 
+	         //钱发完了
+	        }
+		
+			    //钱没发完
+		
+		
 		return true;
 		
 	
@@ -105,12 +113,16 @@ public class RedpacketDAO {
 
 		RowMapper<Redpacket> lucky_mapper = new BeanPropertyRowMapper<Redpacket>(Redpacket.class);
 
-	Redpacket rpthis = jdbcTemplate.queryForObject("select * from redpacket where amount!=0 and isOpen=1 order by times", lucky_mapper );
-	
+		try {
+	   Redpacket rpthis = jdbcTemplate.queryForObject("select * from redpacket where amount!=0 and isOpen=1 order by times", lucky_mapper );
+		 } catch (EmptyResultDataAccessException e) {
+	            // e.printStackTrace(); // 可以选择打印信息
+	            return false;
+	        }
 	
 		
-		if(rpthis != null)return true;
-		else return false;
+		
+		 return true;
 		
 	} 
 	
@@ -123,8 +135,8 @@ public class RedpacketDAO {
 
 			RowMapper<Redpacket> lucky_mapper = new BeanPropertyRowMapper<Redpacket>(Redpacket.class);
 			
-			System.out.println("try");
-			List<Redpacket> rp = jdbcTemplate.query("select * from redpacket where isOpen=1", lucky_mapper );
+			
+			List<Redpacket> rp = jdbcTemplate.query("select * from redpacket where isOpen=1  and amount!=0", lucky_mapper );
 			System.out.println(rp.isEmpty());
 
 			System.out.println(rp.get(0).getAmount());

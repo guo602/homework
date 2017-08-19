@@ -124,7 +124,7 @@ public class ChatHistoryDAO {
 	public static List<ChatHistory> getAll(JdbcTemplate jdbcTemplate){
 		try {
 			RowMapper<ChatHistory> chat_mapper = new BeanPropertyRowMapper<ChatHistory>(ChatHistory.class);
-			 List<ChatHistory> list=jdbcTemplate.query("select * from chat_history", chat_mapper);
+			 List<ChatHistory> list=jdbcTemplate.query("select * from chat_history order by historytime desc; ", chat_mapper);
 			 return list;
 		}
 		catch(Exception e) {
