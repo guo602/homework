@@ -112,8 +112,7 @@
 						<div class="row clearfix">
 							<div class="col-md-10 column">
 								<div class="row clearfix">
-									<div class="col-md-12 column"
-										style="height: 450px; overflow: scroll;">
+									<div class="col-md-12 column">
 										<table class="table table-hover table-striped"
 											cellpadding="10">
 											<thead>
@@ -138,16 +137,36 @@
 														<td><c:out value="${s.getPro_name()}" /></td>
 														<td><c:out value="${s.getPerformer()}" /></td>
 														<td><c:out value="${s.getStart_time()}" /></td>
-													<td><input name="reward<%out.print(i);%>"
+														<td><input name="reward<%out.print(i);%>"
 															id="reward<%out.print(i);%>"
 															class="btn btn-primary btn-xs but_in_table" type="button"
-															value="节目打赏" onclick="check(<%out.print(i);%>)"
-															style="padding=1px;" /></td>
+															value="节目打赏" onclick="check(<%out.print(i);%>)" /></td>
 													</tr>
-													
 												</c:forEach>
 											</tbody>
 										</table>
+									</div>
+									<div class="row clearfix">
+										<div class="col-md-12 column">
+											<ul class="pagination">
+												<li><a href="<c:url value="/comment?page=1"/>">首页</a></li>
+												<li><a
+													href="<c:url value="/comment?page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
+
+												<c:forEach begin="1" end="${totalPages}" varStatus="loop">
+													<c:set var="active" value="${loop.index==page?'active':''}" />
+													<li class="${active}"><a
+														href="<c:url value="/comment?page=${loop.index}"/>">${loop.index}</a>
+													</li>
+												</c:forEach>
+												<li><a
+													href="<c:url value="/comment?page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
+												</li>
+												<li><a
+													href="<c:url value="/comment?page=${totalPages}"/>">尾页</a></li>
+											</ul>
+
+										</div>
 									</div>
 								</div>
 							</div>
@@ -162,7 +181,8 @@
 										<form id="form1" name="form1" action="openbonus">
 											<input type="hidden" id="pid" name="pid" value="0" />
 										</form>
-										<button type="button" class="btn btn-primary btn-lg" onclick="checkall()">一键开启</button>
+										<button type="button" class="btn btn-primary btn-lg"
+											onclick="checkall()">一键开启</button>
 									</div>
 								</div>
 								<div class="row clearfix">

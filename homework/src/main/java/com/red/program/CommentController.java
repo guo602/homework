@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.red.program.dao.AdminCommentDAO;
+import com.red.program.dao.ChatHistoryDAO;
 import com.red.program.dao.ChatInfoDAO;
 import com.red.program.model.ChatHistory;
 
@@ -31,7 +32,7 @@ public class CommentController {
 	 */
 	@RequestMapping("findlist")
 	public String findlist(String itcode, String keyword, String beghour, String begmin, String endhour, String endmin,
-			String number, Model model) {
+			String number,String page, Model model) {
 		String result = new String();
 		List<ChatHistory> chat;
 		int num = Integer.parseInt(number);
@@ -85,10 +86,37 @@ public class CommentController {
 				result = "查询成功";
 			} else {
 				result = "当前条件下无记录";
+				chat=ChatHistoryDAO.getAll(jdbcTemplate);
 			}
 		} else {
 			result = "查询失败";
+			chat=ChatHistoryDAO.getAll(jdbcTemplate);
 		}
+		int pa;
+		try {
+			// 当前页数
+			pa = Integer.valueOf(page);
+		} catch (NumberFormatException e) {
+			pa = 1;
+		}
+		// 用户总数
+		int total = chat.size();
+		// 每页用户数
+		int chatPerPage = 10;
+		// 总页数
+		int totalPages = total % chatPerPage == 0 ? total / chatPerPage : total / chatPerPage + 1;
+		// 本页起始用户序号
+		int beginIndex = (pa - 1) * chatPerPage;
+		// 本页末尾用户序号的下一个
+		int endIndex = beginIndex + chatPerPage;
+		if (endIndex > total)
+			endIndex = total;
+
+		model.addAttribute("totalPages", totalPages);
+
+		model.addAttribute("page", page);
+		chat = chat.subList(beginIndex, endIndex);
+
 		model.addAttribute("result", result);
 		model.addAttribute("list", chat);
 		return "commentbyadmin";
@@ -101,9 +129,7 @@ public class CommentController {
 	 * @return
 	 */
 	@RequestMapping("lock_delete")
-	public String lockuser(String lock[], String delete[], Model model) {
-		List<ChatHistory> chat;
-		chat = AdminCommentDAO.getLatest(jdbcTemplate);
+	public String lockuser(String lock[], String delete[],String page, Model model) {
 		int lnum = 0;
 		int dnum = 0;
 		String result = new String();
@@ -147,6 +173,31 @@ public class CommentController {
 		} else {
 			model.addAttribute("result1", jlock + "禁言失败；" + jdelete + "删除失败");
 		}
+		List<ChatHistory> chat = ChatHistoryDAO.getAll(jdbcTemplate);
+		int pa;
+		try {
+			// 当前页数
+			pa = Integer.valueOf(page);
+		} catch (NumberFormatException e) {
+			pa = 1;
+		}
+		// 用户总数
+		int total = chat.size();
+		// 每页用户数
+		int chatPerPage = 10;
+		// 总页数
+		int totalPages = total % chatPerPage == 0 ? total / chatPerPage : total / chatPerPage + 1;
+		// 本页起始用户序号
+		int beginIndex = (pa - 1) * chatPerPage;
+		// 本页末尾用户序号的下一个
+		int endIndex = beginIndex + chatPerPage;
+		if (endIndex > total)
+			endIndex = total;
+
+		model.addAttribute("totalPages", totalPages);
+
+		model.addAttribute("page", page);
+		chat = chat.subList(beginIndex, endIndex);
 		model.addAttribute("list", chat);
 		return "commentbyadmin";
 	}

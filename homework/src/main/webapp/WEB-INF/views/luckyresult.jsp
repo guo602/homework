@@ -101,10 +101,8 @@
 						<div class="row clearfix">
 							<div class="col-md-10 column">
 								<div class="row clearfix">
-									<div class="col-md-12 column"
-										style="height: 450px; overflow: scroll;">
-										<table class="table table-hover table-striped"
-											cellpadding="10">
+									<div class="col-md-12 column">
+										<table class="table table-hover " cellpadding="10" background="img/beijing.jpg"  >
 											<thead>
 												<tr>
 													<th>红包ID</th>
@@ -115,16 +113,44 @@
 											</thead>
 											<tbody>
 												<c:forEach items="${list}" var="s">
-													<tr class="error">
+													<tr>
 														<td><c:out value="${s.getRid()}" /></td>
 														<td><c:out value="${s.getWid()}" /></td>
 														<td><c:out value="${s.getLucky_money()}" /></td>
-														<td><c:out value="第${s.getRound()}轮红包雨" /></td>
+														<td><c:if test="${s.getRound()<10}">
+																<c:out value="第${s.getRound()}轮红包雨" />
+															</c:if>
+															<c:if test="${s.getRound()>10}">
+																<c:out value="第${s.getRound()/100}轮抢红包" />
+															</c:if>
+														</td>
 													</tr>
 
 												</c:forEach>
 											</tbody>
 										</table>
+									</div>
+									<div class="row clearfix">
+										<div class="col-md-12 column">
+											<ul class="pagination">
+												<li><a href="<c:url value="/luckyrecord?page=1"/>">首页</a></li>
+												<li><a
+													href="<c:url value="/luckyrecord?page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
+
+												<c:forEach begin="1" end="${totalPages}" varStatus="loop">
+													<c:set var="active" value="${loop.index==page?'active':''}" />
+													<li class="${active}"><a
+														href="<c:url value="/luckyrecord?page=${loop.index}"/>">${loop.index}</a>
+													</li>
+												</c:forEach>
+												<li><a
+													href="<c:url value="/luckyrecord?page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
+												</li>
+												<li><a
+													href="<c:url value="/luckyrecord?page=${totalPages}"/>">尾页</a></li>
+											</ul>
+
+										</div>
 									</div>
 								</div>
 							</div>
@@ -151,7 +177,7 @@
 															aria-hidden="true">×</button>
 														<h4 class="modal-title" id="newModalLabel">条件搜索</h4>
 													</div>
-													<div class="modal-body" style="text-align:center;">
+													<div class="modal-body" style="text-align: center;">
 														<form id="form1" name="form1" action="luckyresult">
 															<table>
 																<tr>

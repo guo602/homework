@@ -131,8 +131,7 @@
 						<div class="row clearfix">
 							<div class="col-md-10 column">
 								<div class="row clearfix">
-									<div class="col-md-12 column"
-										style="height: 450px; overflow: scroll;">
+									<div class="col-md-12 column">
 										<form name="form2" id="form2" action="lock_delete">
 											<table class="table table-hover table-striped"
 												cellpadding="10">
@@ -153,18 +152,38 @@
 															<td><c:out value="${s.getUid()}" /></td>
 															<td><c:out value="${s.getWord()}" /></td>
 															<td><c:out value="${s.getHistorytime()}" /></td>
-															<td><input type="checkbox" name="delete" id="delete"
+															<td><input type="checkbox" name="delete" id="delete" 
 																value="${s.getHid()}">删除</td>
-															<td><input type="checkbox" name="lock" id="lock"
+															<td><input type="checkbox" name="lock" id="lock" 
 																value="${s.getUid()}">禁言</td>
 														</tr>
 
 													</c:forEach>
 												</tbody>
 											</table>
-
 										</form>
 									</div>
+									<div class="row clearfix">
+									<div class="col-md-12 column">
+										<ul class="pagination">
+											<li><a href="<c:url value="/program?page=1"/>">首页</a></li>
+											<li><a
+												href="<c:url value="/program?page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
+
+											<c:forEach begin="1" end="${totalPages}" varStatus="loop">
+												<c:set var="active" value="${loop.index==page?'active':''}" />
+												<li class="${active}"><a
+													href="<c:url value="/program?page=${loop.index}"/>">${loop.index}</a>
+												</li>
+											</c:forEach>
+											<li><a
+												href="<c:url value="/program?page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
+											</li>
+											<li><a href="<c:url value="/program?page=${totalPages}"/>">尾页</a></li>
+										</ul>
+		
+									</div>
+								</div>
 								</div>
 							</div>
 							<div class="col-md-2 column">
@@ -294,7 +313,7 @@
 								</div>
 								<div class="row clearfix">
 									<div class="col-md-12 column">
-										<button class="btn btn-primary btn-lg"  onclick="lock_delete()">确认删除或禁言</button>
+										<button class="btn btn-primary btn-lg"  onclick="lock_delete()">删除或禁言</button>
 										<div style="color: blue">${result1}</div>
 									</div>
 								</div>

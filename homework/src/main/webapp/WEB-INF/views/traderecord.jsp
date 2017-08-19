@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>红包记录界面</title>
+<title>交易记录界面</title>
 <meta name="viewport" content="width=device-width">
 <title></title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -149,10 +149,8 @@
 						<div class="row clearfix">
 							<div class="col-md-10 column">
 								<div class="row clearfix">
-									<div class="col-md-12 column"
-										style="height: 450px; overflow: scroll;">
-										<table class="table table-hover table-striped"
-											cellpadding="10">
+									<div class="col-md-12 column">
+										<table class="table table-hover " cellpadding="10" background="img/beijing.jpg">
 											<thead>
 												<tr>
 													<th>记录ID</th>
@@ -164,7 +162,7 @@
 											</thead>
 											<tbody>
 												<c:forEach items="${list}" var="s">
-													<tr class="error">
+													<tr >
 														<td><c:out value="${s.getTid()}" /></td>
 														<td><c:out value="${s.getWid()}" /></td>
 														<td><c:out value="${s.getVolumn()}" /></td>
@@ -175,6 +173,28 @@
 												</c:forEach>
 											</tbody>
 										</table>
+									</div>
+									<div class="row clearfix">
+										<div class="col-md-12 column">
+											<ul class="pagination">
+												<li><a href="<c:url value="/traderecord?page=1"/>">首页</a></li>
+												<li><a
+													href="<c:url value="/traderecord?page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
+
+												<c:forEach begin="1" end="${totalPages}" varStatus="loop">
+													<c:set var="active" value="${loop.index==page?'active':''}" />
+													<li class="${active}"><a
+														href="<c:url value="/traderecord?page=${loop.index}"/>">${loop.index}</a>
+													</li>
+												</c:forEach>
+												<li><a
+													href="<c:url value="/traderecord?page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
+												</li>
+												<li><a
+													href="<c:url value="/traderecord?page=${totalPages}"/>">尾页</a></li>
+											</ul>
+
+										</div>
 									</div>
 								</div>
 							</div>

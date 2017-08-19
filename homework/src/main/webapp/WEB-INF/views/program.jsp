@@ -11,7 +11,7 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/admin.css"> 
+<link rel="stylesheet" type="text/css" href="css/admin.css">
 
 
 
@@ -175,8 +175,7 @@
 						<div class="row clearfix">
 							<div class="col-md-10 column">
 								<div class="row clearfix">
-									<div class="col-md-12 column"
-										style="height: 450px; overflow: scroll;">
+									<div class="col-md-12 column">
 										<table class="table table-hover table-striped"
 											cellpadding="10">
 											<thead>
@@ -202,6 +201,27 @@
 										</table>
 									</div>
 								</div>
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<ul class="pagination">
+											<li><a href="<c:url value="/reward?page=1"/>">首页</a></li>
+											<li><a
+												href="<c:url value="/reward?page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
+
+											<c:forEach begin="1" end="${totalPages}" varStatus="loop">
+												<c:set var="active" value="${loop.index==page?'active':''}" />
+												<li class="${active}"><a
+													href="<c:url value="/reward?page=${loop.index}"/>">${loop.index}</a>
+												</li>
+											</c:forEach>
+											<li><a
+												href="<c:url value="/reward?page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
+											</li>
+											<li><a href="<c:url value="/reward?page=${totalPages}"/>">尾页</a></li>
+										</ul>
+		
+									</div>
+								</div>
 							</div>
 							<div class="col-md-2 column">
 								<div class="row clearfix">
@@ -214,16 +234,6 @@
 									<div class="col-md-12 column">
 										<button class="btn btn-primary btn-lg" data-toggle="modal"
 											data-target="#insert">添加节目</button>
-										<div>
-											<c:if test="${sign1=='ok'}">
-												<img src="img/right.png" width="70" height="50" />
-											</c:if>
-
-											<c:if test="${sign1=='no'}">
-												<img src="img/cross.png" width="40" height="50" />
-											</c:if>
-										</div>
-										<div style="color: blue">${result}</div>
 
 										<!-- 模态框（Modal） -->
 										<div class="modal fade " id="insert" tabindex="-1"
@@ -261,14 +271,13 @@
 
 																<tr>
 																	<td>报送单位：</td>
-																	<td><a class="btn-select" id="btn_select"> <span
-																			class="cur-select">请选择</span> <select id="department"
+																	<td><select id="department"
 																			name="department">
 																				<option value="1">技术部</option>
 																				<option value="2">后勤部</option>
 																				<option value="3">营销部</option>
 																				<option value="0" selected="selected">无限制</option>
-																		</select></a></td>
+																		</select></td>
 																	<td><div id="d4" style="color: #FF0000"></div></td>
 																</tr>
 															</table>
@@ -297,17 +306,27 @@
 								</div>
 								<div class="row clearfix">
 									<div class="col-md-12 column">
-										<button class="btn btn-primary btn-lg" data-toggle="modal"
-											data-target="#find">查找节目</button>
 										<div>
-											<c:if test="${sign=='ok'}">
+											<c:if test="${sign1=='ok'}">
 												<img src="img/right.png" width="70" height="50" />
 											</c:if>
-											<c:if test="${sign=='no'}">
+											<c:if test="${sign1=='no'}">
 												<img src="img/cross.png" width="40" height="50" />
 											</c:if>
+											<div style="color: blue">${result1}</div>
 										</div>
-										<div style="color: blue">${result1}</div>
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<img src="img/fenge.png" width="100px" />
+									</div>
+								</div>
+								
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<button class="btn btn-primary btn-lg" data-toggle="modal"
+											data-target="#find">查找节目</button>
 										<!-- 模态框（Modal） -->
 										<div class="modal fade" id="find" tabindex="-1" role="dialog"
 											aria-labelledby="myModalLabel" aria-hidden="true">
@@ -360,6 +379,24 @@
 
 									</div>
 
+								</div>
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<img src="img/fenge.png" width="100px" />
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<div>
+											<c:if test="${sign=='ok'}">
+												<img src="img/right.png" width="70" height="50" />
+											</c:if>
+											<c:if test="${sign=='no'}">
+												<img src="img/cross.png" width="40" height="50" />
+											</c:if>
+											<div style="color: blue">${result}</div>
+										</div>
+									</div>
 								</div>
 								<div class="row clearfix">
 									<div class="col-md-12 column">

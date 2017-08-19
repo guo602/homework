@@ -25,8 +25,32 @@ public class ProgramController {// 节目单管理
 	 * @return
 	 */
 	@RequestMapping("program_1")
-	public String program_1(Model model) {
-		List<Program> programs=ProgramDAO.getAll(jdbcTemplate);
+	public String program_1(String page, Model model) {
+		List<Program> programs = ProgramDAO.getAll(jdbcTemplate);
+		int pa;
+		try {
+			// 当前页数
+			pa = Integer.valueOf(page);
+		} catch (NumberFormatException e) {
+			pa = 1;
+		}
+		// 用户总数
+		int total = programs.size();
+		// 每页用户数
+		int programPerPage = 10;
+		// 总页数
+		int totalPages = total % programPerPage == 0 ? total / programPerPage : total / programPerPage + 1;
+		// 本页起始用户序号
+		int beginIndex = (pa - 1) * programPerPage;
+		// 本页末尾用户序号的下一个
+		int endIndex = beginIndex + programPerPage;
+		if (endIndex > total)
+			endIndex = total;
+
+		model.addAttribute("totalPages", totalPages);
+
+		model.addAttribute("page", page);
+		programs = ProgramDAO.getProgramByPage(beginIndex, endIndex, jdbcTemplate);
 		model.addAttribute("list", programs);
 		return "program";
 	}
@@ -38,26 +62,49 @@ public class ProgramController {// 节目单管理
 	 * @return
 	 */
 	@RequestMapping("program_2")
-	public String program_2(Model model) {
-		List<Program> programs=ProgramDAO.getAll(jdbcTemplate);
+	public String program_2(String page, Model model) {
+		List<Program> programs = ProgramDAO.getAll(jdbcTemplate);
+		int pa;
+		try {
+			// 当前页数
+			pa = Integer.valueOf(page);
+		} catch (NumberFormatException e) {
+			pa = 1;
+		}
+		// 用户总数
+		int total = programs.size();
+		// 每页用户数
+		int programPerPage = 10;
+		// 总页数
+		int totalPages = total % programPerPage == 0 ? total / programPerPage : total / programPerPage + 1;
+		// 本页起始用户序号
+		int beginIndex = (pa - 1) * programPerPage;
+		// 本页末尾用户序号的下一个
+		int endIndex = beginIndex + programPerPage;
+		if (endIndex > total)
+			endIndex = total;
+
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("page", page);
+		programs = ProgramDAO.getProgramByPage(beginIndex, endIndex, jdbcTemplate);
 		model.addAttribute("list", programs);
 		return "program";
 	}
 
 	@RequestMapping("program_search")
-	public String program_search(String program_id1, String program_name1, String department1, Model model) {
+	public String program_search(String program_id1, String program_name1, String department1, String page,
+			Model model) {
 		String result = new String();
-		String sign="some";
+		String sign = "some";
 		System.out.println(program_name1);
 		System.out.println(program_id1);
 		System.out.println(department1);
 		List<Program> programs = null;
-		int id=0;
-		if(program_id1!="") {
-		    id = Integer.parseInt(program_id1);
-		}
-		else {
-			id=0;
+		int id = 0;
+		if (program_id1 != "") {
+			id = Integer.parseInt(program_id1);
+		} else {
+			id = 0;
 		}
 		int dept = Integer.parseInt(department1);
 		if (id != 0) {
@@ -101,32 +148,58 @@ public class ProgramController {// 节目单管理
 			}
 		}
 
+		int fenye = 1;
 		if (programs != null) {
 			if (programs.size() != 0) {
 				result = "查询成功";
 				sign = "ok";
+				fenye = 0;
 			} else {
 				result = "当前条件下无记录";
-				programs=ProgramDAO.getAll(jdbcTemplate);
+				programs = ProgramDAO.getAll(jdbcTemplate);
 				sign = "ok";
 			}
 		} else {
 			result = "查询失败";
 			sign = "no";
-			programs=ProgramDAO.getAll(jdbcTemplate);
-			
+			programs = ProgramDAO.getAll(jdbcTemplate);
+
 		}
 		System.out.println(result);
-		model.addAttribute("list", programs);
+
+		int pa;
+		try {
+			// 当前页数
+			pa = Integer.valueOf(page);
+		} catch (NumberFormatException e) {
+			pa = 1;
+		}
+		// 用户总数
+		int total = programs.size();
+		// 每页用户数
+		int programPerPage = 10;
+		// 总页数
+		int totalPages = total % programPerPage == 0 ? total / programPerPage : total / programPerPage + 1;
+		// 本页起始用户序号
+		int beginIndex = (pa - 1) * programPerPage;
+		// 本页末尾用户序号的下一个
+		int endIndex = beginIndex + programPerPage;
+		if (endIndex > total)
+			endIndex = total;
 		model.addAttribute("result", result);
-		
 		model.addAttribute("sign", sign);
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("page", page);
+		if (fenye == 1) {
+			programs = ProgramDAO.getProgramByPage(beginIndex, endIndex, jdbcTemplate);
+		}
+		model.addAttribute("list", programs);
 		return "program";
 	}
 
 	@RequestMapping("program_insert")
 	public String program_insert(String performer, String program_name, String starttime, String department,
-			Model model) {
+			String page, Model model) {
 		String result = new String();
 		String sign = "some";
 		int dept = Integer.parseInt(department);
@@ -141,12 +214,32 @@ public class ProgramController {// 节目单管理
 			result = "插入失败";
 			sign = "no";
 		}
-
-		System.out.println(result);
-
-		model.addAttribute("result", result);
+		List<Program> programs = ProgramDAO.getAll(jdbcTemplate);
+		int pa;
+		try {
+			// 当前页数
+			pa = Integer.valueOf(page);
+		} catch (NumberFormatException e) {
+			pa = 1;
+		}
+		// 用户总数
+		int total = programs.size();
+		// 每页用户数
+		int programPerPage = 10;
+		// 总页数
+		int totalPages = total % programPerPage == 0 ? total / programPerPage : total / programPerPage + 1;
+		// 本页起始用户序号
+		int beginIndex = (pa - 1) * programPerPage;
+		// 本页末尾用户序号的下一个
+		int endIndex = beginIndex + programPerPage;
+		if (endIndex > total)
+			endIndex = total;
+		model.addAttribute("result1", result);
 		model.addAttribute("sign1", sign);
-		List<Program> programs=ProgramDAO.getAll(jdbcTemplate);
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("page", page);
+
+		programs = ProgramDAO.getProgramByPage(beginIndex, endIndex, jdbcTemplate);
 		model.addAttribute("list", programs);
 		return "program";
 	}

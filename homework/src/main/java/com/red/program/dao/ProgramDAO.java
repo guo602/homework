@@ -13,6 +13,22 @@ import com.red.program.model.Wallet;
 
 
 public class ProgramDAO {
+	/**
+	 * 获取指定页数的数据
+	 * @param page  页数
+	 * @param pernum  指定条数
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static List<Program> getProgramByPage(int begindex, int endindex,JdbcTemplate jdbcTemplate) {
+		try {
+			RowMapper<Program> program_mapper = new BeanPropertyRowMapper<Program>(Program.class);
+			List<Program> program = jdbcTemplate.query("select * from program limit ?, ?", program_mapper, new Object[] {begindex,endindex});
+			return program;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
 	/**
 	 * 通过节目编号pid查找节目对象

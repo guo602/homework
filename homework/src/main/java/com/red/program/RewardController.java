@@ -81,7 +81,7 @@ public class RewardController {
 
 
 	@RequestMapping("rewardresult")
-	public String rewardresult(String itcode,String minvol,String maxvol,String beghour,String begmin,String endhour,String endmin, Model model) {
+	public String rewardresult(String itcode,String minvol,String maxvol,String beghour,String begmin,String endhour,String endmin, String page,Model model) {
 		String result = new String();
 		List<Trade> trades = null ;
 		String begtime="2017-08-08 "+beghour+":"+begmin+":00";
@@ -109,6 +109,28 @@ public class RewardController {
 			result="查询失败";
 			sign="no";
 		}
+		int pa;
+		try {
+			// 当前页数
+			pa = Integer.valueOf(page);
+		} catch (NumberFormatException e) {
+			pa = 1;
+		}
+		// 用户总数
+		int total = trades.size();
+		// 每页用户数
+		int tradesPerPage = 10;
+		// 总页数
+		int totalPages = total % tradesPerPage == 0 ? total / tradesPerPage : total / tradesPerPage + 1;
+		// 本页起始用户序号
+		int beginIndex = (pa - 1) * tradesPerPage;
+		// 本页末尾用户序号的下一个
+		int endIndex = beginIndex + tradesPerPage;
+		if (endIndex > total)
+			endIndex = total;
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("page", page);
+	    trades=trades.subList(beginIndex, endIndex);
 		model.addAttribute("list", trades);
 		model.addAttribute("result1", result);
 		model.addAttribute("sign1", sign);
@@ -117,7 +139,7 @@ public class RewardController {
 	
 
 	@RequestMapping("rechargeresult")
-	public String rechargeresult(String itcode,String minvol,String maxvol,String beghour,String begmin,String endhour,String endmin, Model model) {
+	public String rechargeresult(String itcode,String minvol,String maxvol,String beghour,String begmin,String endhour,String endmin, String page,Model model) {
 		String result = new String();
 		List<Trade> trades = null ;
 		String begtime="2017-08-08 "+beghour+":"+begmin+":00";
@@ -145,6 +167,28 @@ public class RewardController {
 			result="查询失败";
 			sign="no";
 		}
+		int pa;
+		try {
+			// 当前页数
+			pa = Integer.valueOf(page);
+		} catch (NumberFormatException e) {
+			pa = 1;
+		}
+		// 用户总数
+		int total = trades.size();
+		// 每页用户数
+		int tradesPerPage = 10;
+		// 总页数
+		int totalPages = total % tradesPerPage == 0 ? total / tradesPerPage : total / tradesPerPage + 1;
+		// 本页起始用户序号
+		int beginIndex = (pa - 1) * tradesPerPage;
+		// 本页末尾用户序号的下一个
+		int endIndex = beginIndex + tradesPerPage;
+		if (endIndex > total)
+			endIndex = total;
+		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("page", page);
+	    trades=trades.subList(beginIndex, endIndex);
 		model.addAttribute("list", trades);
 		model.addAttribute("result", result);
 		model.addAttribute("sign", sign);

@@ -8,9 +8,27 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.red.program.model.All_user;
 import com.red.program.model.LuckyRecord;
+import com.red.program.model.Program;
 import com.red.program.model.Wallet;
 
 public class LuckyRecordDAO {
+	
+	/**
+	 * 获取指定页数的数据
+	 * @param page  页数
+	 * @param pernum  指定条数
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static List<LuckyRecord> getluckyByPage(int begindex, int endindex,JdbcTemplate jdbcTemplate) {
+		try {
+			RowMapper<LuckyRecord> lucky_mapper = new BeanPropertyRowMapper<LuckyRecord>(LuckyRecord.class);
+			List<LuckyRecord> lucky = jdbcTemplate.query("select * from lucky_record limit ?, ?", lucky_mapper, new Object[] {begindex,endindex});
+			return lucky;
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	/**
 	 * 閫氳繃璐︽埛id娣诲姞绾㈠寘璁板綍
 	 * 
