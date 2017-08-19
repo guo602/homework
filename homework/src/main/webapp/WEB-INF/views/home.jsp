@@ -1,7 +1,8 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta name="viewport" content="width=device-width">
@@ -12,7 +13,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <script type="text/javascript">
-function newadmin() {
+function admin_login() {
 	var is_submit = 1;
 	var itcode = document.form1.itcode.value
 	var name = document.form1.name.value
@@ -55,24 +56,7 @@ function newadmin() {
 </script>
 </head>
 <body>
-	<table>
-		<div class="main" position:relative>
-			<br>
-			<h1 class="h1">Hello world!</h1>
-
-			<br> <a href="admin" class="h" title="管理员界面">管理员界面</a> <br>
-			<br> <a href="chatlogin" class="h" title="全程冒泡">全程冒泡</a><br>
-			<br> <a href="redlogin" class="h" title="红包登录">红包登录</a><br>
-			<br> <a
-				href="http://10.10.15.56:8080/homework_chat/gchatreg.html" class="h"
-				title="聊天室入口">聊天室入口</a> <br> <br>
-
-			<P class="h">The time on the server is ${serverTime}.</P>
-			<br>
-		</div>
-	</table>
-
-
+	
 	<div class="container">
 		<div class="row clearfix">
 			<div class="col-md-12 column">
@@ -99,7 +83,7 @@ function newadmin() {
 												<h4 class="modal-title" id="newModalLabel">管理员身份确认</h4>
 											</div>
 											<div class="modal-body">
-												<form name="form1" id="form1" action="admin_login">
+												<form name="form1" id="form1" action="adminlogin">
 													<table>
 														<tr>
 															<td>管理员工号</td>
@@ -173,10 +157,6 @@ function newadmin() {
 							</div>
 						</div>
 					</div>
-					<div class="item active">
-						<img alt="" src="v3/default2.jpg" />
-						<div class="carousel-caption"></div>
-					</div>
 				</div>
 				<a class="left carousel-control" href="#carousel-438683"
 					data-slide="prev"><span
@@ -187,7 +167,24 @@ function newadmin() {
 			</div>
 		</div>
 	</div>
-	</div>
+<table>
+		<div class="main" position:relative>
+			<br>
+			<h1 class="h1">Hello world!</h1>
+
+			<br> <a href="admin" class="h" title="管理员界面">管理员界面</a> <br>
+			<br> <a href="chatlogin" class="h" title="全程冒泡">全程冒泡</a><br>
+			<br> <a href="redlogin" class="h" title="红包登录">红包登录</a><br>
+			<br> <a
+				href="http://10.10.15.56:8080/homework_chat/gchatreg.html" class="h"
+				title="聊天室入口">聊天室入口</a> <br> <br>
+
+			<P class="h">The time on the server is ${serverTime}.</P>
+			<br>
+		</div>
+	</table>
+
+
 
 
 

@@ -13,7 +13,6 @@
 
 <link rel="stylesheet" type="text/css" href="css/admin.css">
 
-</head>
 <body>
 	<!--  <div class="blockdis">
 	  <div class="col-xs-8">
@@ -86,15 +85,16 @@
 								</div>
 							</div>
 							<div class="item">
-								<img alt="" src="img/ppt2.jpg" class="img-rounded"/>								<div class="carousel-caption">
-									<h4>Second </h4>
+								<img alt="" src="img/ppt2.jpg" class="img-rounded" />
+								<div class="carousel-caption">
+									<h4>Second</h4>
 									<p></p>
 								</div>
 							</div>
 							<div class="item">
-								<img alt="" src="img/ppt3.gif" class="img-rounded"/>
+								<img alt="" src="img/ppt3.gif" class="img-rounded" />
 								<div class="carousel-caption">
-									<h4>Third </h4>
+									<h4>Third</h4>
 									<p></p>
 								</div>
 							</div>
@@ -113,7 +113,7 @@
 							<div class="row clearfix">
 								<div class="col-md-3 column"></div>
 								<div class="col-md-6 column">
-									<img alt="140x140" src="img/title1.png"/>
+									<img alt="140x140" src="img/title1.png" />
 								</div>
 
 								<div class="col-md-3 column"></div>
@@ -142,15 +142,15 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="row clearfix">
 								<div class="col-md-3 column"></div>
 								<div class="col-md-6 column">
-									<img alt="140x140" src="img/title2.png"/>
+									<img alt="140x140" src="img/title2.png" />
 								</div>
 								<div class="col-md-3 column"></div>
 							</div>
-							<div class="row clearfix" >
+							<div class="row clearfix">
 								<div class="col-md-4 column">
 									<a href="comment"> <img alt="140x140"
 										src="img/adminchat.png" class="img-circle midimg" />
@@ -176,7 +176,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<div class="row clearfix">
 								<div class="col-md-3 column"></div>
 								<div class="col-md-6 column">
