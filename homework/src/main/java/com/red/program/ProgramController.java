@@ -46,13 +46,13 @@ public class ProgramController {// 节目单管理
 		int endIndex = beginIndex + programPerPage;
 		if (endIndex > total)
 			endIndex = total;
-
+		System.out.println("programs.size()1" + programs.size());
 		model.addAttribute("totalPages", totalPages);
-
+		model.addAttribute("size", programs.size());
 		model.addAttribute("page", page);
 		programs = ProgramDAO.getProgramByPage(beginIndex, endIndex, jdbcTemplate);
 		model.addAttribute("list", programs);
-		return "program";
+		return "program_insert";
 	}
 
 	/**
@@ -83,12 +83,13 @@ public class ProgramController {// 节目单管理
 		int endIndex = beginIndex + programPerPage;
 		if (endIndex > total)
 			endIndex = total;
-
+		model.addAttribute("size", programs.size());
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("page", page);
 		programs = ProgramDAO.getProgramByPage(beginIndex, endIndex, jdbcTemplate);
 		model.addAttribute("list", programs);
-		return "program";
+
+		return "program_search";
 	}
 
 	@RequestMapping("program_search")
@@ -101,12 +102,18 @@ public class ProgramController {// 节目单管理
 		System.out.println(department1);
 		List<Program> programs = null;
 		int id = 0;
-		if (program_id1 != "") {
+		try {
 			id = Integer.parseInt(program_id1);
-		} else {
+		} catch (Exception e) {
 			id = 0;
 		}
-		int dept = Integer.parseInt(department1);
+		int dept = 0;
+		try {
+			dept = Integer.parseInt(department1);
+		} catch (Exception e) {
+			dept = 0;
+		}
+
 		if (id != 0) {
 			if (program_name1 != "") {
 				if (dept != 0) {
@@ -148,12 +155,10 @@ public class ProgramController {// 节目单管理
 			}
 		}
 
-		int fenye = 1;
 		if (programs != null) {
 			if (programs.size() != 0) {
 				result = "查询成功";
 				sign = "ok";
-				fenye = 0;
 			} else {
 				result = "当前条件下无记录";
 				programs = ProgramDAO.getAll(jdbcTemplate);
@@ -186,15 +191,18 @@ public class ProgramController {// 节目单管理
 		int endIndex = beginIndex + programPerPage;
 		if (endIndex > total)
 			endIndex = total;
+		System.out.println("programs.size()" + programs.size());
+		model.addAttribute("size", programs.size());
 		model.addAttribute("result", result);
 		model.addAttribute("sign", sign);
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("page", page);
-		if (fenye == 1) {
-			programs = ProgramDAO.getProgramByPage(beginIndex, endIndex, jdbcTemplate);
-		}
+		model.addAttribute("program_id1", program_id1);
+		model.addAttribute("program_name1", program_name1);
+		model.addAttribute("department1", department1);
+		programs = programs.subList(beginIndex, endIndex);
 		model.addAttribute("list", programs);
-		return "program";
+		return "program_search";
 	}
 
 	@RequestMapping("program_insert")
@@ -202,17 +210,16 @@ public class ProgramController {// 节目单管理
 			String page, Model model) {
 		String result = new String();
 		String sign = "some";
-		int dept = Integer.parseInt(department);
-		System.out.println(program_name);
-		System.out.println(performer);
-		System.out.println(starttime);
-		System.out.println(dept);
-		if (ProgramDAO.Createprogram(program_name, performer, starttime, dept, jdbcTemplate)) {
-			result = "插入成功";
-			sign = "ok";
-		} else {
-			result = "插入失败";
-			sign = "no";
+		System.out.println(department);
+		if (performer != null && program_name != null && starttime != null && department != null) {
+			int dept = Integer.parseInt(department);
+			if (ProgramDAO.Createprogram(program_name, performer, starttime, dept, jdbcTemplate)) {
+				result = "插入成功";
+				sign = "ok";
+			} else {
+				result = "插入失败";
+				sign = "no";
+			}
 		}
 		List<Program> programs = ProgramDAO.getAll(jdbcTemplate);
 		int pa;
@@ -238,9 +245,9 @@ public class ProgramController {// 节目单管理
 		model.addAttribute("sign1", sign);
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("page", page);
-
+		model.addAttribute("size", programs.size());
 		programs = ProgramDAO.getProgramByPage(beginIndex, endIndex, jdbcTemplate);
 		model.addAttribute("list", programs);
-		return "program";
+		return "program_insert";
 	}
 }

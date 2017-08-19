@@ -19,6 +19,7 @@ import com.red.program.model.ChatHistory;
  * @author lenovo
  *
  */
+
 @Controller
 public class CommentController {
 	@Autowired
@@ -32,64 +33,70 @@ public class CommentController {
 	 */
 	@RequestMapping("findlist")
 	public String findlist(String itcode, String keyword, String beghour, String begmin, String endhour, String endmin,
-			String number,String page, Model model) {
+			String number, String page, Model model) {
 		String result = new String();
 		List<ChatHistory> chat;
-		int num = Integer.parseInt(number);
-		String begtime = "2017-08-08 " + beghour + ":" + begmin + ":00";
-		String endtime = "2017-08-08 " + endhour + ":" + endmin + ":00";
-		System.out.println("itcode" + itcode);
-		System.out.println("keyword" + keyword);
-		System.out.println("begtime" + begtime);
-		System.out.println("endtime" + endtime);
-		System.out.println("number" + number);
+		if (itcode != null && keyword != null && beghour != null && begmin != null && endhour != null && endmin != null
+				&& number != null) {
+			int num = Integer.parseInt(number);
+			String begtime = "2017-08-08 " + beghour + ":" + begmin + ":00";
+			String endtime = "2017-08-08 " + endhour + ":" + endmin + ":00";
+			System.out.println("itcode" + itcode);
+			System.out.println("keyword" + keyword);
+			System.out.println("begtime" + begtime);
+			System.out.println("endtime" + endtime);
+			System.out.println("number" + number);
 
-		if (itcode != "") {
-			if (keyword != "") {
-				if (num != 0) {
-					System.out.println("error1");
-					chat = AdminCommentDAO.getAll(itcode, keyword, begtime, endtime, num, jdbcTemplate);
+			if (itcode != "") {
+				if (keyword != "") {
+					if (num != 0) {
+						System.out.println("error1");
+						chat = AdminCommentDAO.getAll(itcode, keyword, begtime, endtime, num, jdbcTemplate);
+					} else {
+						System.out.println("error2");
+						chat = AdminCommentDAO.getWithoutNumber(itcode, keyword, begtime, endtime, jdbcTemplate);
+					}
 				} else {
-					System.out.println("error2");
-					chat = AdminCommentDAO.getWithoutNumber(itcode, keyword, begtime, endtime, jdbcTemplate);
+					if (num != 0) {
+						System.out.println("error3");
+						chat = AdminCommentDAO.getWithoutKey(itcode, begtime, endtime, num, jdbcTemplate);
+					} else {
+						System.out.println("error4");
+						chat = AdminCommentDAO.getByIt(itcode, begtime, endtime, jdbcTemplate);
+					}
 				}
 			} else {
-				if (num != 0) {
-					System.out.println("error3");
-					chat = AdminCommentDAO.getWithoutKey(itcode, begtime, endtime, num, jdbcTemplate);
+				if (keyword != "") {
+					if (num != 0) {
+						System.out.println("error5");
+						chat = AdminCommentDAO.getWithoutIt(keyword, begtime, endtime, num, jdbcTemplate);
+					} else {
+						System.out.println("error6");
+						chat = AdminCommentDAO.getByKey(keyword, begtime, endtime, jdbcTemplate);
+					}
 				} else {
-					System.out.println("error4");
-					chat = AdminCommentDAO.getByIt(itcode, begtime, endtime, jdbcTemplate);
+					if (num != 0) {
+						System.out.println("error7");
+						chat = AdminCommentDAO.getByNumber(begtime, endtime, num, jdbcTemplate);
+					} else {
+						System.out.println("error8");
+						chat = AdminCommentDAO.getWithout(begtime, endtime, jdbcTemplate);
+					}
 				}
 			}
-		} else {
-			if (keyword != "") {
-				if (num != 0) {
-					System.out.println("error5");
-					chat = AdminCommentDAO.getWithoutIt(keyword, begtime, endtime, num, jdbcTemplate);
+			if (chat != null) {
+				if (chat.size() != 0) {
+					result = "查询成功";
 				} else {
-					System.out.println("error6");
-					chat = AdminCommentDAO.getByKey(keyword, begtime, endtime, jdbcTemplate);
+					result = "当前条件下无记录";
+					chat = ChatHistoryDAO.getAll(jdbcTemplate);
 				}
 			} else {
-				if (num != 0) {
-					System.out.println("error7");
-					chat = AdminCommentDAO.getByNumber(begtime, endtime, num, jdbcTemplate);
-				} else {
-					System.out.println("error8");
-					chat = AdminCommentDAO.getWithout(begtime, endtime, jdbcTemplate);
-				}
+				result = "查询失败";
+				chat = ChatHistoryDAO.getAll(jdbcTemplate);
 			}
 		}
-		if (chat != null) {
-			if (chat.size() != 0) {
-				result = "查询成功";
-			} else {
-				result = "当前条件下无记录";
-				chat=ChatHistoryDAO.getAll(jdbcTemplate);
-			}
-		} else {
-			result = "查询失败";
+		else {
 			chat=ChatHistoryDAO.getAll(jdbcTemplate);
 		}
 		int pa;
@@ -116,7 +123,13 @@ public class CommentController {
 
 		model.addAttribute("page", page);
 		chat = chat.subList(beginIndex, endIndex);
-
+        model.addAttribute("number", number);
+        model.addAttribute("endmin", endmin);
+        model.addAttribute("endhour", endhour);
+        model.addAttribute("begmin", begmin);  
+        model.addAttribute("beghour", beghour);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("itcode", itcode);
 		model.addAttribute("result", result);
 		model.addAttribute("list", chat);
 		return "commentbyadmin";
@@ -129,7 +142,7 @@ public class CommentController {
 	 * @return
 	 */
 	@RequestMapping("lock_delete")
-	public String lockuser(String lock[], String delete[],String page, Model model) {
+	public String lockuser(String lock[], String delete[], String page, Model model) {
 		int lnum = 0;
 		int dnum = 0;
 		String result = new String();
@@ -139,7 +152,7 @@ public class CommentController {
 		if (delete != null) {
 			dnum = delete.length;
 		}
-		//System.out.println("delete" + delete[0] + dnum + lnum);
+		// System.out.println("delete" + delete[0] + dnum + lnum);
 		String jlock = "";
 		String jdelete = "";
 		if (lnum == 0 && dnum == 0) {

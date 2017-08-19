@@ -32,7 +32,7 @@
 					<ul class="nav nav-pills nav-justified bar">
 						<li class="active"><a id="home" class="bar" href="#">Home</a></li>
 						<li class="dropdown"><a class=" bar dropdown-toggle"
-							data-toggle="dropdown" href="program">节目单 <span class="caret"></span></a>
+							data-toggle="dropdown" href="">节目单 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a class="bar" href="program_1">插入节目单</a></li>
 								<li><a class="bar" href="program_2">查找节目单</a></li>
@@ -55,7 +55,7 @@
 						<li><a class="bar" href="luckyrain">红包雨</a></li>
 						<li><a class="bar" href="reward">节目打赏</a></li>
 						<li><a class="bar" href="luckyrecord">红包记录</a></li>
-						<li><a class="bar" href="traderecord">打赏记录</a></li>
+						<li><a class="bar" href="rewardrecord">打赏记录</a></li>
 						<li><a class="bar" href="traderecord">充值记录</a></li>
 						<li><a class="bar" href="user">返回年会</a></li>
 
@@ -79,20 +79,20 @@
 						</ol>
 						<div class="carousel-inner">
 							<div class="item active">
-								<img alt="" src="img/ppt112.png" class="img-rounded" />
+								<img alt="" src="img/ppt1.png" class="img-rounded" />
 								<div class="carousel-caption">
 									<h4>First</h4>
 									<p></p>
 								</div>
 							</div>
 							<div class="item">
-								<img alt="" src="img/ppt1.jpg" class="img-rounded"/>								<div class="carousel-caption">
+								<img alt="" src="img/ppt2.jpg" class="img-rounded"/>								<div class="carousel-caption">
 									<h4>Second </h4>
 									<p></p>
 								</div>
 							</div>
 							<div class="item">
-								<img alt="" src="img/ppt1.jpg" class="img-rounded"/>
+								<img alt="" src="img/ppt3.jpg" class="img-rounded"/>
 								<div class="carousel-caption">
 									<h4>Third </h4>
 									<p></p>
@@ -120,11 +120,11 @@
 							</div>
 							<div class="row clearfix">
 								<div class="col-md-4 column">
-									<a href="program"> <img alt="140x140"
+									<a href="program_1"> <img alt="140x140"
 										src="img/adminprogram.png" class="img-circle midimg" />
 									</a>
 									<div>
-										<a class="bigger" href="program">添加/查找节目</a>
+										<a class="bigger" href="program_2">添加/查找节目</a>
 									</div>
 								</div>
 								<div class="col-md-4 column">
@@ -223,7 +223,7 @@
 					<div class="col-md-1 column"></div>
 					<div class="col-md-1 column"></div>
 					<div class="col-md-1 column"></div>
-					<div class="col-md-1 column">WCH</div>
+					<div class="col-md-1 column">WCY</div>
 					<div class="col-md-1 column">WYZ</div>
 					<div class="col-md-1 column">GY</div>
 					<div class="col-md-1 column">ZYQ</div>

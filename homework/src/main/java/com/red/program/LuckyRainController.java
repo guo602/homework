@@ -37,68 +37,65 @@ public class LuckyRainController {
 		t.setTemplate(jdbcTemplate);
 		t.setRound(r);
 		t.start();
-		model.addAttribute("result", "第"+round+"红包雨成功开启");
+		model.addAttribute("result", "第" + round + "红包雨成功开启");
 		return "luckyrain";
 	}
 
 	@RequestMapping("luckyresult")
 	public String luckyresult(String round, String itcode, String number, String page, Model model) {
-		int r = Integer.parseInt(round);
-		int n = Integer.parseInt(number);
-		System.out.println("round"+round);
-		System.out.println("itcode"+itcode);
-		System.out.println("number"+number);
+		System.out.println("round" + round);
+		System.out.println("itcode" + itcode);
+		System.out.println("number" + number);
 		List<LuckyRecord> luckylist;
-		int fenye=0;
-		if (itcode != "") {
-			All_user user = AlluserDAO.getUserByItcode(itcode, jdbcTemplate);
-			if (r == 0) {
-				System.out.println("error1");
-				luckylist = LuckyRecordDAO.getAllByUid(user.getUid(), jdbcTemplate);
+		String result = null;
+		String sign = null;
+		if (round!=""&&itcode != null && number != null) {
+			int r = Integer.parseInt(round);
+			int n = Integer.parseInt(number);
+			if (itcode != "") {
+				All_user user = AlluserDAO.getUserByItcode(itcode, jdbcTemplate);
+				if (r == 0) {
+					System.out.println("error1");
+					luckylist = LuckyRecordDAO.getAllByUid(user.getUid(), jdbcTemplate);
+				} else {
+					System.out.println("error2");
+					luckylist = LuckyRecordDAO.getByit_round(itcode, r, jdbcTemplate);
+				}
 			} else {
-				System.out.println("error2");
-				luckylist = LuckyRecordDAO.getByit_round(itcode, r, jdbcTemplate);
+				if (n == 0) {
+					if (r == 0) {
+						System.out.println("error3");
+						luckylist = LuckyRecordDAO.getAll(jdbcTemplate);
+			
+					} else {
+						System.out.println("error4");
+						luckylist = LuckyRecordDAO.getAllByRound(r, jdbcTemplate);
+					}
+				} else {
+					if (r == 0) {
+						System.out.println("error5");
+						luckylist = LuckyRecordDAO.getLatest(n, jdbcTemplate);
+					} else {
+						System.out.println("error6");
+						luckylist = LuckyRecordDAO.getLatestByRound(n, r, jdbcTemplate);
+					}
+				}
+			}
+
+			if (luckylist != null) {
+				if (luckylist.size() != 0) {
+					result = "查询成功";
+					sign = "ok";
+				} else {
+					result = "当前条件下无记录";
+					sign = "ok";
+				}
+			} else {
+				result = "查询失败";
+				sign = "no";
 			}
 		} else {
-			if (n == 0) {
-				if (r == 0) {
-					System.out.println("error3");
-					luckylist = LuckyRecordDAO.getAll(jdbcTemplate);
-					fenye=1;
-				} else {
-					System.out.println("error4");
-					luckylist = LuckyRecordDAO.getAllByRound(r, jdbcTemplate);
-					fenye=0;
-				}
-			}
-			else {
-				if(r==0) {
-					System.out.println("error5");
-					luckylist = LuckyRecordDAO.getLatest(n, jdbcTemplate);
-					fenye=0;
-				}
-				else {
-					System.out.println("error6");
-					luckylist = LuckyRecordDAO.getLatestByRound(n, r, jdbcTemplate);
-					fenye=0;
-				}
-			}
-		}
-		String result;
-		String sign;
-		if(luckylist!=null) {
-			if(luckylist.size()!=0) {
-			    result="查询成功";
-			    sign="ok";
-			}
-			else {
-				result="当前条件下无记录";
-				sign="ok";
-			}
-		}
-		else {
-			result="查询失败";
-			sign="no";
+			luckylist = LuckyRecordDAO.getAll(jdbcTemplate);
 		}
 		int pa;
 		try {
@@ -121,9 +118,8 @@ public class LuckyRainController {
 			endIndex = total;
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("page", page);
-		if (fenye == 1) {
-			luckylist=luckylist.subList(beginIndex, endIndex);
-		}
+
+		luckylist = luckylist.subList(beginIndex, endIndex);
 		model.addAttribute("list", luckylist);
 		model.addAttribute("result", result);
 		model.addAttribute("sign", sign);

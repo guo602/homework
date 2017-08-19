@@ -74,8 +74,8 @@ function closelucky(){
 					<li><a class="bar" href="luckyrain">红包发放</a></li>
 					<li><a class="bar" href="reward">节目打赏</a></li>
 					<li><a class="bar" href="luckyrecord">红包记录</a></li>
-					<li><a class="bar" href="traderecord">打赏记录</a></li>
-					<li><a class="bar" href="traderecord">充值记录</a></li>
+					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
+					<li><a class="bar" href="rechargerecord">充值记录</a></li>
 					<li><a class="bar" href="user">返回年会</a></li>
 
 
@@ -154,23 +154,23 @@ function closelucky(){
 															<table class="table table-hover table-striped">
 																<tbody>
 																	<tr>
-																		<td><input type="radio" name="round" id="round"
+																		<td><input type="radio" name="round" id="round" style="dispaly:block;"
 																			value="1">开启第一轮红包雨</td>
 																	</tr>
 																	<tr>
-																		<td><input type="radio" name="round" id="round"
+																		<td><input type="radio" name="round" id="round" style="dispaly:block;"
 																			value="2">开启第二轮红包雨</td>
 																	</tr>
 																	<tr>
-																		<td><input type="radio" name="round" id="round"
+																		<td><input type="radio" name="round" id="round" style="dispaly:block;"
 																			value="3">开启第三轮红包雨</td>
 																	</tr>
 																	<tr>
-																		<td><input type="radio" name="round" id="round"
+																		<td><input type="radio" name="round" id="round" style="dispaly:block;"
 																			value="4">开启第四轮红包雨</td>
 																	</tr>
 																	<tr>
-																		<td><input type="radio" name="round" id="round"
+																		<td><input type="radio" name="round" id="round" style="dispaly:block;"
 																			value="5">开启第五轮红包雨</td>
 																	</tr>
 				

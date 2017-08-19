@@ -203,23 +203,25 @@
 								</div>
 								<div class="row clearfix">
 									<div class="col-md-12 column">
-										<ul class="pagination">
-											<li><a href="<c:url value="/reward?page=1"/>">首页</a></li>
-											<li><a
-												href="<c:url value="/reward?page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
+										
+											<ul class="pagination">
+												<li><a href="<c:url value="/program?page=1"/>">首页</a></li>
+												<li><a
+													href="<c:url value="/program?page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
 
-											<c:forEach begin="1" end="${totalPages}" varStatus="loop">
-												<c:set var="active" value="${loop.index==page?'active':''}" />
-												<li class="${active}"><a
-													href="<c:url value="/reward?page=${loop.index}"/>">${loop.index}</a>
+												<c:forEach begin="1" end="${totalPages}" varStatus="loop">
+													<c:set var="active" value="${loop.index==page?'active':''}" />
+													<li class="${active}"><a
+														href="<c:url value="/program?page=${loop.index}"/>">${loop.index}</a>
+													</li>
+												</c:forEach>
+												<li><a
+													href="<c:url value="/program?page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
 												</li>
-											</c:forEach>
-											<li><a
-												href="<c:url value="/reward?page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
-											</li>
-											<li><a href="<c:url value="/reward?page=${totalPages}"/>">尾页</a></li>
-										</ul>
-		
+												<li><a
+													href="<c:url value="/program?page=${totalPages}"/>">尾页</a></li>
+											</ul>
+										
 									</div>
 								</div>
 							</div>
@@ -271,13 +273,12 @@
 
 																<tr>
 																	<td>报送单位：</td>
-																	<td><select id="department"
-																			name="department">
-																				<option value="1">技术部</option>
-																				<option value="2">后勤部</option>
-																				<option value="3">营销部</option>
-																				<option value="0" selected="selected">无限制</option>
-																		</select></td>
+																	<td><select id="department" name="department">
+																			<option value="1">技术部</option>
+																			<option value="2">后勤部</option>
+																			<option value="3">营销部</option>
+																			<option value="0" selected="selected">无限制</option>
+																	</select></td>
 																	<td><div id="d4" style="color: #FF0000"></div></td>
 																</tr>
 															</table>
@@ -322,7 +323,7 @@
 										<img src="img/fenge.png" width="100px" />
 									</div>
 								</div>
-								
+
 								<div class="row clearfix">
 									<div class="col-md-12 column">
 										<button class="btn btn-primary btn-lg" data-toggle="modal"

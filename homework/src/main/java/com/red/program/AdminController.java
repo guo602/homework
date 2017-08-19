@@ -103,6 +103,7 @@ public class AdminController {
 	 */
 	@RequestMapping("comment")
 	public String gocomment(String page,Model model) {
+		System.out.println("我就想试试还有没有用");
 		List<ChatHistory> chat = ChatHistoryDAO.getAll(jdbcTemplate);
 		int pa;
 		try {
@@ -209,7 +210,6 @@ public class AdminController {
 			endIndex = total;
 
 		model.addAttribute("totalPages", totalPages);
-
 		model.addAttribute("page", page);
 		luckylist = luckylist.subList(beginIndex, endIndex);
 		model.addAttribute("list", luckylist);
@@ -223,7 +223,31 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping("rewardrecord")
-	public String gorewardresult(Model model) {
+	public String gorewardresult(String page,Model model) {
+		List<Trade> trades = TradeDAO.getAllReward(jdbcTemplate);
+		int pa;
+		try {
+			pa = Integer.valueOf(page);
+		} catch (NumberFormatException e) {
+			pa = 1;
+		}
+		int total = trades.size();
+		// 每页用户数
+		int tradePerPage = 10;
+		// 总页数
+		int totalPages = total % tradePerPage == 0 ? total / tradePerPage : total / tradePerPage + 1;
+		// 本页起始用户序号
+		int beginIndex = (pa - 1) * tradePerPage;
+		// 本页末尾用户序号的下一个
+		int endIndex = beginIndex + tradePerPage;
+		if (endIndex > total)
+			endIndex = total;
+
+		model.addAttribute("totalPages", totalPages);
+
+		model.addAttribute("page", page);
+		trades = trades.subList(beginIndex, endIndex);
+		model.addAttribute("list", trades);
 		return "rewardresult";
 	}
 
@@ -234,7 +258,31 @@ public class AdminController {
 	 * @return
 	 */
 	@RequestMapping("rechargerecord")
-	public String gorechargeresult(Model model) {
+	public String gorechargeresult(String page,Model model) {
+		List<Trade> trades = TradeDAO.getAllRecharge(jdbcTemplate);
+		int pa;
+		try {
+			pa = Integer.valueOf(page);
+		} catch (NumberFormatException e) {
+			pa = 1;
+		}
+		int total = trades.size();
+		// 每页用户数
+		int tradePerPage = 10;
+		// 总页数
+		int totalPages = total % tradePerPage == 0 ? total / tradePerPage : total / tradePerPage + 1;
+		// 本页起始用户序号
+		int beginIndex = (pa - 1) * tradePerPage;
+		// 本页末尾用户序号的下一个
+		int endIndex = beginIndex + tradePerPage;
+		if (endIndex > total)
+			endIndex = total;
+
+		model.addAttribute("totalPages", totalPages);
+
+		model.addAttribute("page", page);
+		trades = trades.subList(beginIndex, endIndex);
+		model.addAttribute("list", trades);
 		return "rechargeresult";
 	}
 

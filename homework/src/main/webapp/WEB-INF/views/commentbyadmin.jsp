@@ -87,8 +87,8 @@
 					<li><a class="bar" href="luckyrain">红包发放</a></li>
 					<li><a class="bar" href="reward">节目打赏</a></li>
 					<li><a class="bar" href="luckyrecord">红包记录</a></li>
-					<li><a class="bar" href="traderecord">打赏记录</a></li>
-					<li><a class="bar" href="traderecord">充值记录</a></li>
+					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
+					<li><a class="bar" href="rechargerecord">充值记录</a></li>
 					<li><a class="bar" href="user">返回年会</a></li>
 
 
@@ -166,20 +166,20 @@
 									<div class="row clearfix">
 									<div class="col-md-12 column">
 										<ul class="pagination">
-											<li><a href="<c:url value="/program?page=1"/>">首页</a></li>
+											<li><a href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=1"/>">首页</a></li>
 											<li><a
-												href="<c:url value="/program?page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
+												href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
 
 											<c:forEach begin="1" end="${totalPages}" varStatus="loop">
 												<c:set var="active" value="${loop.index==page?'active':''}" />
 												<li class="${active}"><a
-													href="<c:url value="/program?page=${loop.index}"/>">${loop.index}</a>
+													href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=${loop.index}"/>">${loop.index}</a>
 												</li>
 											</c:forEach>
 											<li><a
-												href="<c:url value="/program?page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
+												href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
 											</li>
-											<li><a href="<c:url value="/program?page=${totalPages}"/>">尾页</a></li>
+											<li><a href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=${totalPages}"/>">尾页</a></li>
 										</ul>
 		
 									</div>
