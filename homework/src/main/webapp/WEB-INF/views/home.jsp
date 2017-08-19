@@ -12,46 +12,46 @@
 
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <script type="text/javascript">
-	function newadmin() {
-		var is_submit = 1;
-		var itcode = document.form1.itcode.value
-		var name = document.form1.name.value
-		var pass = document.form1.password.value
-		if (itcode.trim().length == 0) {
-			document.getElementById("new1").innerHTML = "用户编号不能为空 ";
+function newadmin() {
+	var is_submit = 1;
+	var itcode = document.form1.itcode.value
+	var name = document.form1.name.value
+	var pass = document.form1.password.value
+	if (itcode.trim().length == 0) {
+		document.getElementById("new1").innerHTML = "用户编号不能为空 ";
+		is_submit = 0;
+	} else {
+		if (itcode.length > 10) {
+			document.getElementById("new1").innerHTML = "用户编号过长，请检查输入是否正确 ";
 			is_submit = 0;
 		} else {
-			if (itcode.length > 10) {
-				document.getElementById("new1").innerHTML = "用户编号过长，请检查输入是否正确 ";
-				is_submit = 0;
-			} else {
-				document.getElementById("new1").innerHTML = "";
-			}
-		}
-		if (name.trim().length == 0) {
-			document.getElementById("new2").innerHTML = "用户名不能为空 ";
-			is_submit = 0;
-		} else {
-			if (name.length > 10) {
-				document.getElementById("new2").innerHTML = "用户名过长，请检查输入是否正确";
-				is_submit = 0;
-			} else {
-				document.getElementById("new2").innerHTML = "";
-			}
-		}
-		if (pass.trim().length == 0) {
-			document.getElementById("newp").innerHTML = "密码不能为空 ";
-			is_submit = 0;
-		} else {
-			document.getElementById("newp").innerHTML = "";
-
-		}
-		if (is_submit == 1) {
-			form1.submit();
-		} else {
-			return false;
+			document.getElementById("new1").innerHTML = "";
 		}
 	}
+	if (name.trim().length == 0) {
+		document.getElementById("new2").innerHTML = "用户名不能为空 ";
+		is_submit = 0;
+	} else {
+		if (name.length > 10) {
+			document.getElementById("new2").innerHTML = "用户名过长，请检查输入是否正确";
+			is_submit = 0;
+		} else {
+			document.getElementById("new2").innerHTML = "";
+		}
+	}
+	if (pass.trim().length == 0) {
+		document.getElementById("newp").innerHTML = "密码不能为空 ";
+		is_submit = 0;
+	}else{
+			document.getElementById("newp").innerHTML = "";
+
+	}
+	if (is_submit == 1) {
+		form1.submit();
+	} else {
+		return false;
+	}
+}
 </script>
 </head>
 <body>
@@ -80,9 +80,8 @@
 					<div class="col-md-4 column"></div>
 					<div class="col-md-5 column"></div>
 					<div class="col-md-3 column">
-						<a class="bar" href="traderecord"><button type="button"
-								class="btn btn-default">链接</button></a>
-
+						<a class="bar" href="traderecord"><button type="button" class="btn btn-default">链接</button></a>
+						
 						<div class="row clearfix">
 							<div class="col-md-12 column">
 								<button class="btn btn-primary" data-toggle="modal"
@@ -114,8 +113,7 @@
 														</tr>
 														<tr>
 															<td>密码</td>
-															<td><input name="password" id="password"
-																type="password"></td>
+															<td><input name="password" id="password" type="password"></td>
 															<td><div id="newp" style="color: #FF0000"></div></td>
 														</tr>
 													</table>
@@ -135,7 +133,7 @@
 								<!-- /.modal -->
 							</div>
 						</div>
-
+						
 					</div>
 				</div>
 			</div>
@@ -154,7 +152,7 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="item active">
-							<img alt="" src="img/ppt112.png" class="img-rounded" />
+							<img alt="" src="img/ppt1.png" class="img-rounded" />
 							<div class="carousel-caption">
 								<h4>First</h4>
 								<p></p>
@@ -168,21 +166,27 @@
 							</div>
 						</div>
 						<div class="item">
-							<img alt="" src="img/ppt3.gif" class="img-rounded" />
+							<img alt="" src="img/ppt3.gif" class="img-rounded" style="" />
 							<div class="carousel-caption">
 								<h4>Third</h4>
 								<p></p>
 							</div>
 						</div>
 					</div>
-					
+					<div class="item active">
+						<img alt="" src="v3/default2.jpg" />
+						<div class="carousel-caption"></div>
+					</div>
 				</div>
-				<a class="left carousel-control" href="#carousel-438683" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span></a>
-				<a class="right carousel-control" href="#carousel-438683" data-slide="next">
-				<span class="glyphicon glyphicon-chevron-right"></span></a>
+				<a class="left carousel-control" href="#carousel-438683"
+					data-slide="prev"><span
+					class="glyphicon glyphicon-chevron-left"></span></a> <a
+					class="right carousel-control" href="#carousel-438683"
+					data-slide="next"><span
+					class="glyphicon glyphicon-chevron-right"></span></a>
 			</div>
 		</div>
+	</div>
 	</div>
 
 
@@ -192,4 +196,3 @@
 
 </body>
 </html>
-
