@@ -34,15 +34,14 @@ public class AddadminController {
 	 * @return
 	 */
 	@RequestMapping("newadmin")
-	public String addadmin(String itcode,String name,Model model) {
+	public String addadmin(String itcode,String name,String password,Model model) {
 		String result = null;
-		System.out.println("为啥界面不显示");
 		
 		//System.out.println(password);
 		//if(password=="maopao") {
 			if(AlluserDAO.checkUserInfo(itcode, name, jdbcTemplate)) {
 				if(!AdminUserDAO.checkAdminUserInfo(itcode, name, jdbcTemplate)) {
-				    AdminUserDAO.createAdminUser(itcode, name, jdbcTemplate);
+				    AdminUserDAO.createAdminUser(itcode, name, password, jdbcTemplate);
 				    result="成功添加管理员" +name;
 				}
 				else {
@@ -50,7 +49,7 @@ public class AddadminController {
 				}
 			}
 			else {
-				result="添加用户不是公司员工，无法添加";
+				result="用户不是公司员工，无法添加";
 			}
 //		}
 //		else {

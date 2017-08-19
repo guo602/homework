@@ -1,8 +1,12 @@
 package com.red.program.dao;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,7 +15,22 @@ import com.red.program.model.Admin_user;
 import com.red.program.model.All_user;
 
 public class AdminUserDAO {
-	
+	/**
+	 * 密码加密
+	 * @param str
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 * @throws UnsupportedEncodingException
+	 */
+	public static String EncoderByMd5(String str) throws NoSuchAlgorithmException, UnsupportedEncodingException{
+        //确定计算方法
+        MessageDigest md5=MessageDigest.getInstance("MD5");
+        Base64 base64en = new Base64();
+        //加密后的字符串
+        byte[] newstr=base64en.encode(md5.digest(str.getBytes("utf-8")));
+        String pass = new String(newstr);
+        return pass;
+    }
 	/**
 	 * 创建admin用户
 	 * @param itcode	用户工号
@@ -19,9 +38,11 @@ public class AdminUserDAO {
 	 * @param jdbcTemplate
 	 * @return	插入成功返回1， 插入失败返回0，其他问题返回-1
 	 */
-	public static int createAdminUser(String itcode, String username, JdbcTemplate jdbcTemplate) {
+	public static int createAdminUser(String itcode, String username, String password,JdbcTemplate jdbcTemplate) {
 		try {
-			int result = jdbcTemplate.update("insert into admin_user values(null,?,?)",new Object[] { itcode, username });
+			String pass=EncoderByMd5(password);
+			System.out.println(pass);
+			int result = jdbcTemplate.update("insert into  admin_user values(null,?,?,?)",new Object[] { itcode, username,pass });
 			return result;
 		} catch (Exception e) {
 			return -1;
@@ -67,6 +88,25 @@ public class AdminUserDAO {
 		}
 	}
 	
+	/**
+	 * 管理员登录检查是否是管理员
+	 * @param itcode
+	 * @param password
+	 * @param jdbcTemplate
+	 * @return
+	 */
+	public static boolean checkIsAdmin(String itcode, String password, JdbcTemplate jdbcTemplate) {
+		RowMapper<Admin_user> admin_mapper = new BeanPropertyRowMapper<Admin_user>(Admin_user.class);
+		try {
+			String pass=EncoderByMd5(password);
+			@SuppressWarnings("unused")
+			Admin_user admin = jdbcTemplate.queryForObject("select * from admin_user where itcode=? and password=?",
+					admin_mapper, new Object[] { itcode, pass });
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 	/**
 	 * 通过管理员id查找管理员账户
 	 * @param aid	管理员id
