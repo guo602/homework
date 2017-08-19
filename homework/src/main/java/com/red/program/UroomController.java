@@ -49,7 +49,7 @@ public class UroomController {
 	
 	
 	
-	@RequestMapping("tixian")
+	@RequestMapping("tixian_ajax")
 	public String tixian(Model model) {
 		
 		
@@ -65,7 +65,7 @@ public class UroomController {
 		Wallet w=WalletDAO.getWalletByItcode(itcode, jdbcTemplate);
 		WalletDAO.ChangeAmountByWallet(w, -(w.getAmount()), jdbcTemplate);
 		
-		return "tixian";
+		return "n";
 	}
 	
 	@RequestMapping("redtable")
@@ -220,7 +220,7 @@ public class UroomController {
 	
 		
 		System.out.println(recharge);
-
+		recharge = new String(recharge.replace(".",""));
 		
 		int amount=Integer.parseInt(recharge);
 		
@@ -426,25 +426,25 @@ public class UroomController {
 	//	System.out.println("request get");
 		else {
 			int amount=his.size();
-		System.out.println(amount);
+	//	System.out.println(amount);
 		int new_pagenum=amount/ROWS;
 		if(amount%ROWS==0);
 		else new_pagenum+=1;
 		
 		if(new_pagenum>12)new_pagenum=12;
 		
-		System.out.println(new_pagenum);
+	//	System.out.println(new_pagenum);
 		
 		List<ChatHistory> hisre=new ArrayList<ChatHistory>();
 		for(int i=current*ROWS-ROWS;(i<current*ROWS&&i<his.size());i++)
 		{hisre.add(his.get(i));
-		System.out.println(hisre.get(i).getWord());
+	//	System.out.println(hisre.get(i).getWord());
 		}
 	//	List<Integer> pn=null;
 	//	for(int i=0;i<new_pagenum;++i)pn.add(i+1);
 		model.addAttribute("history", hisre);
 	//	model.addAttribute("num", pn);
-		System.out.println("addAttribute sussecc!");
+	//	System.out.println("addAttribute sussecc!");
 
 		
 		return "reviewlist";}

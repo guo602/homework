@@ -29,7 +29,12 @@ pageEncoding="UTF-8"%>
      	var current=1;
         
      </script>
-	<script>
+	
+
+<script>
+		
+
+
 		function walletopchange(obj) {
 
 			var div = document.getElementById("walletchoice");
@@ -101,7 +106,7 @@ pageEncoding="UTF-8"%>
 					alert('error');
 				},
 				success : function(data) {
-					alert('充值成功');
+					alert('成功充值'+e+'元，再会！');
 				}
 			});
 
@@ -144,6 +149,25 @@ pageEncoding="UTF-8"%>
 
 		}
 
+
+		function tixianajax() {
+
+			$.ajax({
+				url : 'tixian_ajax',
+				type : 'get',
+				dataType : 'html',
+
+				error : function() {
+					alert('error');
+				},
+				success : function(data) {
+					alert('tixian success');
+				}
+			});
+			
+
+		}
+
 		function refresh_content() {
 			$.ajax({
 				url : 'gethistory',
@@ -162,6 +186,13 @@ pageEncoding="UTF-8"%>
 				}
 			});
 			setTimeout(refresh_content, 3000);
+		}
+
+		function paytellchange(){
+
+			if(document.getElementById('paytell').innerText=="请输入密码")
+				{document.getElementById('paytell').innerText="请选择支付方式";}
+			else{document.getElementById('paytell').innerText="请输入密码";}
 		}
 
 	</script>
@@ -227,6 +258,119 @@ pageEncoding="UTF-8"%>
 					  			}
 					  		});
 
+                              
+                             
+					  		$(".g_cbtn").click(function () {
+
+
+					  			if($("#td1").is(":hidden")){
+					  				$("#td1").slideDown();
+					  			}else{
+					  				$("#td1").slideUp();
+					  			}
+
+					  			if($("#talkdiv").is(":hidden")){
+					  				$("#talkdiv").slideDown();
+					  			}else{
+					  				$("#talkdiv").slideUp();
+					  			}
+
+					  			
+
+					  			});
+
+
+					  		$("#paypic1").click(function () {
+					  			  if($("#afterclickpic").is(":hidden")){
+					  				$("#paypic2d").slideUp();
+					  				$("#paypic3d").slideUp();
+					  				$("#paypic4d").slideUp();
+					  				 if($("#afterclickpic").is(":hidden")); $("#afterclickpic").slideDown();
+					  				}
+					  			   else{
+					  			 	$("#paypic2d").slideDown();
+					  				$("#paypic3d").slideDown();
+					  				$("#paypic4d").slideDown();
+					  				if($("#afterclickpic").is(":hidden"));
+					  				else $("#afterclickpic").slideUp();}
+					  			paytellchange();
+					  		});
+
+
+					  		$("#paypic2").click(function () {
+					  		  if($("#afterclickpic").is(":hidden")){
+					  				$("#paypic3d").slideUp();
+					  				$("#paypic1d").slideUp();
+					  				$("#paypic4d").slideUp();
+					  				 $("#afterclickpic").slideDown();
+					  				}
+
+					  			  
+					  			   else{$("#paypic3d").slideDown();
+					  				$("#paypic1d").slideDown();
+					  				$("#paypic4d").slideDown();
+					  				 $("#afterclickpic").slideUp();}
+					  			paytellchange();
+					  		});
+
+
+					  		$("#paypic3").click(function () {
+					  			  if($("#afterclickpic").is(":hidden")){
+					  				$("#paypic2d").slideUp();
+					  				$("#paypic1d").slideUp();
+					  				$("#paypic4d").slideUp();
+					  				 $("#afterclickpic").slideDown();
+					  				}
+
+					  			  
+					  			   else{$("#paypic2d").slideDown();
+					  				$("#paypic1d").slideDown();
+					  				$("#paypic4d").slideDown();
+					  				 $("#afterclickpic").slideUp();}
+					  			paytellchange();
+					  		});
+
+
+					  		$("#paypic4").click(function () {
+					  			  if($("#afterclickpic").is(":hidden")){
+					  				$("#paypic2d").slideUp();
+					  				$("#paypic1d").slideUp();
+					  				$("#paypic3d").slideUp();
+					  				 $("#afterclickpic").slideDown();
+					  				}
+
+					  			  
+					  			   else{$("#paypic2d").slideDown();
+					  				$("#paypic1d").slideDown();
+					  				$("#paypic3d").slideDown();
+					  				 $("#afterclickpic").slideUp();}
+					  			paytellchange();
+					  		});
+
+
+	                        $("#shopping").click(function () {
+					  			
+					  				$("#fourpic").slideDown(1);
+					  				$("#paypic1").slideDown(1);
+					  				$("#paypic2").slideDown(1);
+					  				$("#paypic3").slideDown(1);
+					  				$("#paypic4").slideDown(1);
+					  			
+					  			$("#afterclickpic").slideUp(1);
+
+					  			{$("#paypic3d").slideDown();
+					  				$("#paypic1d").slideDown();
+					  				$("#paypic4d").slideDown();
+					  					$("#paypic2d").slideDown();}
+
+                                 if(document.getElementById('paytell').innerText=="请输入密码")
+					  			 paytellchange();
+
+					  		});
+                                
+
+
+
 				  	  });
 
 
@@ -245,6 +389,20 @@ pageEncoding="UTF-8"%>
 
      </script>
      
+
+<script type="text/javascript">
+	
+	function checkpw(){
+
+		if($('#paypw').val()!=""){rechargesubmit();
+		$('#myModal').modal('hide');}
+
+		else alert('输入不能为空，帅郭');
+	}
+</script>
+
+
+
 	</head>
 	<body>
 
@@ -279,7 +437,7 @@ pageEncoding="UTF-8"%>
 								<ul class="nav nav-pills">
 									<li id="clickrecharge" class="active"><a href="#" class="walletop">充值</a></li>
 									<li><a href="redtable" class="walletop">抢红包</a></li>
-									<li><a href="tixian" class="walletop">提现</a></li>
+									<li><a href="#" class="walletop" data-toggle="modal" data-target="#tixian">提现</a></li>
 								</ul>
 							</div>
 
@@ -293,7 +451,7 @@ pageEncoding="UTF-8"%>
 										<option value="66.60">66.60￥</option>
 										<option value="666.00">666.00￥</option>
 										<option value="6666.66">6666.66￥</option>
-									</select> <button class="btn btn-primary"
+									</select> <button id ="shopping" class="btn btn-primary"
 									data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-shopping-cart" style="color: rgb(256, 251, 256); font-size: 13px;"> </span> 支付方式</button>
                                      
 
@@ -311,7 +469,7 @@ pageEncoding="UTF-8"%>
 
 									<div class="myBalance"  id="myBalance"  style="display: none;">
 										<p>余额 ：        </p>
-										<strong ID="balance" style="font-size: 50px"></strong>
+										<strong ID="balance" style="font-size: 48px"></strong>
 									</div>
 							
                     </div>
@@ -386,19 +544,26 @@ pageEncoding="UTF-8"%>
 
 				<div class="talkdivcss" position:relative>
                    <div class="kuang">
-					<form name="form1" action="up_words_ajax?word='document.getelementbyid(words)'">
-						<input type="text"  name="words" id="words" placeholder="畅所欲言"  > 
-						<button class="btn btn-large btn-primary" onclick="Editsubmit()" type="button">发送</button>
+                   <button class=" g_cbtn  btn-xs" onclick="tdchange()"><span class="glyphicon glyphicon-comment" style="color: rgb(255, 255, 255); font-size: 12px;"></span></button>
+						
+						<div id="td1" style="display: none;">
+							<input type="text"  name="words" id="words" placeholder="畅所欲言"  > 
+							<button class="btn btn-large btn-primary" onclick="Editsubmit()" type="button">发送</button>
+                        </div>
+                                    
+						<br> 
+<!-- 						<p style="font-size:6px; color:#000;">GO</p>
+ -->						<div ID="talkdiv" style="display: none;" position:relative style="{text-align:left;}">
+			            </div>
+	                  
+				   </div>
+
+               </div>
 
 
-					</from>
-					<br> 评论列表
-					<div ID="talkdiv" position:relative style="{text-align:left;}">
-		            </div>
-                   </form>
-				</div>
 
-               <div>
+
+
 										                                       <!-- 按钮触发模态框 -->
 											<!-- <button class="btn btn-primary " data-toggle="modal" data-target="#myModal">
 												选择支付方式
@@ -414,19 +579,19 @@ pageEncoding="UTF-8"%>
 																"我想给世界买瓶可口可乐"
 															</h4>
 														</div>
-														<div class="modal-body" style="{margin:25px;}">
-															<h2 style="color:#27408B;">请选择支付方式</h2>
-                                                                  <div style="display:flex; flex-direction:row;">
+														<div class="modal-body" style="{margin:25px;}" >
+															<h3 id="paytell" style="color:#27408B;">请输入密码</h3>
+                                                                  <div style="display:flex; flex-direction:row;" id="fourpic">
                                                                   <div>
-                                                                    <div class="polaroid">
-																	  <img src="img/wechat.jpg" alt="wechat" style="width:96%">
+                                                                    <div class="polaroid" id="paypic1d">
+																	  <img src="img/wechat.jpg" alt="wechat" style="width:96%" id="paypic1">
 																	  <div class="container">
 																	    <p>WeChat</p>
 																	  </div>
 																	</div>
 
-																	 <div class="polaroid">
-																	  <img src="img/zf.jpg" alt="wechat" style="width:96%">
+																	 <div class="polaroid" id="paypic2d">
+																	  <img src="img/zf.jpg" alt="zf" style="width:96%" id="paypic2">
 																	  <div class="container">
 																	    <p>支付宝</p>
 																	  </div>
@@ -434,31 +599,41 @@ pageEncoding="UTF-8"%>
 
 																</div>
 																<div>
-                                                                    <div class="polaroid">
-																	  <img src="img/UP.jpg" alt="wechat" style="width:96%">
+                                                                    <div class="polaroid" id="paypic3d">
+																	  <img src="img/UP.jpg" alt="UP" style="width:96%" id="paypic3">
 																	  <div class="container">
 																	    <p>银联</p>
 																	  </div>
 																	</div>
 
-																	 <div class="polaroid">
-																	  <img src="img/NK.jpg" alt="wechat" style="width:96%">
+																	 <div class="polaroid" id="paypic4d">
+																	  <img src="img/NK.jpg" alt="NK" style="width:96%" id="paypic4">
 																	  <div class="container">
 																	    <p>建行学子卡</p>
 																	  </div>
 																	</div>
 
 																</div>
+
 																</div>
+                                                             <div id="afterclickpic" style="display: none;">
+                                                                
+																<input id="paypw" type="password" ><button class="btn btn-primary"  style=" margin:0.5em 1em;" onclick="checkpw()">OK</button>
+
+																<div class="polaroid">
+																	  <img src="img/passing.jpg" alt="boy" style="width:96%" >
+																	  <div class="container">
+																	    <p> Make Difference</p>
+																	  </div>
+																	</div>
+															</div>
 
 														</div>
 														<div class="modal-footer">
-															<button type="button" class="btn btn-default" data-dismiss="modal">
-																等下
+															<button id="closeMTK" type="button" class="btn btn-default" data-dismiss="modal">
+																再看看
 															</button>
-															<button type="button" class="btn btn-primary">
-																光速支付
-															</button>
+															
 														</div>
 													</div><!-- /.modal-content -->
 												</div><!-- /.modal-dialog -->
@@ -468,7 +643,39 @@ pageEncoding="UTF-8"%>
 
 
 
+                                      <!-- 询问提现模态框 -->
 
+                                      <!-- 模态框（Modal） -->
+<div class="modal fade" id="tixian" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					全部提现？
+				</h4>
+			</div>
+			<div class="modal-body">
+				
+				<div class="polaroid" >
+					 <img src="img/NK.jpg" alt="NKK" class="img-circle" style="width:40%" >
+                       <div class="container">
+						 <p>把钱装进带有椭圆加密的学子卡</p>
+					</div>
+					</div>
+			</div>
+			<div class="modal-footer" style="text-align:center">
+				<button id="tixiantrue" type="button" class="btn btn-success" data-dismiss="modal" onclick="tixianajax()">确定
+				</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消
+				</button>
+				
+				
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
 
 
 <!-- Button to trigger modal -->
