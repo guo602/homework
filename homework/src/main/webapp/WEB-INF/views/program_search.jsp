@@ -56,6 +56,7 @@
 						<ul class="dropdown-menu">
 							<li><a class="bar" href="program_1">插入节目单</a></li>
 							<li><a class="bar" href="program_2">查找节目单</a></li>
+							<li><a class="bar" href="program_3">修改节目单</a></li>
 						</ul></li>
 					<li class="dropdown"><a class="bar" class="dropdown-toggle"
 						data-toggle="dropdown" href="wallet">账户<span class="caret"></span></a>
@@ -109,7 +110,8 @@
 									href="program_1">添加节目</a></li>
 								<li class="list-group-item"><a class="bigger"
 									href="program_2">查找节目</a></li>
-								<li class="list-group-item"><a class="bigger" href="">删除节目</a></li>
+								<li class="list-group-item"><a class="bigger"
+									href="program_3">修改节目</a></li>
 							</ul>
 							<div class="panel-heading">
 								<a class="bigger" href="addadmin">用户管理 </a>

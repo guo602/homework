@@ -13,50 +13,66 @@
 
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <script type="text/javascript">
-function admin_login() {
-	var is_submit = 1;
-	var itcode = document.form1.itcode.value
-	var name = document.form1.name.value
-	var pass = document.form1.password.value
-	if (itcode.trim().length == 0) {
-		document.getElementById("new1").innerHTML = "用户编号不能为空 ";
-		is_submit = 0;
-	} else {
-		if (itcode.length > 10) {
-			document.getElementById("new1").innerHTML = "用户编号过长，请检查输入是否正确 ";
+	function admin_login() {
+		var is_submit = 1;
+		var itcode = document.form1.itcode.value
+		var name = document.form1.name.value
+		var pass = document.form1.password.value
+		if (itcode.trim().length == 0) {
+			document.getElementById("new1").innerHTML = "用户编号不能为空 ";
 			is_submit = 0;
 		} else {
-			document.getElementById("new1").innerHTML = "";
+			if (itcode.length > 10) {
+				document.getElementById("new1").innerHTML = "用户编号过长，请检查输入是否正确 ";
+				is_submit = 0;
+			} else {
+				document.getElementById("new1").innerHTML = "";
+			}
 		}
-	}
-	if (name.trim().length == 0) {
-		document.getElementById("new2").innerHTML = "用户名不能为空 ";
-		is_submit = 0;
-	} else {
-		if (name.length > 10) {
-			document.getElementById("new2").innerHTML = "用户名过长，请检查输入是否正确";
+		if (name.trim().length == 0) {
+			document.getElementById("new2").innerHTML = "用户名不能为空 ";
 			is_submit = 0;
 		} else {
-			document.getElementById("new2").innerHTML = "";
+			if (name.length > 10) {
+				document.getElementById("new2").innerHTML = "用户名过长，请检查输入是否正确";
+				is_submit = 0;
+			} else {
+				document.getElementById("new2").innerHTML = "";
+			}
 		}
-	}
-	if (pass.trim().length == 0) {
-		document.getElementById("newp").innerHTML = "密码不能为空 ";
-		is_submit = 0;
-	}else{
+		if (pass.trim().length == 0) {
+			document.getElementById("newp").innerHTML = "密码不能为空 ";
+			is_submit = 0;
+		} else {
 			document.getElementById("newp").innerHTML = "";
 
+		}
+		if (is_submit == 1) {
+			form1.submit();
+		} else {
+			return false;
+		}
 	}
-	if (is_submit == 1) {
-		form1.submit();
-	} else {
-		return false;
-	}
-}
 </script>
 </head>
 <body>
-	
+
+	<table>
+		<div class="main" position:relative>
+			<br>
+			<h1 class="h1">Hello world!</h1>
+
+			<br> <a href="admin" class="h" title="管理员界面">管理员界面</a> <br>
+			<br> <a href="chatlogin" class="h" title="全程冒泡">全程冒泡</a><br>
+			<br> <a href="redlogin" class="h" title="红包登录">红包登录</a><br>
+			<br> <a
+				href="http://10.10.15.56:8080/homework_chat/gchatreg.html" class="h"
+				title="聊天室入口">聊天室入口</a> <br> <br>
+
+			<P class="h">The time on the server is ${serverTime}.</P>
+			<br>
+		</div>
+	</table>
 	<div class="container">
 		<div class="row clearfix">
 			<div class="col-md-12 column">
@@ -64,8 +80,9 @@ function admin_login() {
 					<div class="col-md-4 column"></div>
 					<div class="col-md-5 column"></div>
 					<div class="col-md-3 column">
-						<a class="bar" href="traderecord"><button type="button" class="btn btn-default">链接</button></a>
-						
+						<a class="bar" href="traderecord"><button type="button"
+								class="btn btn-default">链接</button></a>
+
 						<div class="row clearfix">
 							<div class="col-md-12 column">
 								<button class="btn btn-primary" data-toggle="modal"
@@ -97,7 +114,8 @@ function admin_login() {
 														</tr>
 														<tr>
 															<td>密码</td>
-															<td><input name="password" id="password" type="password"></td>
+															<td><input name="password" id="password"
+																type="password"></td>
 															<td><div id="newp" style="color: #FF0000"></div></td>
 														</tr>
 													</table>
@@ -117,7 +135,7 @@ function admin_login() {
 								<!-- /.modal -->
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
@@ -167,22 +185,7 @@ function admin_login() {
 			</div>
 		</div>
 	</div>
-<table>
-		<div class="main" position:relative>
-			<br>
-			<h1 class="h1">Hello world!</h1>
 
-			<br> <a href="admin" class="h" title="管理员界面">管理员界面</a> <br>
-			<br> <a href="chatlogin" class="h" title="全程冒泡">全程冒泡</a><br>
-			<br> <a href="redlogin" class="h" title="红包登录">红包登录</a><br>
-			<br> <a
-				href="http://10.10.15.56:8080/homework_chat/gchatreg.html" class="h"
-				title="聊天室入口">聊天室入口</a> <br> <br>
-
-			<P class="h">The time on the server is ${serverTime}.</P>
-			<br>
-		</div>
-	</table>
 
 
 

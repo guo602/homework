@@ -16,15 +16,16 @@
 
 
 <script type="text/javascript">
-	function check() {
+	function updateProgram() {
 		var is_submit = 1
 		//读取输入
-		var program_name = document.getElementById("program_name").value;
-		var perfomer = document.getElementById("performer").value;
-		var starttime = document.getElementById("starttime").value;
-		var department = document.getElementById("department").value;
+		var program_name = document.getElementById("program_name1").value;
+		var perfomer = document.getElementById("program_performer1").value;
+		var starttime = document.getElementById("program_time1").value;
+		var department = document.getElementById("department1").value;
+		var id = document.getElementById("update").value;
 
-		//检查时间输入的格式,当天的19-22点均可，2018-11-11 21:21:21是可以的
+		//检查时间输入的格式,2018-11-11 21:21:21是可以的
 		var patern3 = new RegExp(
 				"(\\d{4}|\\d{2})-((0?([1-9]))|(1[1|2]))-((0?[1-9])|([12]([1-9]))|(3[0|1]))[ ]((1|0?)[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])");
 
@@ -63,9 +64,23 @@
 		} else {
 			document.getElementById("d4").innerText = "";
 		}
-
+		var flag = 0;
+		var i;
+		for (i = 0; i < document.form1.pid.length; i++) {
+			if (document.form1.pid[i].checked == true) {
+				flag = 1
+				break
+			}
+		}
+		if (flag == 0) {
+			document.getElementById("d5").innerText = "未选择节目，请重新选择";
+			is_submit = 0
+		} else {
+			document.getElementById("d5").innerText = "";
+			document.form2.update.value=document.form1.pid[i].value;
+		}
 		if (is_submit == 1) {
-			form1.submit();
+			form2.submit();
 		}
 		return false;
 	}
@@ -163,53 +178,57 @@
 							<div class="col-md-10 column">
 								<div class="row clearfix">
 									<div class="col-md-12 column">
-										<table class="table table-hover table-striped"
-											cellpadding="10">
-											<thead>
-												<tr>
-													<th>节目编号</th>
-													<th>节目名称</th>
-													<th>表演者</th>
-													<th>开始时间</th>
-													<th>报送单位</th>
-												</tr>
-											</thead>
-											<tbody>
-												<c:forEach items="${list}" var="s">
-													<tr class="error">
-														<td><c:out value="${s.getPid()}" /></td>
-														<td><c:out value="${s.getPro_name()}" /></td>
-														<td><c:out value="${s.getPerformer()}" /></td>
-														<td><c:out value="${s.getStart_time()}" /></td>
-														<td><c:out value="${s.getDept_id()}" /></td>
+									    <form id="form1" name="form1">
+											<table class="table table-hover table-striped"
+												cellpadding="10">
+												<thead>
+													<tr>
+														<th>节目编号</th>
+														<th>节目名称</th>
+														<th>表演者</th>
+														<th>开始时间</th>
+														<th>报送单位</th>
+														<th>是否修改</th>
 													</tr>
-												</c:forEach>
-											</tbody>
-										</table>
+												</thead>
+												<tbody>
+													<c:forEach items="${list}" var="s">
+														<tr class="error">
+															<td><c:out value="${s.getPid()}" /></td>
+															<td><c:out value="${s.getPro_name()}" /></td>
+															<td><c:out value="${s.getPerformer()}" /></td>
+															<td><c:out value="${s.getStart_time()}" /></td>
+															<td><c:out value="${s.getDept_id()}" /></td>
+															<td><input type="radio" name="pid" id="pid"
+																value="${s.getPid()}">修改</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
+											</form>
 									</div>
 								</div>
 								<div class="row clearfix">
 									<div class="col-md-12 column">
-										<c:if test="${size>10}">
-											<ul class="pagination">
-												<li><a
-													href="<c:url value="/program_insert?page=1"/>">首页</a></li>
-												<li><a
-													href="<c:url value="/program_insert?page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
 
-												<c:forEach begin="1" end="${totalPages}" varStatus="loop">
-													<c:set var="active" value="${loop.index==page?'active':''}" />
-													<li class="${active}"><a
-														href="<c:url value="/program_insert?page=${loop.index}"/>">${loop.index}</a>
-													</li>
-												</c:forEach>
-												<li><a
-													href="<c:url value="/program_insert?page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
+										<ul class="pagination">
+											<li><a href="<c:url value="/program?page=1"/>">首页</a></li>
+											<li><a
+												href="<c:url value="/program?page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
+
+											<c:forEach begin="1" end="${totalPages}" varStatus="loop">
+												<c:set var="active" value="${loop.index==page?'active':''}" />
+												<li class="${active}"><a
+													href="<c:url value="/program?page=${loop.index}"/>">${loop.index}</a>
 												</li>
-												<li><a
-													href="<c:url value="/program_insert?page=${totalPages}"/>">尾页</a></li>
-											</ul>
-										</c:if>
+											</c:forEach>
+											<li><a
+												href="<c:url value="/program?page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
+											</li>
+											<li><a
+												href="<c:url value="/program?page=${totalPages}"/>">尾页</a></li>
+										</ul>
+
 									</div>
 								</div>
 							</div>
@@ -221,51 +240,52 @@
 									<div class="row clearfix">
 										<div class="col-md-12 column">
 											<button class="btn btn-primary btn-lg" data-toggle="modal"
-												data-target="#insert">添加节目</button>
-
+												data-target="#find">确认修改</button>
 											<!-- 模态框（Modal） -->
-											<div class="modal fade " id="insert" tabindex="-1"
-												role="dialog" aria-labelledby="newModalLabel"
-												aria-hidden="true">
+											<div class="modal fade" id="find" tabindex="-1" role="dialog"
+												aria-labelledby="myModalLabel" aria-hidden="true">
 												<div class="modal-dialog">
 													<div class="modal-content">
 														<div class="modal-header">
 															<button type="button" class="close" data-dismiss="modal"
 																aria-hidden="true">×</button>
-															<h4 class="modal-title" id="newModalLabel">添加节目</h4>
+															<h4 class="modal-title" id="myModalLabel">输入要修改部分的信息</h4>
 														</div>
 														<div class="modal-body">
-															<form id="form1" name="form1" action="program_insert">
+															<form id="form2" name="form2" action="program_edit">
 																<table>
-
 																	<tr>
 																		<td>节目名称：</td>
-																		<td><input type="text" id="program_name"
-																			name="program_name"></td>
-																		<td><div id="d1" style="color: #FF0000"></div></td>
+																		<td><input type="text" id="program_name1"
+																			name="program_name1"></td>
+																		<td><div id="d1" name="d1" style="color: #FF0000"></div></td>
 																	</tr>
 																	<tr>
 																		<td>表演者：</td>
-																		<td><input type="text" id="performer"
-																			name="performer"></td>
-																		<td><div id="d2" style="color: #FF0000"></div></td>
+																		<td><input type="text" id="program_performer1"
+																			name="program_performer1"></td>
+																		<td><div id="d2" name="d2" style="color: #FF0000"></div></td>
 																	</tr>
 																	<tr>
 																		<td>开始时间：</td>
-																		<td><input type="text" id="starttime"
-																			name="starttime"></td>
-																		<td><div id="d3" style="color: #FF0000"></div></td>
+																		<td><input type="text" id="program_time1"
+																			name="program_time1"></td>
+																		<td><div id="d3" name="d3" style="color: #FF0000"></div></td>
 																	</tr>
-
 																	<tr>
 																		<td>报送单位：</td>
-																		<td><select id="department" name="department">
+																		<td><select id="department1" name="department1">
 																				<option value="1">技术部</option>
 																				<option value="2">后勤部</option>
 																				<option value="3">营销部</option>
 																				<option value="0" selected="selected">无限制</option>
 																		</select></td>
-																		<td><div id="d4" style="color: #FF0000"></div></td>
+																		<td><div id="d4" name="d4" style="color: #FF0000"></div></td>
+																	</tr>
+																	<tr>
+																	    <td><input type="hidden" id="update" name="update"></td>
+																		<td><div id="d5" name="d5" style="color: #FF0000"></div></td>
+
 																	</tr>
 																</table>
 															</form>
@@ -274,7 +294,7 @@
 															<button type="button" class="btn btn-default"
 																data-dismiss="modal">关闭</button>
 															<button type="button" class="btn btn-primary"
-																onclick="check()">确认添加节目</button>
+																onclick="updateProgram()">确认修改信息</button>
 														</div>
 													</div>
 													<!-- /.modal-content -->
@@ -282,10 +302,10 @@
 												<!-- /.modal-dialog -->
 											</div>
 											<!-- /.modal -->
+
 										</div>
+
 									</div>
-
-
 									<div class="row clearfix">
 										<div class="col-md-12 column">
 											<img src="img/fenge.png" width="100px" />
@@ -294,13 +314,13 @@
 									<div class="row clearfix">
 										<div class="col-md-12 column">
 											<div>
-												<c:if test="${sign1=='ok'}">
+												<c:if test="${sign=='ok'}">
 													<img src="img/right.png" width="70" height="50" />
 												</c:if>
-												<c:if test="${sign1=='no'}">
+												<c:if test="${sign=='no'}">
 													<img src="img/cross.png" width="40" height="50" />
 												</c:if>
-												<div style="color: blue">${result1}</div>
+												<div style="color: blue">${result}</div>
 											</div>
 										</div>
 									</div>

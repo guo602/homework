@@ -14,6 +14,11 @@
 <link rel="stylesheet" type="text/css" href="css/admin.css">
 
 <body>
+
+	<div>
+	<a class="bar" href="program_3"><button type="button" class="btn btn-default">节目修改</button></a>
+	</div>
+	
 	<!--  <div class="blockdis">
 	  <div class="col-xs-8">
 	     <img alt="网络可能炸了" src="img/jammy.jpg" class="img-circle midimg">
@@ -35,6 +40,7 @@
 							<ul class="dropdown-menu">
 								<li><a class="bar" href="program_1">插入节目单</a></li>
 								<li><a class="bar" href="program_2">查找节目单</a></li>
+								<li><a class="bar" href="program_3">修改节目单</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="bar" class="dropdown-toggle"
 							data-toggle="dropdown" href="wallet">账户<span class="caret"></span></a>
