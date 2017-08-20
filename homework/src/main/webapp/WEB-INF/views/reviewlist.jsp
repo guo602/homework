@@ -18,7 +18,7 @@
 
 		
 		 
-    <div class="talklog" ><b style="font-size:28px; color:#0000CD;">${eh.word}</b>
+    <div class="talklog" ><b style="font-size:26px; color:#0000CD;">${eh.word}</b>
 
  </div>
  
