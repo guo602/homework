@@ -1,10 +1,13 @@
 package com.red.program.dao;
 
+import java.util.List;
+
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.red.program.model.Department;
+import com.red.program.model.Wallet;
 
 public class DepartmentDAO {
 	
@@ -67,6 +70,27 @@ public class DepartmentDAO {
 			RowMapper<Department> department_mapper = new BeanPropertyRowMapper<Department>(Department.class);
 			Department department = jdbcTemplate.queryForObject("select * from department where deptname=?", department_mapper, deptname);
 			return department;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public static boolean addBonus(int amount,String deptname, JdbcTemplate jdbcTemplate) {
+		try {
+			//RowMapper<Department> department_mapper = new BeanPropertyRowMapper<Department>(Department.class);
+			//Department department = jdbcTemplate.queryForObject("select * from department where deptname=?", department_mapper, deptname);
+			jdbcTemplate.update("update department set bonus=bonus+? where deptname=?;",new Object[] {amount,deptname});
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public static List<Department> getDepartmentOrderByBonus(  JdbcTemplate jdbcTemplate) {
+		try {
+			RowMapper<Department> department_mapper = new BeanPropertyRowMapper<Department>(Department.class);
+			List<Department> DepartmentList = jdbcTemplate.query("select * from department order by bonus desc", department_mapper);
+			return DepartmentList;
 		} catch (Exception e) {
 			return null;
 		}

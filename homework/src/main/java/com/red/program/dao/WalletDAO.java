@@ -327,6 +327,7 @@ public class WalletDAO {
 			System.out.println(amount);
 			
 			BonusDAO.AddBonus(id, amount, jdbcTemplate);
+			DepartmentDAO.addBonus(amount, ProgramDAO.getProgramByName(pro_name, jdbcTemplate).getPro_name(), jdbcTemplate);
 			return true;
 		}
 		catch(Exception e)

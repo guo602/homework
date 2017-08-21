@@ -26,6 +26,7 @@ import com.red.program.dao.ProgramDAO;
 import com.red.program.dao.TradeDAO;
 import com.red.program.dao.WalletDAO;
 import com.red.program.model.ChatHistory;
+import com.red.program.model.Department;
 import com.red.program.model.Each_program;
 import com.red.program.model.LuckyRecord;
 import com.red.program.model.MaopaoShow;
@@ -391,7 +392,7 @@ public class UroomController {
 			
 			if(amount> WalletDAO.getWalletByItcode(itcode,jdbcTemplate).getAmount()) {
 				
-				return "redloginproblem";
+				return "balanceNotEnough";
 				
 			}
 			
@@ -399,14 +400,14 @@ public class UroomController {
 			
 			
 				WalletDAO.awardToProgram(AlluserDAO.getUserByItcode(itcode, jdbcTemplate).getUsername(), amount, pro_name, jdbcTemplate);   
-			
+				
 				
 				
 				
 		//插入数据库;
 				
 			
-		 return "n";
+		 return "OK";
 			}
 			
 			
@@ -561,7 +562,7 @@ public class UroomController {
 	}
 	
 	@RequestMapping(value = "jmpm_ajax_ajax", method = RequestMethod.GET)
-	public String bmpm_ajax ( Model model) {
+	public String jmpm_ajax ( Model model) {
 	
 		try {
 			request.setCharacterEncoding("UTF-8");
@@ -582,7 +583,7 @@ public class UroomController {
 			    System.out.println(b.getBonus());
 				MaopaoShow mps=new MaopaoShow();
 				mps.setIndex(index);
-				String round="排名第"+index;
+				String round="排名第"+index+".";
 				
 				mps.setRound(round);
 				mps.setRed_amount(new String(Mmp.moneyToString(b.getBonus())+"元"));
@@ -601,6 +602,112 @@ public class UroomController {
 		//System.out.println(lucky.get(0).getLucky_money());
 	
 		return "pro_rank";
+	}
+	
+	@RequestMapping(value = "bmjm_ajax_ajax", method = RequestMethod.GET)
+	public String bmjm_ajax ( Model model,String dept_name) {
+	
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("req:get_jmpm_ajax round 100");
+		HttpSession session=request.getSession();
+		String itcode=(String)session.getAttribute("itcode");
+		
+		System.out.println("bmjm_ajax access suc");
+		System.out.println(dept_name);
+		
+		List<Pro_bonus> bl=BonusDAO.ListBonusByOrder(jdbcTemplate) ;
+		if(bl==null)return "notfound";
+		List<MaopaoShow> mpslist=new ArrayList<MaopaoShow>();
+		
+		int index=1;
+		for(Pro_bonus b:bl) {
+				
+					System.out.println(b.getBonus());
+				MaopaoShow mps=new MaopaoShow();
+				mps.setIndex(index);
+				String round="全司第"+index+".";
+				index++;
+				
+				mps.setRound(round);
+				mps.setRed_amount(new String(Mmp.moneyToString(b.getBonus())+"元"));
+				mps.setPro_name(ProgramDAO.getProgramByPid(b.getPid(), jdbcTemplate).getPro_name());
+				mps.setAct_name(ProgramDAO.getProgramByPid(b.getPid(), jdbcTemplate).getPerformer());
+				mps.setDept_name(DepartmentDAO.getDepartmentByDid(ProgramDAO.getProgramByPid(b.getPid(), jdbcTemplate).getDept_id(), jdbcTemplate).getDeptname());
+				if(!DepartmentDAO.getDepartmentByDid(ProgramDAO.getProgramByPid(b.getPid(), jdbcTemplate).getDept_id(), jdbcTemplate).getDeptname().equals(dept_name))	
+				    continue;
+				mpslist.add(mps);
+				
+				
+		}
+		if(mpslist.isEmpty())return "notfound";
+	
+		 model.addAttribute("program",mpslist);
+		//System.out.println(lucky.get(0).getLucky_money());
+	
+		return "pro_rank";
+	}
+	
+	@RequestMapping(value = "bmpm_ajax_ajax", method = RequestMethod.GET)
+	public String bmpm_ajax_ajax ( Model model ) {
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();return "notfound";
+		}
+		 
+	 
+		System.out.println(" 部门排名 access suc");
+		 
+		
+		List<Department> dl=DepartmentDAO.getDepartmentOrderByBonus( jdbcTemplate) ;
+		if(dl==null)return "notfound";
+		List<MaopaoShow> mpslist=new ArrayList<MaopaoShow>();
+		
+		int index=1;
+		for(Department d:dl) {
+				
+					System.out.println(d.getBonus());
+				MaopaoShow mps=new MaopaoShow();
+				mps.setIndex(index);
+				
+				String round="";
+				if(index==1)round="最强神话";
+				else if(index==2)round="天下第二";
+				else if(index==3)round="探花";
+				else round="Number."+index;
+				
+				mps.setRound(round);
+				index++;
+				mps.setRed_amount(new String(Mmp.moneyToString(d.getBonus())+"元"));
+		 
+				 
+				mps.setDept_name(d.getDeptname());
+				 
+			 
+				mpslist.add(mps);
+				
+				
+		}
+		if(mpslist.isEmpty())return "notfound";
+	
+		 model.addAttribute("my_dept_list",mpslist);
+		System.out.println(mpslist.get(0).getDept_name());
+		
+		for(MaopaoShow ep:mpslist) {
+			System.out.println(ep.getRound());
+			System.out.println(ep.getDept_name());
+			System.out.println(ep.getRed_amount());
+		}
+			
+	
+		return "dept_rank";
 	}
 	
 	

@@ -29,18 +29,60 @@ pageEncoding="UTF-8"%>
      	var current=1;
      	var isopen;
         var pro_name;
+        // var ubalance;
+        var reward_money_amount;
+        var dept_name;
      </script>
 	
 
 
 <script>
-		
+    	
+		function on_search_dept_jm(){
+    			dept_name= document.getElementById('select_dept').value;
+    			bmjm_ajax();
+
+    	}
+     
+
+		function reward_check(){
+			
+				jmpm_ajax();
+				var rewardInput=document.getElementById("reward_input").value;
+				var re = new RegExp(/^[0-9]*\.[0-9]{2}$/);
+				if (rewardInput=="")
+					{
+                         var randomText = Math.random()*8;
+                         if(randomText>1)
+						document.getElementById("reward_input_checkMsg").innerText="猜不出您心里的那个数字";
+					else document.getElementById("reward_input_checkMsg").innerText="你这个样子是不行的"
+				}
+
+				else if(!re.test(rewardInput)){document.getElementById("reward_input_checkMsg").innerText="钱之格式应形如 0.01 ,78.90";}
+                else reward_true();
+			// if()reward_true();
+			// else ;
+		}
+		function reward_true(){
+			document.getElementById("reward_input_checkMsg").innerText="";
+			alert('O Yes baby 打赏！强！消费！就是这种感觉');
+			$('#dsmtk').modal('hide');
+
+			send_reward(document.getElementById("reward_input").value, pro_name);
+
+			//ajax
+
+			//重sort节目
+			jmpm_ajax();
+
+		}
         function changepro_name(e){
         		pro_name=e;
-        		alert(pro_name);
-        		var tblArr=document.getElementByid("myModalLabel").innerText;
-        		tblArr="请输入为-"+e+"-打赏的金额";
-        		alert(document.getElementByid("words_in_dsmtk").innerText);
+        		// alert(pro_name);
+        		// var tblArr=document.getElementById("dstitle").innerText;
+        		document.getElementById("dstitle").innerText=e;
+        		document.getElementById("reward_input").value="";
+        		document.getElementById("reward_input_checkMsg").innerText="";
 
         }
         function rob_dis_app(){
@@ -90,9 +132,9 @@ pageEncoding="UTF-8"%>
 		function rewardsubmit() {
 
 			var e1 = document.getElementById('rewardamount').value;
-			var e1 = document.getElementById('pro_name').value;
+			var e1 = pro_name;
 			document.getElementById('rewardamount').value = "";
-			send_reward(e1, e2);
+			send_reward(e1, pro_name);
 
 		}
 
@@ -110,7 +152,8 @@ pageEncoding="UTF-8"%>
 					alert('error');
 				},
 				success : function(data) {
-					alert('打赏成功');
+					if(data==1){alert('打赏成功');jmpm_ajax();}
+					else alert('可惜余额不足，空欢喜');
 				}
 			});
 
@@ -166,6 +209,7 @@ pageEncoding="UTF-8"%>
 				},
 				success : function(data) {
 					$("#balance").html(data);
+					// ubalance=data;
 				}
 			});
 			setTimeout(show_balance, 2048);
@@ -251,261 +295,268 @@ pageEncoding="UTF-8"%>
 			else{document.getElementById('paytell').innerText="请选择支付方式";}
 		}
 
-	</script>
+</script>
 	
-	<script type="text/javascript">
-		    $(document).ready(function() {
-		    	refresh_content(pagenum,current);
-		    	show_balance();
-		    	check_open();
-		    });
-    </script>
+<script type="text/javascript">
+	    $(document).ready(function() {
+	    	refresh_content(pagenum,current);
+	    	show_balance();
+	    	check_open();
+	    });
+</script>
 	
 
 
 
 
-     <script type="application/javascript">
-
-         //        $('body').off('.data-api');
-         //        $('body').off('.alert.data-api');
-         //        $(".btn.danger").button("toggle").addClass("fat");
-         //        $("#myModal").modal()                       // initialized with defaults
-         //    $("#myModal").modal({ keyboard: false ;})   // initialized with no keyboard
-         //  $("#myModal").modal('show') ;               // initializes and invokes show immediately
-				  	  // var jq = jQuery.noConflict();
-				  	  // var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
-         //                  $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the bootstrap functionality
-         //               $('#myModal').on('show', function (e) {
-         // if (!data) return e.preventDefault() // stops modal from being shown
-         //           });
-
-
-				  	  $(document).ready(function () {
-
-
-					  		$("#dropdownMenu1").click(function () {
-
-
-					  			if($("#walletchoice").is(":hidden")){
-					  				$("#walletchoice").slideDown();
-					  			}else{
-					  				$("#walletchoice").slideUp();
-					  			}
-
-					  			if($("#myBalance").is(":hidden")){
-					  				$("#myBalance").slideDown();
-					  			}else{
-					  				$("#myBalance").slideUp();
-					  			}
-
-					  			if($("#beStronger").is(":hidden")){}
-					  				else{
-					  					$("#beStronger").slideUp();
-					  				}
-
-					  			if($("#rob").is(":hidden")){
-					  			}else{
-					  				$("#rob").slideUp();
-					  			}
-
-					  			});
-
-
-					  		$("#clickrecharge").click(function () {
-					  			if($("#beStronger").is(":hidden")){
-					  				$("#beStronger").slideDown(50);
-					  			}else{
-					  				$("#beStronger").slideUp();
-					  			}
-
-
-        			            if($("#rob").is(":hidden")){
-					  			}else{
-					  				$("#rob").slideUp();
-					  			}
-					  		});
-
-                              
-                             
-					  		$(".g_cbtn").click(function () {
-
-
-					  			if($("#td1").is(":hidden")){
-					  				$("#td1").slideDown();
-					  			}else{
-					  				$("#td1").slideUp();
-					  			}
-
-					  			if($("#talkdiv").is(":hidden")){
-					  				$("#talkdiv").slideDown();
-					  			}else{
-					  				$("#talkdiv").slideUp();
-					  			}
-
-					  			
-
-					  			});
-
-
-					  		$("#paypic1").click(function () {
-					  			  if($("#afterclickpic").is(":hidden")){
-					  				$("#paypic2d").slideUp();
-					  				$("#paypic3d").slideUp();
-					  				$("#paypic4d").slideUp();
-					  				 if($("#afterclickpic").is(":hidden")); $("#afterclickpic").slideDown();
-					  				}
-					  			   else{
-					  			 	$("#paypic2d").slideDown();
-					  				$("#paypic3d").slideDown();
-					  				$("#paypic4d").slideDown();
-					  				if($("#afterclickpic").is(":hidden"));
-					  				else $("#afterclickpic").slideUp();}
-					  			paytellchange();
-					  		});
-
-
-					  		$("#paypic2").click(function () {
-					  		  if($("#afterclickpic").is(":hidden")){
-					  				$("#paypic3d").slideUp();
-					  				$("#paypic1d").slideUp();
-					  				$("#paypic4d").slideUp();
-					  				 $("#afterclickpic").slideDown();
-					  				}
-
-					  			  
-					  			   else{$("#paypic3d").slideDown();
-					  				$("#paypic1d").slideDown();
-					  				$("#paypic4d").slideDown();
-					  				 $("#afterclickpic").slideUp();}
-					  			paytellchange();
-					  		});
-
+ <script type="application/javascript">
+
+     //        $('body').off('.data-api');
+     //        $('body').off('.alert.data-api');
+     //        $(".btn.danger").button("toggle").addClass("fat");
+     //        $("#myModal").modal()                       // initialized with defaults
+     //    $("#myModal").modal({ keyboard: false ;})   // initialized with no keyboard
+     //  $("#myModal").modal('show') ;               // initializes and invokes show immediately
+			  	  // var jq = jQuery.noConflict();
+			  	  // var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
+     //                  $.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the bootstrap functionality
+     //               $('#myModal').on('show', function (e) {
+     // if (!data) return e.preventDefault() // stops modal from being shown
+     //           });
+
+
+			  	  $(document).ready(function () {
+
+
+				  		$("#dropdownMenu1").click(function () {
+
+
+				  			if($("#walletchoice").is(":hidden")){
+				  				$("#walletchoice").slideDown();
+				  			}else{
+				  				$("#walletchoice").slideUp();
+				  			}
+
+				  			if($("#myBalance").is(":hidden")){
+				  				$("#myBalance").slideDown();
+				  			}else{
+				  				$("#myBalance").slideUp();
+				  			}
+
+				  			if($("#beStronger").is(":hidden")){}
+				  				else{
+				  					$("#beStronger").slideUp();
+				  				}
+
+				  			if($("#rob").is(":hidden")){
+				  			}else{
+				  				$("#rob").slideUp();
+				  			}
+
+				  			});
+
+
+				  		$("#clickrecharge").click(function () {
+				  			if($("#beStronger").is(":hidden")){
+				  				$("#beStronger").slideDown(50);
+				  			}else{
+				  				$("#beStronger").slideUp();
+				  			}
+
+
+    			            if($("#rob").is(":hidden")){
+				  			}else{
+				  				$("#rob").slideUp();
+				  			}
+				  		});
+
+                          
+                         
+				  		$(".g_cbtn").click(function () {
+
+
+				  			if($("#td1").is(":hidden")){
+				  				$("#td1").slideDown();
+				  			}else{
+				  				$("#td1").slideUp();
+				  			}
+
+				  			if($("#talkdiv").is(":hidden")){
+				  				$("#talkdiv").slideDown();
+				  			}else{
+				  				$("#talkdiv").slideUp();
+				  			}
+
+				  			
+
+				  			});
+
+
+				  		$("#paypic1").click(function () {
+				  			  if($("#afterclickpic").is(":hidden")){
+				  				$("#paypic2d").slideUp();
+				  				$("#paypic3d").slideUp();
+				  				$("#paypic4d").slideUp();
+				  				 if($("#afterclickpic").is(":hidden")); $("#afterclickpic").slideDown();
+				  				}
+				  			   else{
+				  			 	$("#paypic2d").slideDown();
+				  				$("#paypic3d").slideDown();
+				  				$("#paypic4d").slideDown();
+				  				if($("#afterclickpic").is(":hidden"));
+				  				else $("#afterclickpic").slideUp();}
+				  			paytellchange();
+				  		});
+
+
+				  		$("#paypic2").click(function () {
+				  		  if($("#afterclickpic").is(":hidden")){
+				  				$("#paypic3d").slideUp();
+				  				$("#paypic1d").slideUp();
+				  				$("#paypic4d").slideUp();
+				  				 $("#afterclickpic").slideDown();
+				  				}
+
+				  			  
+				  			   else{$("#paypic3d").slideDown();
+				  				$("#paypic1d").slideDown();
+				  				$("#paypic4d").slideDown();
+				  				 $("#afterclickpic").slideUp();}
+				  			paytellchange();
+				  		});
 
-					  		$("#paypic3").click(function () {
-					  			  if($("#afterclickpic").is(":hidden")){
-					  				$("#paypic2d").slideUp();
-					  				$("#paypic1d").slideUp();
-					  				$("#paypic4d").slideUp();
-					  				 $("#afterclickpic").slideDown();
-					  				}
 
-					  			  
-					  			   else{$("#paypic2d").slideDown();
-					  				$("#paypic1d").slideDown();
-					  				$("#paypic4d").slideDown();
-					  				 $("#afterclickpic").slideUp();}
-					  			paytellchange();
-					  		});
+				  		$("#paypic3").click(function () {
+				  			  if($("#afterclickpic").is(":hidden")){
+				  				$("#paypic2d").slideUp();
+				  				$("#paypic1d").slideUp();
+				  				$("#paypic4d").slideUp();
+				  				 $("#afterclickpic").slideDown();
+				  				}
 
+				  			  
+				  			   else{$("#paypic2d").slideDown();
+				  				$("#paypic1d").slideDown();
+				  				$("#paypic4d").slideDown();
+				  				 $("#afterclickpic").slideUp();}
+				  			paytellchange();
+				  		});
 
-					  		$("#paypic4").click(function () {
-					  			  if($("#afterclickpic").is(":hidden")){
-					  				$("#paypic2d").slideUp();
-					  				$("#paypic1d").slideUp();
-					  				$("#paypic3d").slideUp();
-					  				 $("#afterclickpic").slideDown();
-					  				}
 
-					  			  
-					  			   else{$("#paypic2d").slideDown();
-					  				$("#paypic1d").slideDown();
-					  				$("#paypic3d").slideDown();
-					  				 $("#afterclickpic").slideUp();}
-					  			paytellchange();
-					  		});
+				  		$("#paypic4").click(function () {
+				  			  if($("#afterclickpic").is(":hidden")){
+				  				$("#paypic2d").slideUp();
+				  				$("#paypic1d").slideUp();
+				  				$("#paypic3d").slideUp();
+				  				 $("#afterclickpic").slideDown();
+				  				}
 
+				  			  
+				  			   else{$("#paypic2d").slideDown();
+				  				$("#paypic1d").slideDown();
+				  				$("#paypic3d").slideDown();
+				  				 $("#afterclickpic").slideUp();}
+				  			paytellchange();
+				  		});
 
-	                        $("#shopping").click(function () {
-					  			
-					  				$("#fourpic").slideDown(1);
-					  				$("#paypic1").slideDown(1);
-					  				$("#paypic2").slideDown(1);
-					  				$("#paypic3").slideDown(1);
-					  				$("#paypic4").slideDown(1);
-					  			
-					  			$("#afterclickpic").slideUp(1);
 
-					  			{$("#paypic3d").slideDown();
-					  				$("#paypic1d").slideDown();
-					  				$("#paypic4d").slideDown();
-					  					$("#paypic2d").slideDown();}
+                        $("#shopping").click(function () {
+				  			
+				  				$("#fourpic").slideDown(1);
+				  				$("#paypic1").slideDown(1);
+				  				$("#paypic2").slideDown(1);
+				  				$("#paypic3").slideDown(1);
+				  				$("#paypic4").slideDown(1);
+				  			
+				  			$("#afterclickpic").slideUp(1);
 
-                                 if(document.getElementById('paytell').innerText!="请选择支付方式")
-					  			 paytellchange();
+				  			{$("#paypic3d").slideDown();
+				  				$("#paypic1d").slideDown();
+				  				$("#paypic4d").slideDown();
+				  					$("#paypic2d").slideDown();}
 
-					  		});
+                             if(document.getElementById('paytell').innerText!="请选择支付方式")
+				  			 paytellchange();
 
+				  		});
 
-					  		//记录显示
-					  		    $("#hbyj").click(function () {
-					  			
-					  				//ajax action
 
-					  				hbyjl_ajax();
+				  		//记录显示
+				  		    $("#hbyj").click(function () {
+				  			
+				  				//ajax action
 
-					  		});
-					  		    $("#qhbj").click(function () {
-					  			
-					  				//ajax action
+				  				hbyjl_ajax();
 
-					  				qhbjl_ajax();
+				  			});
+				  		    $("#qhbj").click(function () {
+				  			
+				  				//ajax action
 
-					  			});
+				  				qhbjl_ajax();
 
-					  			$("#bmpm").click(function () {
-					  			
-					  				//ajax action
+				  			});
 
-					  				
-					  				alert("hahaha");
+				  			$("#bmpm").click(function () {
+				  			
+				  				//ajax action
 
-					  				bmpm_ajax();
+				  				
+				  				
 
-					  			});
+				  				bmpm_ajax();
 
-					  			$("#jmpm").click(function () {
-					  			
-					  				//ajax action
+				  			});
 
-					  				
-					  				jmpm_ajax();
+				  			$("#jmpm").click(function () {
+				  			
+				  				//ajax action
 
-					  			});
+				  				
+				  				jmpm_ajax();
 
-					  			// querySelectorAll("#dsbtn").click(function () {
-					  			
-					  			// 	//ajax action
-          //                           alert(this.val());
+				  			});
 
+				  			$("#searchDept").click(function () {
+				  				dept_name=$("#select_dept").val();
+				  				bmjm_ajax();
 
-					  			// });
 
+				  			});
 
+				  			// querySelectorAll("#dsbtn").click(function () {
+				  			
+				  			// 	//ajax action
+      //                           alert(this.val());
 
-					  			
 
-                                
+				  			// });
 
 
 
-				  	  });
+				  			
 
+                            
 
 
 
-	
-											   $(function () { $('#myModal').modal('hide')});
-											</script>
-											<script>
-											   // $(function () { $('#myModal').on('hide.bs.modal', function () {
-											   //    alert('嘿，我听说您喜欢模态框...');})
-											   // });
-										
+			  	  });
 
 
 
-     </script>
+
+
+										   $(function () { $('#myModal').modal('hide')});
+										</script>
+										<script>
+										   // $(function () { $('#myModal').on('hide.bs.modal', function () {
+										   //    alert('嘿，我听说您喜欢模态框...');})
+										   // });
+									
+
+
+
+ </script>
      
      
 
@@ -520,7 +571,7 @@ pageEncoding="UTF-8"%>
 
 		else alert('输入不能为空，帅郭');
 	}
-   </script>
+</script>
 
 
    <!-- 抢红包的API -->
@@ -539,25 +590,21 @@ pageEncoding="UTF-8"%>
      function set_page(){
      	    
      	    if(isopen==1){
-
      	    	document.getElementById("h3titile").innerText="让红包来得更猛烈些吧";
                 document.getElementById("getred").disabled=false;
                 document.getElementById("getred").value="红包拿来";
                 document.getElementById("getred").style.display= "block";
      	    }
     		else{
-
     			document.getElementById("h3titile").innerText="不是没红包，时候还未到";
                 document.getElementById("getred").disabled=true;
                 document.getElementById("getred").style.display = "none" ;
-
-    }
-    			document.getElementById("getmsg").value="";
+            }
+    			
+    		document.getElementById("getmsg").value="";
     
-    }
-
-     
-
+    					}
+	
      // function get_redlist(){
 
      //     $.ajax({   
@@ -599,6 +646,24 @@ pageEncoding="UTF-8"%>
 	        	},   
 	        	success:function(data){   
 	           		$("#jmpm_l").html(data); 
+	     		} 
+	     	   });
+     }
+
+     function bmjm_ajax(){
+
+     	 $.ajax({   
+	        	url:'bmjm_ajax_ajax',   
+	        	type:'get',
+	        	dataType:'html', 
+	        	data : {
+					"dept_name" :dept_name
+				},     
+	        	error:function(){   
+	        		alert('error');   
+	        	},   
+	        	success:function(data){   
+	           		$("#bmjm_l").html(data); 
 	     		} 
 	     	   });
      }
@@ -867,9 +932,7 @@ pageEncoding="UTF-8"%>
 																	</div>
 																	<div id="collapseThree" class="panel-collapse collapse">
 																		<div id="bmpm_l" class="panel-body">
-																			Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
-																			nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
-																			lomo.
+																			
 																		</div>
 																	</div>
 																</div>
@@ -884,15 +947,24 @@ pageEncoding="UTF-8"%>
 																	</div>
 																	<div id="collapseFour" class="panel-collapse collapse">
 																		<div class="panel-body">
-																			Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
-																			nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
-																			lomo.
+																			<select name="select_dept" ID="select_dept"   style="width:107px;height:27px;">
+																		<option value="技术部">机车技术部</option>
+																		<option value="后勤部">铁臂后勤部</option>
+																		<option value="营销部">炫酷营销部</option>
+									
+												</select> <button id ="searchDept" class="btn  btn-xs" 
+
+									><span class="glyphicon  glyphicon-search" style="color: rgb(6, 1, 2); font-size: 13px;"> </span> 搜索</button>
+
+									<div id="bmjm_l"></div>
 																		</div>
 																	</div>
 																</div>
 													</div>
 
-
+														<div style="display:flex;flex-direction:row;">
+															<div style="width: 203px"></div><div>Oui, je vais y répondre.</div>
+														</div>
 
 
 									
@@ -944,77 +1016,77 @@ pageEncoding="UTF-8"%>
 												选择支付方式
 											</button> -->
 											<!-- 模态框（Modal） -->
-											<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-												<div class="modal-dialog">
-													<div class="modal-content">
-														<div class="modal-header">
-															<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
-															</button>
-															<h4 class="modal-title" id="myModalLabel">
-																"我想给世界买瓶可口可乐"
-															</h4>
-														</div>
-														<div class="modal-body" style="{margin:25px;}" >
-															<h3 id="paytell" style="color:#27408B;">请输入密码</h3>
-                                                                  <div style="display:flex; flex-direction:row;" id="fourpic">
-                                                                  <div>
-                                                                    <div class="polaroid" id="paypic1d">
-																	  <img src="img/wechat.jpg" alt="wechat" style="width:96%" id="paypic1">
-																	  <div class="container">
-																	    <p>WeChat</p>
-																	  </div>
-																	</div>
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+								</button>
+								<h4 class="modal-title" id="myModalLabel">
+									"我想给世界买瓶可口可乐"
+								</h4>
+							</div>
+							<div class="modal-body" style="{margin:25px;}" >
+								<h3 id="paytell" style="color:#27408B;">请输入密码</h3>
+                                      <div style="display:flex; flex-direction:row;" id="fourpic">
+                                      <div>
+                                        <div class="polaroid" id="paypic1d">
+										  <img src="img/wechat.jpg" alt="wechat" style="width:96%" id="paypic1">
+										  <div class="container">
+										    <p>WeChat</p>
+										  </div>
+										</div>
 
-																	 <div class="polaroid" id="paypic2d">
-																	  <img src="img/zf.jpg" alt="zf" style="width:96%" id="paypic2">
-																	  <div class="container">
-																	    <p>支付宝</p>
-																	  </div>
-																	</div>
+										 <div class="polaroid" id="paypic2d">
+										  <img src="img/zf.jpg" alt="zf" style="width:96%" id="paypic2">
+										  <div class="container">
+										    <p>支付宝</p>
+										  </div>
+										</div>
 
-																</div>
-																<div>
-                                                                    <div class="polaroid" id="paypic3d">
-																	  <img src="img/UP.jpg" alt="UP" style="width:96%" id="paypic3">
-																	  <div class="container">
-																	    <p>银联</p>
-																	  </div>
-																	</div>
+									</div>
+									<div>
+                                        <div class="polaroid" id="paypic3d">
+										  <img src="img/UP.jpg" alt="UP" style="width:96%" id="paypic3">
+										  <div class="container">
+										    <p>银联</p>
+										  </div>
+										</div>
 
-																	 <div class="polaroid" id="paypic4d">
-																	  <img src="img/NK.jpg" alt="NK" style="width:96%" id="paypic4">
-																	  <div class="container">
-																	    <p>建行学子卡</p>
-																	  </div>
-																	</div>
+										 <div class="polaroid" id="paypic4d">
+										  <img src="img/NK.jpg" alt="NK" style="width:96%" id="paypic4">
+										  <div class="container">
+										    <p>建行学子卡</p>
+										  </div>
+										</div>
 
-																</div>
+									</div>
 
-																</div>
-                                                             <div id="afterclickpic" style="display: none;">
-                                                                
-																<input id="paypw" type="password" ><button class="btn btn-primary"  style=" margin:0.5em 1em;" onclick="checkpw()">OK</button>
+									</div>
+                                 <div id="afterclickpic" style="display: none;">
+                                    
+									<input id="paypw" type="password" ><button class="btn btn-primary"  style=" margin:0.5em 1em;" onclick="checkpw()">OK</button>
 
-																<div class="polaroid">
-																	  <img src="img/passing.jpg" alt="boy" style="width:96%" >
-																	  <div class="container">
-																	    <p> Make Difference</p>
-																	  </div>
-																	</div>
-															</div>
+									<div class="polaroid">
+										  <img src="img/passing.jpg" alt="boy" style="width:96%" >
+										  <div class="container">
+										    <p> Make Difference</p>
+										  </div>
+										</div>
+								</div>
 
-														</div>
-														<div class="modal-footer">
-															<button id="closeMTK" type="button" class="btn btn-default" data-dismiss="modal">
-																再看看
-															</button>
-															
-														</div>
-													</div><!-- /.modal-content -->
-												</div><!-- /.modal-dialog -->
-											</div><!-- /.modal -->
-										
-                                       </div> 
+							</div>
+							<div class="modal-footer">
+								<button id="closeMTK" type="button" class="btn btn-default" data-dismiss="modal">
+									再看看
+								</button>
+								
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div><!-- /.modal -->
+			
+                
 
 
 
@@ -1051,7 +1123,7 @@ pageEncoding="UTF-8"%>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
-
+</div>
 
 
 	<!-- 打赏模态框 -->
@@ -1064,30 +1136,27 @@ pageEncoding="UTF-8"%>
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 					&times;
 				</button>
-				<h5 class="modal-title" id="myModalLabel" name="words_in_dsmtk">
-					
+				<h5 class="modal-title" id="dsModalLabel">
+					打赏<b id="dstitle"></b>多少元呢？
 				</h5>
 			</div>
 			<div class="modal-body">
 				
-				<div class="polaroid" >
-					 <img src="img/NK.jpg" alt="NKK" class="img-circle" style="width:40%" >
-                       <div class="container">
-						 <p>把钱装进带有椭圆加密的学子卡</p>
-					</div>
-					</div>
+				<input id="reward_input" placeholder="多多益善">
+
+				<p id="reward_input_checkMsg" style="color:#B8860B;font-size: 13px; "></p>
 			</div>
-			<div class="modal-footer" style="text-align:center">
-				<button id="dsmtktrue" type="button" class="btn btn-success" data-dismiss="modal" >确定
+			<div class="modal-footer" >
+				<button id="dsmtktrue" type="button" class="btn btn-success btn-xs"  onclick="reward_check()">确定
 				</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">取消
+				<button type="button" class="btn btn-default btn-xs" data-dismiss="modal">取消
 				</button>
 				
 				
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
-
+</div>
 
 <!-- Button to trigger modal -->
 <!-- <a href="#myModal" role="button" class="btn" data-toggle="modal"><span class="glyphicon glyphicon-shopping-cart" style="color: rgb(256, 251, 256); font-size: 13px;"> </span> 支付方式</a> -->
