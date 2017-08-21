@@ -1,10 +1,13 @@
 package com.red.program.dao;
 
+import java.util.List;
+
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.red.program.model.Bonus;
+import com.red.program.model.Pro_bonus;
 import com.red.program.model.Program;
 
 public class BonusDAO {
@@ -77,4 +80,32 @@ public class BonusDAO {
 			return -1;
 		}
 	}
+	
+	public static List<Pro_bonus> ListBonusByOrder(JdbcTemplate jdbcTemplate) {
+		try {
+			
+			RowMapper<Pro_bonus> b_mapper = new BeanPropertyRowMapper<Pro_bonus>(Pro_bonus.class);
+			List<Pro_bonus>  bonus = jdbcTemplate.query("select * from pro_bonus order by bonus desc",
+					b_mapper);
+			
+			System.out.println("bonusDAO");
+		    return bonus;
+		
+		
+		
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+
 }
+
+
+
+
+
+
+
+
+
