@@ -18,13 +18,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.red.program.dao.AlluserDAO;
+import com.red.program.dao.BonusDAO;
 import com.red.program.dao.ChatHistoryDAO;
 import com.red.program.dao.DepartmentDAO;
+import com.red.program.dao.LuckyRecordDAO;
 import com.red.program.dao.ProgramDAO;
 import com.red.program.dao.TradeDAO;
 import com.red.program.dao.WalletDAO;
 import com.red.program.model.ChatHistory;
 import com.red.program.model.Each_program;
+import com.red.program.model.LuckyRecord;
+import com.red.program.model.MaopaoShow;
+import com.red.program.model.Pro_bonus;
 import com.red.program.model.Program;
 import com.red.program.model.Wallet;
 
@@ -472,6 +477,132 @@ public class UroomController {
 		
 		return "balanceshow";
 	}
+	
+	
+	@RequestMapping(value = "tohbyjl_ajax", method = RequestMethod.GET)
+	public String gethbyjl_ajax( Model model) {
+	
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("req:get_redlist_ajax");
+		HttpSession session=request.getSession();
+		String itcode=(String)session.getAttribute("itcode");
+		List<LuckyRecord> lucky=LuckyRecordDAO.getRecordByItcode(itcode, jdbcTemplate);
+		
+		List<MaopaoShow> mpslist=new ArrayList<MaopaoShow>();
+		
+		int index=1;
+		for(LuckyRecord l:lucky) {
+			
+			if(l.getRound()>99)continue;
+			else {
+				MaopaoShow mps=new MaopaoShow();
+				mps.setIndex(index);
+				String round="第"+l.getRound()+"波";
+				
+				mps.setRound(round);
+				mps.setRed_amount(new String(Mmp.moneyToString(l.getLucky_money())+"元"));
+				mpslist.add(mps);
+				index++;
+		}
+		}
+		
+		if(index==1) {return "notfound";}
+		
+		else model.addAttribute("maopaoshow",mpslist);
+		//System.out.println(lucky.get(0).getLucky_money());
+	
+		return "hbyjl";
+	}	
+	
+	
+	@RequestMapping(value = "toqhbjl_ajax", method = RequestMethod.GET)
+	public String getqhbjl_ajax( Model model) {
+	
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("req:get_redlist_ajax round 100");
+		HttpSession session=request.getSession();
+		String itcode=(String)session.getAttribute("itcode");
+		List<LuckyRecord> lucky=LuckyRecordDAO.getRecordByItcode(itcode, jdbcTemplate);
+		
+		List<MaopaoShow> mpslist=new ArrayList<MaopaoShow>();
+		
+		int index=1;
+		for(LuckyRecord l:lucky) {
+			
+			if(l.getRound()<99)continue;
+			else {
+				MaopaoShow mps=new MaopaoShow();
+				mps.setIndex(index);
+				String round="第"+l.getRound()/100+"波";
+				
+				mps.setRound(round);
+				mps.setRed_amount(new String(Mmp.moneyToString(l.getLucky_money())+"元"));
+				mpslist.add(mps);
+				index++;
+		}
+		}
+		
+		if(index==1) {return "notfound";}
+		
+		else model.addAttribute("maopaoshow",mpslist);
+		//System.out.println(lucky.get(0).getLucky_money());
+	
+		return "hbyjl";
+	}
+	
+	@RequestMapping(value = "jmpm_ajax_ajax", method = RequestMethod.GET)
+	public String bmpm_ajax ( Model model) {
+	
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("req:get_jmpm_ajax round 100");
+		HttpSession session=request.getSession();
+		String itcode=(String)session.getAttribute("itcode");
+		
+		List<Pro_bonus> bl=BonusDAO.ListBonusByOrder(jdbcTemplate) ;
+		if(bl==null)return "notfound";
+		List<MaopaoShow> mpslist=new ArrayList<MaopaoShow>();
+		
+		int index=1;
+		for(Pro_bonus b:bl) {
+			    System.out.println(b.getBonus());
+				MaopaoShow mps=new MaopaoShow();
+				mps.setIndex(index);
+				String round="排名第"+index;
+				
+				mps.setRound(round);
+				mps.setRed_amount(new String(Mmp.moneyToString(b.getBonus())+"元"));
+				mps.setPro_name(ProgramDAO.getProgramByPid(b.getPid(), jdbcTemplate).getPro_name());
+				mps.setAct_name(ProgramDAO.getProgramByPid(b.getPid(), jdbcTemplate).getPerformer());
+				mps.setDept_name(DepartmentDAO.getDepartmentByDid(ProgramDAO.getProgramByPid(b.getPid(), jdbcTemplate).getDept_id(), jdbcTemplate).getDeptname());
+				
+				mpslist.add(mps);
+				
+				index++;
+		
+		}
+		
+	
+		 model.addAttribute("program",mpslist);
+		//System.out.println(lucky.get(0).getLucky_money());
+	
+		return "pro_rank";
+	}
+	
 	
 	
 }

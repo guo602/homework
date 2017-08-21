@@ -29,7 +29,8 @@ public class RedpacketDAO {
 		
 		//更新红包领取记录
 		LuckyRecordDAO.CreateLuckyRecordByWallet(WalletDAO.getWalletByItcode(itcode, jdbcTemplate), x, rpthis.getTimes(), jdbcTemplate);
-
+		//关闭余额为零的红包
+		Close(jdbcTemplate);
 	}
 	
 	public static int GetOpenTotal(JdbcTemplate jdbcTemplate) {
