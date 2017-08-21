@@ -9,7 +9,7 @@
 <title>帅郭们的年会</title>
  <style type="text/css">
 body{
-background-image: url(img/blueDeye.PNG);
+
 background-size:100% 100%;
 };
 
@@ -28,7 +28,7 @@ background-size:100% 100%;
           <br>
 
     <h1 class="title">为了红包与节目！</h1>  
-    <p class="description" align="center">举身赴清池,清池亦可平</p>
+    <p class="description" align="center">welcome</p>
     <div class="itcode">
       <label class="whitetext">工号</label>
       <input name="itcode"  placeholder="请输入你的工号">
