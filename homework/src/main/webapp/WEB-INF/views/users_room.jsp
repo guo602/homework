@@ -592,11 +592,13 @@ pageEncoding="UTF-8"%>
      	    if(isopen==1){
      	    	document.getElementById("h3titile").innerText="让红包来得更猛烈些吧";
                 document.getElementById("getred").disabled=false;
+                document.getElementById("pandagif").style.display= "block";
                 document.getElementById("getred").value="红包拿来";
                 document.getElementById("getred").style.display= "block";
      	    }
     		else{
     			document.getElementById("h3titile").innerText="不是没红包，时候还未到";
+    			document.getElementById("pandagif").style.display = "none" ;
                 document.getElementById("getred").disabled=true;
                 document.getElementById("getred").style.display = "none" ;
             }
@@ -684,6 +686,8 @@ pageEncoding="UTF-8"%>
 	           		 set_page();
 	     		} 
 	     	   });
+
+           $("#getmsg").html("");
         }
 
       function get_red(){
@@ -803,12 +807,12 @@ pageEncoding="UTF-8"%>
 												   <h3 id="h3titile">雷谋</h3>
 															
 															
-															<img src="img/red/redgif/panda.gif"  alt="panda" class="img-circle"   style="width:292px;height: 292px;"/>
+															<img id="pandagif" src="img/red/redgif/panda.gif"  alt="panda" class="img-circle"   style="width:272px;height: 272px;"/>
 															
 															
 															
 															
-															<br>
+															
 															<br>
 															<button class="btn btn-danger" id="getred"  onclick="click_on_get()">抢红包</button>
 															<br>
@@ -949,8 +953,12 @@ pageEncoding="UTF-8"%>
 																		<div class="panel-body">
 																			<select name="select_dept" ID="select_dept"   style="width:107px;height:27px;">
 																		<option value="技术部">机车技术部</option>
-																		<option value="后勤部">铁臂后勤部</option>
-																		<option value="营销部">炫酷营销部</option>
+																		<option value="天气播报部">天气播报部</option>
+																		<option value="市场部">炫酷市场部</option>
+																		<option value="人力资源部">人力资源部</option>
+																		<option value="公关部">最美公关部</option>
+																	
+
 									
 												</select> <button id ="searchDept" class="btn  btn-xs" 
 
