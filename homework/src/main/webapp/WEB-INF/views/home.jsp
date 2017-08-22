@@ -193,6 +193,6 @@
 
 
 
-
+<a href="initial">初始化数据库</a>
 </body>
 </html>
