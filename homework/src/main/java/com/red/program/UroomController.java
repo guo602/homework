@@ -148,7 +148,7 @@ public class UroomController {
 			
 			word.replace("甘道夫", "大眼帅哥");
 	
-			word=new String(word.replaceAll("fuck", "nice"));
+			word=new String(word.replaceAll("fuck", "注意言辞,润东爸爸在看着你！"));
 			word=new String(word.replaceAll("shit", "OMG"));
 			word=new String(word.replaceAll("冒泡组", "坠吼的"));
 

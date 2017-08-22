@@ -74,6 +74,7 @@ pageEncoding="UTF-8"%>
 
 			//重sort节目
 			jmpm_ajax();
+			bmpm_ajax();
 
 		}
         function changepro_name(e){
@@ -814,7 +815,10 @@ pageEncoding="UTF-8"%>
 															
 															
 															<br>
+															<div style="display:flex;flex-direction:row;">
+															<div style="width:100px"></div>
 															<button class="btn btn-danger" id="getred"  onclick="click_on_get()">抢红包</button>
+															</div>
 															<br>
 														    <p id="getmsg" style="font-size:6px; color:red;"></p>
 
