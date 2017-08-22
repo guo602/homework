@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" type="text/css" href="css/rlg.css">
+
+  <script src="js/jquery-3.2.1.min.js" ></script>
 <title>帅郭们的年会</title>
  <style type="text/css">
 body{
@@ -15,6 +17,53 @@ background-size:100% 100%;
 
 
 </style>
+
+<script type="text/javascript">
+
+   //var answer
+   var path
+
+
+    $(document).ready(function() {
+       
+         $("#myvalicode").click(function () {
+                
+                  //ajax action
+
+                  changeValiCode();
+
+                });
+
+
+      });
+
+   
+
+    function changeValiCode(){
+              $.ajax({
+                      url : 'validatecode',
+                      type : 'get',
+                      dataType : 'html',
+                   
+                      error : function() {
+                        alert('error');
+                      },
+                      success : function(data) {
+                      
+                        $("#myvalicode")[0].src; 
+
+                        $("#myvalicode").attr('src',data);
+                                              }
+                    });
+
+    }
+
+
+
+
+   
+</script>
+
 </head>
 <body>
 
@@ -40,7 +89,7 @@ background-size:100% 100%;
     </div>
     <div class="verify">
       <label class="whitetext">验证码</label>
-      <img class="captcha" src="img/verify.png">
+      <img  id="myvalicode" class="captcha" src="img/verify.png">
       <input name="verify" type="text" placeholder="请输入右侧验证码">
       <span class="help2">如验证码难以识别可点击验证码图片进行更换。</span>
     </div>
