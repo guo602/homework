@@ -239,7 +239,7 @@ public class LuckyRecordDAO {
 			int uid=user.getUid();
 			Wallet wallet=jdbcTemplate.queryForObject("select * from wallet where uid=?", wallet_mapper, uid);
 			int wid=wallet.getWid();
-			List<LuckyRecord> lucky=jdbcTemplate.query("select * from lucky_record where wid=?", lucky_mapper,wid);
+			List<LuckyRecord> lucky=jdbcTemplate.query("select * from lucky_record where wid=? order by round ", lucky_mapper,wid);
 			return lucky;
 		}
 		catch(Exception e)

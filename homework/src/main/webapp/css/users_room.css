@@ -6,26 +6,28 @@ body{
 
 .walletdivcss{
 
-  width:96%;
+  width:99%;
   margin:0 auto;
   background-color:#FFE7BA;
 
-  padding:1.5em 1em;
-  border-radius:5px 5px 16px 16px  ;
+  padding:0.5em 0.5em 0.5em 0.5em;
+  border-radius:5px 5px 16px 6px  ;
   filter:alpha(opacity=83);   
   -moz-opacity:0.83;   
   -khtml-opacity: 0.83;   
   opacity: 0.83; 
+  border:2px solid #FFFF00;
+  
 
 }
 
 .programdivcss{
  
-  width:96%;
+  width:99%;
 
   margin:0 auto;
   background:#DC143C;
-  padding:1em 1em;
+  padding:0.5em 0.5em;
  
   border-radius:6px 6px 25px 25px;
   filter:alpha(opacity=64);   
@@ -35,7 +37,7 @@ body{
 }
 
 .talkdivcss{
- width:96%;
+ width:99%;
  margin:0 auto;
  background-color:#97FFFF;
  padding:3px 4px;
@@ -57,10 +59,10 @@ body{
 }
 
 .myBalance{
- width: 43%;
- height: 96px;
+ width: 36%;
+ height: 66px;
  text-align:center;
- line-height: 31px;
+ line-height: 32px;
 
 
 
@@ -80,7 +82,7 @@ body{
 }
 .container {
   text-align: center;
-  padding: 10px 9px;
+  padding: 6px 9px;
 }
 
 .panel panel-success{
@@ -91,7 +93,7 @@ width:200px;
 }
 
 .talklog{
- width:368px;
+ width:328px;
    padding:0.5em 1em;
 
   margin: 1em 0em;
@@ -114,4 +116,45 @@ width:200px;
  
  border:2px solid #3A5FCD;
   border-radius:10px 10px 10px 10px  ;
+}
+
+.g_cendiv{
+
+
+  text-align:center;
+}
+
+.jinzhupic {
+  width: 130px;
+  height: 155px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 10px 10px 10px 10px;
+  border-radius:0 0 0  0  ;
+  padding: 5px 5px 0px 5px;
+
+}
+
+.g_jzn{
+
+   text-align: center;
+  padding: 7px 9px;
+  font-size:12px; 
+}
+p{
+
+  margin:0 0 3px;
+}font
+
+.pprrooll{
+
+
+
+  padding: 3px;
+    line-height: 1;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+    margin: 3px;
+
+
 }

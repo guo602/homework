@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.red.program.dao.AlluserDAO;
 import com.red.program.dao.DepartmentDAO;
 import com.red.program.dao.ProgramDAO;
+import com.red.program.dao.WalletDAO;
 import com.red.program.model.Department;
 import com.red.program.model.Each_program;
 import com.red.program.model.Program;
@@ -40,14 +41,14 @@ public class RedLoginController {
 			String itcode=request.getParameter("itcode");
 			String name=request.getParameter("name");
 			String verify=request.getParameter("verify");
-		
+		    System.out.println("itcode");
 			
 			
 			if(AlluserDAO.checkUserInfo(itcode,name,jdbcTemplate) && verify.equals("1234") )
-				
+				{WalletDAO.InitWalletByItcode(itcode, jdbcTemplate);
 				
 				return "room";
-			
+				}
 			
 			
 			else	return "redValidateFail";
@@ -122,7 +123,7 @@ public class RedLoginController {
 		
 		
 		if(AlluserDAO.checkUserInfo(itcode,name,jdbcTemplate) && verify.equals("1234") ) {
-//			
+			WalletDAO.InitWalletByItcode( itcode,jdbcTemplate);
 			
 			session.setAttribute("itcode", itcode);
 			

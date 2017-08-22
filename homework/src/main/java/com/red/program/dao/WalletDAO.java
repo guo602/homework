@@ -4,11 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.red.program.model.All_user;
+import com.red.program.model.Redpacket;
 import com.red.program.model.Trade;
 import com.red.program.model.Wallet;
 
@@ -327,6 +329,7 @@ public class WalletDAO {
 			System.out.println(amount);
 			
 			BonusDAO.AddBonus(id, amount, jdbcTemplate);
+			DepartmentDAO.addBonus(amount, DepartmentDAO.getDepartmentByDid(ProgramDAO.getProgramByName(pro_name, jdbcTemplate).getDept_id(), jdbcTemplate).getDeptname(), jdbcTemplate);
 			return true;
 		}
 		catch(Exception e)
@@ -334,5 +337,22 @@ public class WalletDAO {
 			return false;
 		}
 	}
+		public static boolean InitWalletByItcode(String itcode,JdbcTemplate jdbcTemplate) {
+			RowMapper<All_user> all_user_mapper = new BeanPropertyRowMapper<All_user>(All_user.class);
+			RowMapper<Wallet> wallet_mapper = new BeanPropertyRowMapper<Wallet>(Wallet.class);
+			All_user user=jdbcTemplate.queryForObject("select * from all_user where itcode=?;", all_user_mapper,itcode);
+			
+			System.out.println("init acc");
+			try {
+				   Wallet w = jdbcTemplate.queryForObject("select * from wallet where uid=?  ", wallet_mapper,user.getUid());
+					 } catch (EmptyResultDataAccessException e) {
+				            // e.printStackTrace(); // 可以选择打印信息
+				         initWallet(itcode,jdbcTemplate) ;
+						 return true;
+				        }
+			
+			return true;
+		}
+	
 
 }
