@@ -2,8 +2,15 @@ package jdbcInitialize;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
+
+import com.red.program.model.ChatHistory;
+import com.red.program.model.Program;
 
 public class InitializeDAO
 {
@@ -26,7 +33,7 @@ public class InitializeDAO
 		jdbcTemplate.update("delete from history_state");
 		
 		
-		jdbcTemplate.update("insert into admin_user  values(null,'00001','路人甲','4QrcOUm6Wau+VuBX8g+IPg==');");
+		jdbcTemplate.update("insert into admin_user  values(null,'00001','路人甲','4QrcOUm6Wau+VuBX8g+IPg==')");
 		jdbcTemplate.update("insert into all_user  values(null,'12121','Bill')");
 		jdbcTemplate.update("insert into all_user  values(null,'2333','zheng')");
 		jdbcTemplate.update("insert into all_user  values(null,'6666','chen')");
@@ -62,28 +69,28 @@ public class InitializeDAO
 		jdbcTemplate.update("insert into redpacket values(200,20000,0,10);");
 
 		jdbcTemplate.update("insert into redpacket values(300,20000,0,10);");
+        
+		RowMapper<Program> program_mapper = new BeanPropertyRowMapper<Program>(Program.class);
+		List<Program> program = jdbcTemplate.query("select * from program",program_mapper);
+		program.get(0).getPid();
+		jdbcTemplate.update("insert into pro_bonus values(?,0)",program.get(0).getPid());
+		jdbcTemplate.update("insert into pro_bonus values(?,0);",program.get(1).getPid());
+		jdbcTemplate.update("insert into pro_bonus values(?,0);",program.get(2).getPid());
+		jdbcTemplate.update("insert into pro_bonus values(?,0);",program.get(3).getPid());
+		jdbcTemplate.update("insert into pro_bonus values(?,0);",program.get(4).getPid());
+		jdbcTemplate.update("insert into pro_bonus values(?,0);",program.get(5).getPid());
+		jdbcTemplate.update("insert into pro_bonus values(?,0);",program.get(6).getPid());
+		jdbcTemplate.update("insert into pro_bonus values(?,0);",program.get(7).getPid());
+		jdbcTemplate.update("insert into pro_bonus values(?,0);",program.get(8).getPid());
+		jdbcTemplate.update("insert into pro_bonus values(?,0);",program.get(9).getPid());
+		jdbcTemplate.update("insert into pro_bonus values(?,0);",program.get(10).getPid());
+		jdbcTemplate.update("insert into pro_bonus values(?,0);",program.get(11).getPid());
 
-		jdbcTemplate.update("insert into pro_bonus values(1,0)");
-		jdbcTemplate.update("insert into pro_bonus values(2,0);");
-		jdbcTemplate.update("insert into pro_bonus values(3,0);");
-		jdbcTemplate.update("insert into pro_bonus values(4,0);");
-		jdbcTemplate.update("insert into pro_bonus values(5,0);");
-		jdbcTemplate.update("insert into pro_bonus values(6,0);");
-		jdbcTemplate.update("insert into pro_bonus values(7,0);");
-		jdbcTemplate.update("insert into pro_bonus values(8,0);");
-		jdbcTemplate.update("insert into pro_bonus values(9,0);");
-		jdbcTemplate.update("insert into pro_bonus values(10,0);");
-		jdbcTemplate.update("insert into pro_bonus values(11,0);");
-		jdbcTemplate.update("insert into pro_bonus values(12,0);");
-
-		jdbcTemplate.update("insert into lucky_money values(null,1,8000);");
-
-		jdbcTemplate.update("insert into lucky_money values(null,2,8000);");
-
-		jdbcTemplate.update("insert into lucky_money values(null,3,8000);");
-		jdbcTemplate.update("insert into lucky_money values(null,4,8000);");
-
-		jdbcTemplate.update("insert into lucky_money values(null,5,8000);");
+		jdbcTemplate.update("insert into lucky_money values(null,1,8000)");
+		jdbcTemplate.update("insert into lucky_money values(null,2,8000)");
+		jdbcTemplate.update("insert into lucky_money values(null,3,8000)");
+		jdbcTemplate.update("insert into lucky_money values(null,4,8000)");
+		jdbcTemplate.update("insert into lucky_money values(null,5,8000)");
 
 	}
 }
