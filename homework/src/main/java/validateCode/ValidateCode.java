@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class ValidateCode {
 	
-	public static List<String> ValicodePathAnswerTest(){
+	public static List<String> ValicodePathAnswer(){
 		
 		System.out.println("in ValicodePathAnswer");
 		File file = new File("g_pic");
