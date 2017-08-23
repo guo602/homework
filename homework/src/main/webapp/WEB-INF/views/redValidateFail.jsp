@@ -43,12 +43,17 @@ text-align:center;
 height:100%;
 margin:0;
 }
+.linear
+{
+background-image: linear-gradient(to top,#fff,#FF0000);
+height: 500px;
+}
 </style>
 <body>
-<div id="one" >
+<div id="one" class="linear">
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
-<div id="two">
+<div id="two" class="linear">
 <br>
 <br>
 <br>
@@ -65,7 +70,7 @@ margin:0;
 <br><br>
 <br><br><br><br><br><br><br>
 </div>
-<div id="three">
+<div id="three" class="linear">
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
 </body>
