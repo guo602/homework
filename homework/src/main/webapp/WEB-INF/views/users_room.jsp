@@ -74,7 +74,9 @@ pageEncoding="UTF-8"%>
 
 			//重sort节目
 			jmpm_ajax();
+			
 			bmpm_ajax();
+			bmjm_ajax();
 
 		}
         function changepro_name(e){
@@ -153,7 +155,7 @@ pageEncoding="UTF-8"%>
 					alert('error');
 				},
 				success : function(data) {
-					if(data==1){alert('打赏成功');jmpm_ajax();}
+					if(data==1){alert('打赏成功');jmpm_ajax();bmjm_ajax();}
 					else alert('可惜余额不足，空欢喜');
 				}
 			});
@@ -1068,7 +1070,7 @@ pageEncoding="UTF-8"%>
 										 <div class="polaroid" id="paypic4d">
 										  <img src="img/NK.jpg" alt="NK" style="width:96%" id="paypic4">
 										  <div class="container">
-										    <p>建行学子卡</p>
+										    <p>交行学子卡</p>
 										  </div>
 										</div>
 
@@ -1119,9 +1121,9 @@ pageEncoding="UTF-8"%>
 			<div class="modal-body">
 				
 				<div class="polaroid" >
-					 <img src="img/NK.jpg" alt="NKK" class="img-circle" style="width:40%" >
+					 <img src="img/NK.jpg" alt="NKK" class="img-circle" style="width:99%" >
                        <div class="container">
-						 <p>把钱装进带有椭圆加密的学子卡</p>
+						 <p>至我的的学子卡</p>
 					</div>
 					</div>
 			</div>

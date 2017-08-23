@@ -32,41 +32,41 @@ public class RedLoginController {
 	@Autowired  
 	  HttpServletRequest request;  
 	
-	@RequestMapping(value = "validateuser", method = RequestMethod.GET)
-	public String validateRed(Model model) {
-		
-		try {
-			request.setCharacterEncoding("UTF-8");
-	
-			String itcode=request.getParameter("itcode");
-			String name=request.getParameter("name");
-			String verify=request.getParameter("verify");
-		    System.out.println("itcode");
-			
-			
-			if(AlluserDAO.checkUserInfo(itcode,name,jdbcTemplate) && verify.equals("1234") )
-				{WalletDAO.InitWalletByItcode(itcode, jdbcTemplate);
-				
-				return "room";
-				}
-			
-			
-			else	return "redValidateFail";
-			
-			
-			
-			
-			
-			
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-			return "redValidateFail";
-			
-		}
-
-	}
+//	@RequestMapping(value = "validateuser", method = RequestMethod.GET)
+//	public String validateRed(Model model) {
+//		
+//		try {
+//			request.setCharacterEncoding("UTF-8");
+//	
+//			String itcode=request.getParameter("itcode");
+//			String name=request.getParameter("name");
+//			String verify=request.getParameter("verify");
+//		    System.out.println("itcode");
+//			
+//			
+//			if(AlluserDAO.checkUserInfo(itcode,name,jdbcTemplate) && verify.equals("1234") )
+//				{WalletDAO.InitWalletByItcode(itcode, jdbcTemplate);
+//				
+//				return "room";
+//				}
+//			
+//			
+//			else	return "redValidateFail";
+//			
+//			
+//			
+//			
+//			
+//			
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			
+//			return "redValidateFail";
+//			
+//		}
+//
+//	}
 	
 	
 
@@ -122,7 +122,7 @@ public class RedLoginController {
 	
 		
 		
-		if(AlluserDAO.checkUserInfo(itcode,name,jdbcTemplate) && verify.equals("1234") ) {
+		if(AlluserDAO.checkUserInfo(itcode,name,jdbcTemplate) && verify.equals(session.getAttribute("valicode") ) ) {
 			WalletDAO.InitWalletByItcode( itcode,jdbcTemplate);
 			
 			session.setAttribute("itcode", itcode);

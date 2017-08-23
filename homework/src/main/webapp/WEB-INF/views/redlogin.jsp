@@ -12,7 +12,7 @@
  <style type="text/css">
 body{
 
-background-size:100% 100%;
+background-size:100% 150%;
 };
 
 
@@ -25,7 +25,7 @@ background-size:100% 100%;
 
 
     $(document).ready(function() {
-       
+          changeValiCode();
          $("#myvalicode").click(function () {
                 
                   //ajax action
@@ -88,17 +88,17 @@ background-size:100% 100%;
       <input name= "name"  placeholder="名字长，头发短">
     </div>
     <div class="verify">
-      <label class="whitetext">验证码</label>
+      <label class="whitetext">验证码</label><br>
       <img  id="myvalicode" class="captcha" src="img/verify.png">
-      <input name="verify" type="text" placeholder="请输入右侧验证码">
-      <span class="help2">如验证码难以识别可点击验证码图片进行更换。</span>
+      <input name="verify" type="text" placeholder="请输入上方验证码的字母拼音">
+      <span class="help2">如验证码难以识别可点击验证码以更换。</span>
     </div>
     <div><button id="sub" type="submit" >我来也！</button></div>
      <br>
   </div>
   <div class="questionb" position:absolute>
-    有问题？
-    <a id="question" href='rlproblem'> 点击这里</a>
+    听说你很叼？
+    <a id="question" href="maopaoAd"  target="_blank"> 吾乃管理员</a>
   </div>
 </body>
 </form>
