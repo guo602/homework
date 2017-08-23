@@ -69,5 +69,24 @@ public class LuckyMoneyDAO {
 			return -1;
 		}
 	}
+	
+	public static int getRainningRoundByTotal(JdbcTemplate jdbcTemplate) {
+		int full_number=jdbcTemplate.queryForInt("select count(*) from lucky_money where total=8000;");
+		if(full_number==5)return 0;
+		
+		
+		try {
+			int i=jdbcTemplate.queryForInt("select max(round) from lucky_money where total<8000");
+			if(i>0) {
+				return i;
+			}
+			else {
+				return -1;
+			}
+			
+		}catch(Exception e) {
+			return -1;
+		}
+	}
 
 }

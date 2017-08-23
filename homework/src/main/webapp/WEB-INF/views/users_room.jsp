@@ -23,6 +23,10 @@ pageEncoding="UTF-8"%>
 	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/users_room.css">
+
+
+<!-- 	    <script src="js/redrain.js" ></script> -->
+
     <script type="text/javascript">
      	
      	var pagenum=1;
@@ -32,10 +36,53 @@ pageEncoding="UTF-8"%>
         // var ubalance;
         var reward_money_amount;
         var dept_name;
+        var isRainning=0;
+        var droppacketstimer;
      </script>
 	
+<script>
+    	
 
+function stoprain(){
 
+  clearInterval(droppacketstimer);
+
+}
+function rain(){
+
+  droppacketstimer=setInterval(function(){
+      dropmoney()
+    }, 177);
+	
+	setTimeout(stoprain,1000*4);
+}
+
+function disappear(){
+$(this).remove();
+ 
+}
+
+function dropmoney(){
+  var win_width = $(window).width();
+  for(var i = 0;i<17;i++){
+    var j = parseInt(Math.random()*win_width);
+    var j0 = parseInt(Math.random()*(win_width/2) - (win_width/4));
+    var n = parseInt(Math.random()*1000+(-1000));
+     var s0 = parseInt(Math.random()*$(window).height()/2);
+     var sX = parseInt((Math.random()-0.5)*$(window).height()*0.9);
+    var h = parseInt(Math.random()*50+40);
+    $('body').prepend('<div class="redmoney"><img   src="img/red/redgif/time1.gif"></div>');
+    $('body').children('div').eq(0).css({'left':j,'top':n});
+    $('body').children('div').children('img').eq(0).css({'width':h+'%','height':'auto'});
+    if(1){
+      $('body').children('div').eq(0).animate({'left':j+j0,'top':s0+sX,'width':'15%'},3000+parseInt(Math.random()*3000),function(){$(this).remove();});
+  
+    } else {
+      
+    }
+  }
+}
+     </script>
 <script>
     	
 		function on_search_dept_jm(){
@@ -305,6 +352,8 @@ pageEncoding="UTF-8"%>
 	    	refresh_content(pagenum,current);
 	    	show_balance();
 	    	check_open();
+	    	rain_listener_ajax();
+
 	    });
 </script>
 	
@@ -625,6 +674,28 @@ pageEncoding="UTF-8"%>
 	    //  	   });
 
      // }
+    function rain_listener_ajax(){
+    			$.ajax({   
+	        	url:'rain_listener_ajax',   
+	        	type:'get',
+	        	dataType:'html',      
+	        	error:function(){   
+	        		alert('error');   
+	        	},   
+	        	success:function(data){   
+	           		if(isRainning!=data){
+	           				rain();
+	           		}
+
+	           		isRainning=data;
+
+	     		} 
+	     	   });
+
+    			setTimeout(rain_listener_ajax,1000);
+
+    }
+
      function bmpm_ajax(){
 
      		$.ajax({   
@@ -662,7 +733,7 @@ pageEncoding="UTF-8"%>
 	        	type:'get',
 	        	dataType:'html', 
 	        	data : {
-					"dept_name" :dept_name
+					"dept_name" :dept_name 
 				},     
 	        	error:function(){   
 	        		alert('error');   
@@ -714,8 +785,12 @@ pageEncoding="UTF-8"%>
 
 	</head>
 	<body>
+			<!-- 	test -->
+		<div class="bg"></div>
+		<div class="bg bg2"></div>
+		<div class="bg bg3"></div>
+		<!-- test -->
 
-		
 
         <div class="alert alert-success alert-dismissable">
 				<button type="button" class="close" data-dismiss="alert"
