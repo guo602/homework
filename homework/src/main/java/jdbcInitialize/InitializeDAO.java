@@ -9,6 +9,7 @@ public class InitializeDAO
 {
 	public static void Initial(JdbcTemplate jdbcTemplate)
 	{
+		
 		jdbcTemplate.update("delete from admin_user");
 		jdbcTemplate.update("delete from all_user");
 		jdbcTemplate.update("delete from chat_history");
@@ -16,6 +17,7 @@ public class InitializeDAO
 		jdbcTemplate.update("delete from department");
 		jdbcTemplate.update("delete from lucky_money");
 		jdbcTemplate.update("delete from lucky_record");
+		jdbcTemplate.update("delete from pro_bonus");
 		jdbcTemplate.update("delete from program");
 		jdbcTemplate.update("delete from redpacket");
 		jdbcTemplate.update("delete from trade");
@@ -24,6 +26,7 @@ public class InitializeDAO
 		jdbcTemplate.update("delete from history_state");
 		
 		
+		jdbcTemplate.update("insert into admin_user  values(null,'00001','路人甲','4QrcOUm6Wau+VuBX8g+IPg==');");
 		jdbcTemplate.update("insert into all_user  values(null,'12121','Bill')");
 		jdbcTemplate.update("insert into all_user  values(null,'2333','zheng')");
 		jdbcTemplate.update("insert into all_user  values(null,'6666','chen')");
@@ -54,5 +57,33 @@ public class InitializeDAO
 		jdbcTemplate.update("insert into program values(null,'老于','相声','2017-08-08 19:00:00',5)");
 		jdbcTemplate.update("insert into program values(null,'老马','逗你玩','2017-08-08 19:00:00',5)");
 		jdbcTemplate.update("insert into program values(null,'小李','大石碎胸口','2017-08-08 19:00:00',5)");
+		jdbcTemplate.update("insert into redpacket values(100,20000,0,10);");
+
+		jdbcTemplate.update("insert into redpacket values(200,20000,0,10);");
+
+		jdbcTemplate.update("insert into redpacket values(300,20000,0,10);");
+
+		jdbcTemplate.update("insert into pro_bonus values(1,0)");
+		jdbcTemplate.update("insert into pro_bonus values(2,0);");
+		jdbcTemplate.update("insert into pro_bonus values(3,0);");
+		jdbcTemplate.update("insert into pro_bonus values(4,0);");
+		jdbcTemplate.update("insert into pro_bonus values(5,0);");
+		jdbcTemplate.update("insert into pro_bonus values(6,0);");
+		jdbcTemplate.update("insert into pro_bonus values(7,0);");
+		jdbcTemplate.update("insert into pro_bonus values(8,0);");
+		jdbcTemplate.update("insert into pro_bonus values(9,0);");
+		jdbcTemplate.update("insert into pro_bonus values(10,0);");
+		jdbcTemplate.update("insert into pro_bonus values(11,0);");
+		jdbcTemplate.update("insert into pro_bonus values(12,0);");
+
+		jdbcTemplate.update("insert into lucky_money values(null,1,8000);");
+
+		jdbcTemplate.update("insert into lucky_money values(null,2,8000);");
+
+		jdbcTemplate.update("insert into lucky_money values(null,3,8000);");
+		jdbcTemplate.update("insert into lucky_money values(null,4,8000);");
+
+		jdbcTemplate.update("insert into lucky_money values(null,5,8000);");
+
 	}
 }
