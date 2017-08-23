@@ -16,11 +16,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.red.program.dao.AlluserDAO;
 import com.red.program.dao.BonusDAO;
 import com.red.program.dao.ChatHistoryDAO;
 import com.red.program.dao.DepartmentDAO;
+import com.red.program.dao.LuckyMoneyDAO;
 import com.red.program.dao.LuckyRecordDAO;
 import com.red.program.dao.ProgramDAO;
 import com.red.program.dao.TradeDAO;
@@ -710,6 +712,26 @@ public class UroomController {
 		return "dept_rank";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "rain_listener_ajax", method = RequestMethod.GET)
+	public String RainListener( Model model ) {
+		
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();return "0";
+		}
+	 
+		System.out.println(" rain_listener access suc");
+		
+		 String result=LuckyMoneyDAO.getRainningRoundByTotal(jdbcTemplate)+"";
+
+		 return result;
+		 
+	
+	
+	}
 	
 	
 }
