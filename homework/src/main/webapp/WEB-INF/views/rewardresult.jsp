@@ -38,6 +38,9 @@
 			form2.submit();
 		}
 	}
+	function upload() {
+		form4.submit();
+	}
 </script>
 </head>
 
@@ -181,7 +184,6 @@
 									</div>
 								</div>
 								<div class="row clearfix">
-
 									<div class="col-md-12 column">
 										<button class="btn btn-primary btn-lg" data-toggle="modal"
 											data-target="#findb">条件搜索</button>
@@ -327,8 +329,20 @@
 									</div>
 								</div>
 								<div class="row clearfix">
-									<div class="col-md-12 column"></div>
+									<div class="col-md-12 column">
+									   <form id="form4" name="form4" action="exportreward"></form>
+										<button type="button" class="btn btn-primary btn-lg"
+											onclick="upload()">一键导出</button>
+									
+									</div>
 								</div>
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<img src="img/fenge.png" width="100px" />
+									</div>
+								</div>
+								
+
 							</div>
 						</div>
 					</div>

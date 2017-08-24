@@ -110,16 +110,15 @@ public class RewardController {
 			String endhour, String endmin, String page, Model model) {
 		String result = new String();
 		List<Trade> trades = null;
+		
 		String begtime = "2017-08-08 " + beghour + ":" + begmin + ":00";
 		String endtime = "2017-08-08 " + endhour + ":" + endmin + ":00";
+		System.out.println(begtime);
+		System.out.println(endtime);
+		System.out.println(itcode);
+		System.out.println(begtime);
 		int min = Integer.parseInt(minvol);
 		int max = Integer.parseInt(maxvol);
-		Wallet wallet=WalletDAO.getWalletByItcode(itcode, jdbcTemplate);
-		System.out.println(wallet.getWid());
-		System.out.println(begtime);
-		System.out.println(begtime);
-		System.out.println(min);
-		System.out.println(max);
 		if (itcode != "") {
 			trades = TradeDAO.getRewardByIt_Time_Volumn(itcode, begtime, endtime, min, max, jdbcTemplate);
 		} else {
@@ -192,10 +191,12 @@ public class RewardController {
 				} else {
 					result = "当前条件下无记录";
 					sign = "ok";
+					trades = TradeDAO.getAllRecharge(jdbcTemplate);
 				}
 			} else {
 				result = "查询失败";
 				sign = "no";
+				trades = TradeDAO.getAllRecharge(jdbcTemplate);
 			}
 		} else {
 			trades = TradeDAO.getAllReward(jdbcTemplate);
