@@ -5,7 +5,8 @@
 
 <head>
 <title>提现</title>
-<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css"><script src="js/jquery-3.2.1.min.js">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/jquery-3.2.1.min.js">
    </script>
    <script src="js/jquery-3.2.1.min.js">
    </script>

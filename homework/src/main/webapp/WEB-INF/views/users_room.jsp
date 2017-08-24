@@ -10,18 +10,14 @@ pageEncoding="UTF-8"%>
 	<title>帅郭们滴room</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link href="css/bootstrap-grid.scss" rel="stylesheet">
 	
-	<link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap-grid.css" rel="stylesheet">
-	
-	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 
-	<script src="js/jquery-3.2.1.min.js" ></script>
-	<!--<script src="js/bootstrap.min.js"></script>-->
-	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
-	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+	
 	<link rel="stylesheet" type="text/css" href="css/users_room.css">
 
 
