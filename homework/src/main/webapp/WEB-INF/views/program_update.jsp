@@ -212,21 +212,21 @@
 									<div class="col-md-12 column">
 
 										<ul class="pagination">
-											<li><a href="<c:url value="/program?page=1"/>">首页</a></li>
+											<li><a href="<c:url value="/program_edit?page=1"/>">首页</a></li>
 											<li><a
-												href="<c:url value="/program?page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
+												href="<c:url value="/program_edit?page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
 
 											<c:forEach begin="1" end="${totalPages}" varStatus="loop">
 												<c:set var="active" value="${loop.index==page?'active':''}" />
 												<li class="${active}"><a
-													href="<c:url value="/program?page=${loop.index}"/>">${loop.index}</a>
+													href="<c:url value="/program_edit?page=${loop.index}"/>">${loop.index}</a>
 												</li>
 											</c:forEach>
 											<li><a
-												href="<c:url value="/program?page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
+												href="<c:url value="/program_edit?page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
 											</li>
 											<li><a
-												href="<c:url value="/program?page=${totalPages}"/>">尾页</a></li>
+												href="<c:url value="/program_edit?page=${totalPages}"/>">尾页</a></li>
 										</ul>
 
 									</div>

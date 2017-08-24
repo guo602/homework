@@ -325,7 +325,7 @@ public class ProgramController {// 节目单管理
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("page", page);
 		model.addAttribute("size", programs.size());
-		programs = ProgramDAO.getProgramByPage(beginIndex, endIndex, jdbcTemplate);
+		programs = programs.subList(beginIndex, endIndex);
 		model.addAttribute("list", programs);
 		return "program_update";
 	}
