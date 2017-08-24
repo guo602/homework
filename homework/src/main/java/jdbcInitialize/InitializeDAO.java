@@ -53,17 +53,17 @@ public class InitializeDAO
 		jdbcTemplate.update("insert into department values(4,'人力资源部',0)");
 		jdbcTemplate.update("insert into department values(5,'公关部',0)");
 		jdbcTemplate.update("insert into program values(null,'炮哥','风云进行时','2017-08-08 19:00:00',1)");
-		jdbcTemplate.update("insert into program values(null,'角哥','祈雨','2017-08-08 19:00:00',1)");
-		jdbcTemplate.update("insert into program values(null,'市场小组','保卫黄河','2017-08-08 19:00:00',2)");
-		jdbcTemplate.update("insert into program values(null,'Tomcat','口吐莲花','2017-08-08 19:00:00',2)");
-		jdbcTemplate.update("insert into program values(null,'老蒋','谈笑风生','2017-08-08 19:00:00',2)");
-		jdbcTemplate.update("insert into program values(null,'甘道夫','乌鸦坐飞机','2017-08-08 19:00:00',3)");
-		jdbcTemplate.update("insert into program values(null,'世博','护理润东','2017-08-08 19:00:00',3)");
-		jdbcTemplate.update("insert into program values(null,'小雪','Jar of love','2017-08-08 19:00:00',4)");
-		jdbcTemplate.update("insert into program values(null,'小雪','小幸运','2017-08-08 19:00:00',4)");
-		jdbcTemplate.update("insert into program values(null,'老于','相声','2017-08-08 19:00:00',5)");
-		jdbcTemplate.update("insert into program values(null,'老马','逗你玩','2017-08-08 19:00:00',5)");
-		jdbcTemplate.update("insert into program values(null,'小李','大石碎胸口','2017-08-08 19:00:00',5)");
+		jdbcTemplate.update("insert into program values(null,'角哥','祈雨','2017-08-08 19:10:00',1)");
+		jdbcTemplate.update("insert into program values(null,'市场小组','保卫黄河','2017-08-08 19:20:00',2)");
+		jdbcTemplate.update("insert into program values(null,'Tomcat','口吐莲花','2017-08-08 19:30:00',2)");
+		jdbcTemplate.update("insert into program values(null,'老蒋','谈笑风生','2017-08-08 19:40:00',2)");
+		jdbcTemplate.update("insert into program values(null,'甘道夫','乌鸦坐飞机','2017-08-08 19:50:00',3)");
+		jdbcTemplate.update("insert into program values(null,'世博','护理润东','2017-08-08 20:00:00',3)");
+		jdbcTemplate.update("insert into program values(null,'小雪','Jar of love','2017-08-08 20:10:00',4)");
+		jdbcTemplate.update("insert into program values(null,'小雪','小幸运','2017-08-08 20:20:00',4)");
+		jdbcTemplate.update("insert into program values(null,'老于','相声','2017-08-08 20:30:00',5)");
+		jdbcTemplate.update("insert into program values(null,'老马','逗你玩','2017-08-08 20:40:00',5)");
+		jdbcTemplate.update("insert into program values(null,'小李','大石碎胸口','2017-08-08 20:50:00',5)");
 		jdbcTemplate.update("insert into redpacket values(100,20000,0,10);");
 
 		jdbcTemplate.update("insert into redpacket values(200,20000,0,10);");
