@@ -194,7 +194,7 @@
 															<div class="form-group">
 																<label for="itcode">请选择红包雨</label><input type="radio" 
 																	name="round" id="round" value="1"
-																	style="width: 1000%; display: inline;" />第一轮红包雨
+																	style="width: 100%; display: inline;" />第一轮红包雨
 																<input type="radio" 
 																	name="round" id="round" value="2"
 																	style="width: 100%; display: inline;" />第二轮红包雨
