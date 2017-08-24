@@ -321,4 +321,14 @@ public class AdminController {
 		return "traderecord";
 	}
 
+	/**
+	 * 跳转到年会界面
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("goBackToChat")
+	public String goBackToChat(Model model) {
+		return "redlogin";
+	}
 }

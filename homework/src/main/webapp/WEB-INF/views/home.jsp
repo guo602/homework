@@ -62,14 +62,18 @@
 		<div class="row clearfix">
 			<div class="col-md-12 column">
 				<div class="row clearfix">
-					<div class="col-md-4 column"></div>
+					<div class="col-md-4 column">
+						<img alt="140x140" src="img/logo.png" class="img-rounded"
+							width="250" height="70" />
+					</div>
 					<div class="col-md-5 column"></div>
 					<div class="col-md-3 column">
-						<a class="bar" href="traderecord"><button type="button"
+						<!-- 						<a class="bar" href="traderecord"><button type="button"
 								class="btn btn-default">链接</button></a>
-
+ -->
 						<div class="row clearfix">
 							<div class="col-md-12 column">
+								<br>
 								<button class="btn btn-primary" data-toggle="modal"
 									data-target="#newadmin" id="adminbut">管理员登录</button>
 								<div style="color: blue">${result}</div>
@@ -78,14 +82,14 @@
 									role="dialog" aria-labelledby="newModalLabel"
 									aria-hidden="true">
 									<div class="modal-dialog">
-										<div class="modal-content">
+										<div class="modal-content"  style="width:50%">
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal"
 													aria-hidden="true">×</button>
 												<h4 class="modal-title" id="newModalLabel">管理员身份确认</h4>
 											</div>
 											<div class="modal-body">
-												<form name="form1" id="form1" action="adminlogin">
+												<!--											<form name="form1" id="form1" action="adminlogin">
 													<table>
 														<tr>
 															<td>管理员工号</td>
@@ -105,7 +109,27 @@
 														</tr>
 													</table>
 												</form>
+-->
+												<form role="form" name="form1" id="form1"
+													action="adminlogin">
+													<div class="form-group">
+														<label for="itcode">管理员工号</label><input
+															class="form-control" name="itcode" id="itcode" />
+														<div id="new1" style="color: #FF0000"></div>
+													</div>
+													<div class="form-group">
+														<label for="name">管理员姓名</label><input class="form-control"
+															name="name" id="name" />
+														<div id="new2" style="color: #FF0000"></div>
+													</div>
+													<div class="form-group">
+														<label for="password">密码</label><input type="password"
+															class="form-control" name="password" id="password" />
+														<div id="newp" style="color: #FF0000"></div>
+													</div>
+												</form>
 											</div>
+
 											<div class="modal-footer">
 												<button type="button" class="btn btn-default"
 													data-dismiss="modal">关闭</button>
@@ -139,7 +163,7 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="item active">
-							<img alt="" src="img/ppt1.png" class="img-rounded" />
+							<img alt="" src="img/ppt3.gif" class="img-rounded" />
 							<div class="carousel-caption">
 								<h4>First</h4>
 								<p></p>
@@ -153,7 +177,7 @@
 							</div>
 						</div>
 						<div class="item">
-							<img alt="" src="img/ppt3.gif" class="img-rounded" style="" />
+							<img alt="" src="img/ppt1.png" class="img-rounded" style="" />
 							<div class="carousel-caption">
 								<h4>Third</h4>
 								<p></p>
@@ -168,6 +192,25 @@
 					data-slide="next"><span
 					class="glyphicon glyphicon-chevron-right"></span></a>
 			</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<hr />
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-1 column"></div>
+				<div class="col-md-1 column"></div>
+				<div class="col-md-1 column"></div>
+				<div class="col-md-1 column"></div>
+				<div class="col-md-1 column">WCY</div>
+				<div class="col-md-1 column">WYZ</div>
+				<div class="col-md-1 column">GY</div>
+				<div class="col-md-1 column">ZYQ</div>
+				<div class="col-md-1 column"></div>
+				<div class="col-md-1 column"></div>
+				<div class="col-md-1 column"></div>
+				<div class="col-md-1 column"></div>
+			</div>
 		</div>
 	</div>
 
@@ -177,7 +220,8 @@
 
 
 
-
-<a href="initial">初始化数据库</a>
+	<!-- 
+	<a href="initial">初始化数据库</a>
+ -->
 </body>
 </html>

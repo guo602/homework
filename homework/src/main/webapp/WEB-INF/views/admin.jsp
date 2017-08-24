@@ -12,13 +12,15 @@
 <script src="js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/admin.css">
-
 <body>
 
+
+	<!-- 
 	<div>
 	<a class="bar" href="program_3"><button type="button" class="btn btn-default">节目修改</button></a>
 	</div>
-	
+ -->
+
 	<!--  <div class="blockdis">
 	  <div class="col-xs-8">
 	     <img alt="网络可能炸了" src="img/jammy.jpg" class="img-circle midimg">
@@ -31,6 +33,14 @@
 	<!-- 标题栏-->
 	<div style="background: url(img/bluebeijing.jpg)">
 		<div class="container">
+			<div class="row clearfix">
+				<div class="col-md-4 column">
+					<img alt="140x140" src="img/logo.png" class="img-rounded"
+						style="width:250px;height:70px;text-align:left;" />
+				</div>
+				<div class="col-md-8 column">
+				</div>
+			</div>
 			<div class="row clearfix">
 				<div class="col-lg-12">
 					<ul class="nav nav-pills nav-justified bar">
@@ -62,7 +72,7 @@
 						<li><a class="bar" href="luckyrecord">红包记录</a></li>
 						<li><a class="bar" href="rewardrecord">打赏记录</a></li>
 						<li><a class="bar" href="traderecord">充值记录</a></li>
-						<li><a class="bar" href="user">返回年会</a></li>
+						<li><a class="bar" href="goBackToChat">返回年会</a></li>
 
 
 					</ul>
@@ -75,7 +85,7 @@
 						</div>
 					</div>
 					<!--幻灯片-->
-					<div class="carousel slide" id="carousel-712824">
+					<!-- 					<div class="carousel slide" id="carousel-712824">
 						<ol class="carousel-indicators">
 							<li class="active" data-slide-to="0"
 								data-target="#carousel-712824"></li>
@@ -112,18 +122,19 @@
 							data-slide="next"><span
 							class="glyphicon glyphicon-chevron-right"></span></a>
 					</div>
+ -->
 
 					<!--标题栏-->
 					<div class="row clearfix">
 						<div class="col-md-12 column">
-							<div class="row clearfix">
+<!-- 						<div class="row clearfix">
 								<div class="col-md-3 column"></div>
 								<div class="col-md-6 column">
 									<img alt="140x140" src="img/title1.png" />
 								</div>
-
 								<div class="col-md-3 column"></div>
 							</div>
+-->
 							<div class="row clearfix">
 								<div class="col-md-4 column">
 									<a href="program_1"> <img alt="140x140"
@@ -149,13 +160,14 @@
 								</div>
 							</div>
 
-							<div class="row clearfix">
+<!-- 						<div class="row clearfix">
 								<div class="col-md-3 column"></div>
 								<div class="col-md-6 column">
 									<img alt="140x140" src="img/title2.png" />
 								</div>
 								<div class="col-md-3 column"></div>
 							</div>
+ -->
 							<div class="row clearfix">
 								<div class="col-md-4 column">
 									<a href="comment"> <img alt="140x140"
@@ -183,13 +195,14 @@
 								</div>
 							</div>
 
-							<div class="row clearfix">
+<!-- 						<div class="row clearfix">
 								<div class="col-md-3 column"></div>
 								<div class="col-md-6 column">
 									<img alt="140x140" src="img/title3.png" />
 								</div>
 								<div class="col-md-3 column"></div>
 							</div>
+							 -->
 							<div class="row clearfix">
 								<div class="col-md-4 column">
 									<a href="luckyrecord"> <img alt="140x140"

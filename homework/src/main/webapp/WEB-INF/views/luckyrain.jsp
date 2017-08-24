@@ -37,12 +37,12 @@ function closelucky(){
 			<div class="col-md-12 column">
 				<div class="row clearfix">
 					<div class="col-md-4 column">
-						<img alt="140x140" src="img/sss.img" class="smaimg img-rounded " />
+						<img alt="140x140" src="img/logo.png" class="img-rounded" width="250" height="70"/>
 					</div>
 					<div class="col-md-6 column">
 						<div>
 							<h3>
-								Example page header <small>Subtext for header</small>
+								认真看节目的人有奖励哦
 							</h3>
 						</div>
 					</div>
@@ -77,7 +77,7 @@ function closelucky(){
 					<li><a class="bar" href="luckyrecord">红包记录</a></li>
 					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
 					<li><a class="bar" href="rechargerecord">充值记录</a></li>
-					<li><a class="bar" href="user">返回年会</a></li>
+					<li><a class="bar" href="goBackToChat">返回年会</a></li>
 
 
 				</ul>

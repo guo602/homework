@@ -47,13 +47,12 @@
 			<div class="col-md-12 column">
 				<div class="row clearfix">
 					<div class="col-md-4 column">
-						<img alt="140x140" src="img/sss.img" class="smaimg img-rounded " />
+						<img alt="140x140" src="img/logo.png" class="img-rounded"
+							width="250" height="70" />
 					</div>
 					<div class="col-md-6 column">
 						<div>
-							<h3>
-								Example page header <small>Subtext for header</small>
-							</h3>
+							<h3>多充值可以跻身尊贵会员呢</h3>
 						</div>
 					</div>
 					<div class="col-md-2 column"></div>
@@ -87,7 +86,7 @@
 					<li><a class="bar" href="luckyrecord">红包记录</a></li>
 					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
 					<li><a class="bar" href="rechargerecord">充值记录</a></li>
-					<li><a class="bar" href="user">返回年会</a></li>
+					<li><a class="bar" href="goBackToChat">返回年会</a></li>
 
 
 				</ul>
@@ -199,89 +198,91 @@
 														<h4 class="modal-title" id="newModalLabel">充值记录搜索</h4>
 													</div>
 													<div class="modal-body" style="text-align: center;">
-														<form id="form2" name="form2" action="rechargeresult">
-															<table cellpadding="10" width="30%">
-																<tr>
-																	<td>用户编号</td>
-																	<td><input name="itcode" id="itcode"
-																		style="width: 80px"></td>
-																	<td><div id="textit" style="color: #FF0000"></div></td>
-																</tr>
-																<tr>
-																	<td>充值金额</td>
-																	<td><select id="minvol" name="minvol">
-																			<option value="0" selected="selected">0元</option>
-																			<option value="500">5元</option>
-																			<option value="1000">10元</option>
-																			<option value="2000">20元</option>
-																			<option value="5000">50元</option>
-																			<option value="10000">100元</option>
-																			<option value="20000">200元</option>
-																			<option value="50000">500元</option>
-																			<option value="100000">1000元</option>
-																			<option value="200000">2000元</option>
-																	</select></td>
-																	<td>至</td>
-																	<td><select id="maxvol" name="maxvol">
-																			<option value="500">5元</option>
-																			<option value="1000">10元</option>
-																			<option value="2000">20元</option>
-																			<option value="5000">50元</option>
-																			<option value="10000">100元</option>
-																			<option value="20000">200元</option>
-																			<option value="50000">500元</option>
-																			<option value="100000">1000元</option>
-																			<option value="200000" selected="selected">2000元</option>
-																	</select></td>
-																	<td><div id="money" style="color: red"></div></td>
-																</tr>
-																<tr>
-																	<td>充值时间</td>
-																	<td><select id="beghour" name="beghour">
-																			<option value="19" selected="selected">19</option>
-																			<option value="20">20</option>
-																			<option value="21">21</option>
-																			<option value="22">22</option>
-																			<option value="23">23</option>
-																	</select> <select id="begmin" name="begmin">
-																			<option value="00" selected="selected">00</option>
-																			<option value="05">05</option>
-																			<option value="10">10</option>
-																			<option value="15">15</option>
-																			<option value="20">20</option>
-																			<option value="25">25</option>
-																			<option value="30">30</option>
-																			<option value="35">35</option>
-																			<option value="40">40</option>
-																			<option value="45">45</option>
-																			<option value="50">50</option>
-																			<option value="55">55</option>
-																	</select></td>
-																	<td>&nbsp;&nbsp;&nbsp;至&nbsp;&nbsp;&nbsp;</td>
-																	<td><select id="endhour" name="endhour">
-																			<option value="19">19</option>
-																			<option value="20">20</option>
-																			<option value="21">21</option>
-																			<option value="22">22</option>
-																			<option value="23">23</option>
-																			<option value="24" selected="selected">24</option>
-																	</select> <select id="endmin" name="endmin">
-																			<option value="00" selected="selected">00</option>
-																			<option value="05">05</option>
-																			<option value="10">10</option>
-																			<option value="15">15</option>
-																			<option value="20">20</option>
-																			<option value="25">25</option>
-																			<option value="30">30</option>
-																			<option value="35">35</option>
-																			<option value="40">40</option>
-																			<option value="45">45</option>
-																			<option value="50">50</option>
-																			<option value="55">55</option>
-																	</select></td>
-																	<td><div id="time" style="color: red"></div></td>
-																</tr>
-															</table>
+														<form role="form" name="form2" id="form2"
+															action="rechargeresult">
+															<div class="form-group">
+																<label for="itcode">用户编号</label><input
+																	class="form-control" id="itcode" name="itcode"
+																	style="width: 30%; display: inline;" />
+																<div id="textit" style="color: #FF0000"></div>
+															</div>
+															<div class="form-group">
+																<label for="minvol">充值金额</label><select id="minvol"
+																	name="minvol" class="form-control"
+																	style="width: 20%; display: inline;">
+																	<option value="0" selected="selected">0元</option>
+																	<option value="500">5元</option>
+																	<option value="1000">10元</option>
+																	<option value="2000">20元</option>
+																	<option value="5000">50元</option>
+																	<option value="10000">100元</option>
+																	<option value="20000">200元</option>
+																	<option value="50000">500元</option>
+																	<option value="100000">1000元</option>
+																	<option value="200000">2000元</option>
+																</select> 至 <select id="maxvol" name="maxvol"
+																	class="form-control"
+																	style="width: 20%; display: inline;">
+																	<option value="500">5元</option>
+																	<option value="1000">10元</option>
+																	<option value="2000">20元</option>
+																	<option value="5000">50元</option>
+																	<option value="10000">100元</option>
+																	<option value="20000">200元</option>
+																	<option value="50000">500元</option>
+																	<option value="100000">1000元</option>
+																	<option value="200000" selected="selected">2000元</option>
+																</select>
+																<div id="money" style="color: red"></div>
+															</div>
+															<div class="form-group">
+																<label for="beghour">充值时间</label><select id="beghour"
+																	name="beghour" class="form-control"
+																	style="width: 15%; display: inline;">
+																	<option value="19" selected="selected">19</option>
+																	<option value="20">20</option>
+																	<option value="21">21</option>
+																	<option value="22">22</option>
+																	<option value="23">23</option>
+																</select> <select id="begmin" name="begmin" class="form-control"
+																	style="width: 15%; display: inline;">
+																	<option value="00" selected="selected">00</option>
+																	<option value="05">05</option>
+																	<option value="10">10</option>
+																	<option value="15">15</option>
+																	<option value="20">20</option>
+																	<option value="25">25</option>
+																	<option value="30">30</option>
+																	<option value="35">35</option>
+																	<option value="40">40</option>
+																	<option value="45">45</option>
+																	<option value="50">50</option>
+																	<option value="55">55</option>
+																</select>至 <select id="endhour" name="endhour"
+																 class="form-control" style="width: 15%; display: inline;">
+																	<option value="19">19</option>
+																	<option value="20">20</option>
+																	<option value="21">21</option>
+																	<option value="22">22</option>
+																	<option value="23">23</option>
+																	<option value="24" selected="selected">24</option>
+																</select> <select id="endmin" name="endmin"
+																 class="form-control" style="width: 15%; display: inline;">
+																	<option value="00" selected="selected">00</option>
+																	<option value="05">05</option>
+																	<option value="10">10</option>
+																	<option value="15">15</option>
+																	<option value="20">20</option>
+																	<option value="25">25</option>
+																	<option value="30">30</option>
+																	<option value="35">35</option>
+																	<option value="40">40</option>
+																	<option value="45">45</option>
+																	<option value="50">50</option>
+																	<option value="55">55</option>
+																</select>
+																<div id="time" style="color: red"></div>
+															</div>
 														</form>
 													</div>
 													<div class="modal-footer">

@@ -122,6 +122,18 @@
 			return false;
 		}
 	}
+	function show_confirm()//初始化确认框
+	{
+	var r=confirm("此操作有风险，是否确定初始化数据库？");
+	if (r==true)
+	  {
+	  alert("初始化成功!");
+	  }
+	else
+	  {
+	  alert("操作取消!");
+	  }
+	}
 </script>
 </head>
 <body>
@@ -130,12 +142,12 @@
 			<div class="col-md-12 column">
 				<div class="row clearfix">
 					<div class="col-md-4 column">
-						<img alt="140x140" src="img/sss.img" class="smaimg img-rounded " />
+						<img alt="140x140" src="img/logo.png" class="img-rounded" width="250" height="70"/>
 					</div>
 					<div class="col-md-6 column">
 						<div>
 							<h3>
-								Example page header <small>Subtext for header</small>
+								听说不乖的用户会被打屁股
 							</h3>
 						</div>
 					</div>
@@ -170,7 +182,7 @@
 					<li><a class="bar" href="luckyrecord">红包记录</a></li>
 					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
 					<li><a class="bar" href="rechargerecord">充值记录</a></li>
-					<li><a class="bar" href="user">返回年会</a></li>
+					<li><a class="bar" href="goBackToChat">返回年会</a></li>
 
 
 				</ul>
@@ -192,7 +204,7 @@
 								<h3>准备活动</h3>
 							</div>
 							<div class="panel-heading">
-								<a class="bigger" href="program">节目单 </a>
+								<a class="bigger" href="program_insert">节目单 </a>
 							</div>
 							<div class="panel-footer">
 								<a class="bigger" href="">用户管理 </a>
@@ -412,6 +424,16 @@
 										<!-- /.modal -->
 
 									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<img src="img/fenge.png" width="135px" />
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-md-12 column">
+										<a href="initial"><button class="btn btn-primary btn-lg" onclick="show_confirm()">数据库初始化</button></a>
+										<div style="color: blue">${result2}</div>
 								</div>
 							</div>
 						</div>

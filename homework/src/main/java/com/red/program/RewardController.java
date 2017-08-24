@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.red.program.dao.BonusDAO;
 import com.red.program.dao.ProgramDAO;
 import com.red.program.dao.TradeDAO;
-
+import com.red.program.dao.WalletDAO;
 import com.red.program.model.Program;
 import com.red.program.model.Trade;
+import com.red.program.model.Wallet;
 
 @Controller
 public class RewardController {
@@ -53,7 +54,9 @@ public class RewardController {
 				}
 			} else {
 				int isopen = BonusDAO.Isopen(p, jdbcTemplate);
+				System.out.println("pid"+pid);
 				Program pro = ProgramDAO.getProgramByPid(p, jdbcTemplate);
+				System.out.println("pro"+pro.getPro_name());
 				String name = pro.getPro_name();
 				System.out.println(isopen);
 				if (isopen == 1) {
@@ -111,6 +114,12 @@ public class RewardController {
 		String endtime = "2017-08-08 " + endhour + ":" + endmin + ":00";
 		int min = Integer.parseInt(minvol);
 		int max = Integer.parseInt(maxvol);
+		Wallet wallet=WalletDAO.getWalletByItcode(itcode, jdbcTemplate);
+		System.out.println(wallet.getWid());
+		System.out.println(begtime);
+		System.out.println(begtime);
+		System.out.println(min);
+		System.out.println(max);
 		if (itcode != "") {
 			trades = TradeDAO.getRewardByIt_Time_Volumn(itcode, begtime, endtime, min, max, jdbcTemplate);
 		} else {
@@ -122,12 +131,14 @@ public class RewardController {
 				result = "查询成功";
 				sign = "ok";
 			} else {
+				trades=TradeDAO.getAllReward(jdbcTemplate);
 				result = "当前条件下无记录";
 				sign = "ok";
 			}
 		} else {
 			result = "查询失败";
 			sign = "no";
+			trades=TradeDAO.getAllReward(jdbcTemplate);
 		}
 		int pa;
 		try {

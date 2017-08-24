@@ -50,13 +50,12 @@
 			<div class="col-md-12 column">
 				<div class="row clearfix">
 					<div class="col-md-4 column">
-						<img alt="140x140" src="img/sss.img" class="smaimg img-rounded " />
+						<img alt="140x140" src="img/logo.png" class="img-rounded"
+							width="250" height="70" />
 					</div>
 					<div class="col-md-6 column">
 						<div>
-							<h3>
-								Example page header <small>Subtext for header</small>
-							</h3>
+							<h3>不乱说话也是一种美德来着</h3>
 						</div>
 					</div>
 					<div class="col-md-2 column"></div>
@@ -90,7 +89,7 @@
 					<li><a class="bar" href="luckyrecord">红包记录</a></li>
 					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
 					<li><a class="bar" href="rechargerecord">充值记录</a></li>
-					<li><a class="bar" href="user">返回年会</a></li>
+					<li><a class="bar" href="goBackToChat">返回年会</a></li>
 
 
 				</ul>
@@ -118,9 +117,12 @@
 								<a class="bigger" href="">评论区管理</a>
 							</div>
 							<ul class="list-group">
-								<li class="list-group-item"><a class="bigger" href="comment">查找评论记录</a></li>
-								<li class="list-group-item"><a class="bigger" href="comment">禁言用户</a></li>
-								<li class="list-group-item"><a class="bigger" href="comment">删除评论</a></li>
+								<li class="list-group-item"><a class="bigger"
+									href="comment">查找评论记录</a></li>
+								<li class="list-group-item"><a class="bigger"
+									href="comment">禁言用户</a></li>
+								<li class="list-group-item"><a class="bigger"
+									href="comment">删除评论</a></li>
 							</ul>
 							<div class="panel-heading">
 								<a class="bigger" href="reward">开启节目打赏 </a>
@@ -153,9 +155,9 @@
 															<td><c:out value="${s.getUid()}" /></td>
 															<td><c:out value="${s.getWord()}" /></td>
 															<td><c:out value="${s.getHistorytime()}" /></td>
-															<td><input type="checkbox" name="delete" id="delete" 
+															<td><input type="checkbox" name="delete" id="delete"
 																value="${s.getHid()}">删除</td>
-															<td><input type="checkbox" name="lock" id="lock" 
+															<td><input type="checkbox" name="lock" id="lock"
 																value="${s.getUid()}">禁言</td>
 														</tr>
 
@@ -165,26 +167,28 @@
 										</form>
 									</div>
 									<div class="row clearfix">
-									<div class="col-md-12 column">
-										<ul class="pagination">
-											<li><a href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=1"/>">首页</a></li>
-											<li><a
-												href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
+										<div class="col-md-12 column">
+											<ul class="pagination">
+												<li><a
+													href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=1"/>">首页</a></li>
+												<li><a
+													href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=${page-1>1?page-1:1}"/>">&laquo;</a></li>
 
-											<c:forEach begin="1" end="${totalPages}" varStatus="loop">
-												<c:set var="active" value="${loop.index==page?'active':''}" />
-												<li class="${active}"><a
-													href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=${loop.index}"/>">${loop.index}</a>
+												<c:forEach begin="1" end="${totalPages}" varStatus="loop">
+													<c:set var="active" value="${loop.index==page?'active':''}" />
+													<li class="${active}"><a
+														href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=${loop.index}"/>">${loop.index}</a>
+													</li>
+												</c:forEach>
+												<li><a
+													href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
 												</li>
-											</c:forEach>
-											<li><a
-												href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=${page+1<totalPages?page+1:totalPages}"/>">&raquo;</a>
-											</li>
-											<li><a href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=${totalPages}"/>">尾页</a></li>
-										</ul>
-		
+												<li><a
+													href="<c:url value="/findlist?itcode=${itcode}&keyword=${keyword}&beghour=${beghour}&begmin=${begmin}&endhour=${endhour}&endmin=${endmin}&number=${number}&page=${totalPages}"/>">尾页</a></li>
+											</ul>
+
+										</div>
 									</div>
-								</div>
 								</div>
 							</div>
 							<div class="col-md-2 column">
@@ -212,140 +216,138 @@
 														<h4 class="modal-title" id="newModalLabel">查找评论记录</h4>
 													</div>
 													<div class="modal-body">
-														<form name="form1" id="form1" action="findlist">
-															<h3>搜索评论区历史记录</h3>
-															<table>
-																<tr>
-																	<td>请输入用户编号</td>
-																	<td><input name="itcode" id="itcode"
-																		style="width: 150px"></td>
-																	<td><div id="textit" style="color: #FF0000"></div></td>
-																</tr>
-																<tr>
-																	<td>请输入关键字词</td>
-																	<td><input name="keyword" id="keyword"
-																		style="width: 150px"></td>
-																	<td><div id="textkey" style="color: #FF0000"></div></td>
-																</tr>
-																<tr>
-																	<td>请选择时间</td>
-																	<td><select id="beghour" name="beghour"
-																		style="width: 75px">
-																			<option value="19" selected="selected">19</option>
-																			<option value="20">20</option>
-																			<option value="21">21</option>
-																			<option value="22">22</option>
-																			<option value="23">23</option>
-																	</select> <select id="begmin" name="begmin" style="width: 75px">
-																			<option value="00" selected="selected">00</option>
-																			<option value="05">05</option>
-																			<option value="10">10</option>
-																			<option value="15">15</option>
-																			<option value="20">20</option>
-																			<option value="25">25</option>
-																			<option value="30">30</option>
-																			<option value="35">35</option>
-																			<option value="40">40</option>
-																			<option value="45">45</option>
-																			<option value="50">50</option>
-																			<option value="55">55</option>
-																	</select></td>
-																	<td>&nbsp;&nbsp;&nbsp;至&nbsp;&nbsp;&nbsp;</td>
-																	<td><select id="endhour" name="endhour"
-																		style="width: 75px">
-																			<option value="19">19</option>
-																			<option value="20">20</option>
-																			<option value="21">21</option>
-																			<option value="22">22</option>
-																			<option value="23">23</option>
-																			<option value="24" selected="selected">24</option>
-																	</select> <select id="endmin" name="endmin" style="width: 75px">
-																			<option value="00" selected="selected">00</option>
-																			<option value="05">05</option>
-																			<option value="10">10</option>
-																			<option value="15">15</option>
-																			<option value="20">20</option>
-																			<option value="25">25</option>
-																			<option value="30">30</option>
-																			<option value="35">35</option>
-																			<option value="40">40</option>
-																			<option value="45">45</option>
-																			<option value="50">50</option>
-																			<option value="55">55</option>
-																	</select></td>
-																	<td><div id="time" style="color: red"></div></td>
-																</tr>
-																<tr>
-																	<td>请选择查询数量</td>
-																	<td><select id="number" name="number"
-																		style="width: 155px">
-																			<option value="10">10</option>
-																			<option value="30">30</option>
-																			<option value="50">50</option>
-																			<option value="100">100</option>
-																			<option value="0" selected="selected">无限制</option>
-
-																	</select></td>
-
-																</tr>
-															</table>
+														<form role="form" name="form1" id="form1"
+															action="findlist">
+															<div class="form-group">
+																<label for="itcode">请输入用户编号</label><input
+																	class="form-control" id="itcode" name="itcode"
+																	style="width: 70%;display: inline;" />
+																<div id="textit" style="color: #FF0000"></div>
+															</div>
+															<div class="form-group">
+																<label for="keyword">请输入关键词</label><input
+																	class="form-control" id="keyword" name="keyword"
+																	style="width: 70%;display: inline;" />
+																<div id="textkey" style="color: #FF0000"></div>
+															</div>
+															<div class="form-group">
+																<label for="beghour">请选择时间</label> <select id="beghour"
+																	class="form-control" name="beghour"
+																	style="width: 75px; display: inline;">
+																	<option value="19" selected="selected">19</option>
+																	<option value="20">20</option>
+																	<option value="21">21</option>
+																	<option value="22">22</option>
+																	<option value="23">23</option>
+																</select> <select id="begmin" name="begmin"
+																	style="width: 75px; display: inline;"
+																	class="form-control">
+																	<option value="00" selected="selected">00</option>
+																	<option value="05">05</option>
+																	<option value="10">10</option>
+																	<option value="15">15</option>
+																	<option value="20">20</option>
+																	<option value="25">25</option>
+																	<option value="30">30</option>
+																	<option value="35">35</option>
+																	<option value="40">40</option>
+																	<option value="45">45</option>
+																	<option value="50">50</option>
+																	<option value="55">55</option>
+																</select> 至 <select id="endhour" name="endhour"
+																	class="form-control"
+																	style="width: 75px; display: inline;">
+																	<option value="19">19</option>
+																	<option value="20">20</option>
+																	<option value="21">21</option>
+																	<option value="22">22</option>
+																	<option value="23">23</option>
+																	<option value="24" selected="selected">24</option>
+																</select> <select id="endmin" name="endmin" class="form-control"
+																	style="width: 75px; display: inline;">
+																	<option value="00" selected="selected">00</option>
+																	<option value="05">05</option>
+																	<option value="10">10</option>
+																	<option value="15">15</option>
+																	<option value="20">20</option>
+																	<option value="25">25</option>
+																	<option value="30">30</option>
+																	<option value="35">35</option>
+																	<option value="40">40</option>
+																	<option value="45">45</option>
+																	<option value="50">50</option>
+																	<option value="55">55</option>
+																</select>
+																<div id="time" style="color: red"></div>
+															</div>
+															<div class="form-group">
+																<label for="number">请输入查询数量</label> <select id="number"
+																	name="number" class="form-control"
+																	style="width: 155px; display: inline;">
+																	<option value="10">10</option>
+																	<option value="30">30</option>
+																	<option value="50">50</option>
+																	<option value="100">100</option>
+																	<option value="0" selected="selected">无限制</option>
+																</select>
+															</div>
 														</form>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-default"
+																data-dismiss="modal">关闭</button>
+															<button type="button" class="btn btn-primary"
+																onclick="check()">确认查找评论</button>
+														</div>
 													</div>
-													<div class="modal-footer">
-														<button type="button" class="btn btn-default"
-															data-dismiss="modal">关闭</button>
-														<button type="button" class="btn btn-primary"
-															onclick="check()">确认查找评论</button>
-													</div>
+													<!-- /.modal-content -->
 												</div>
-												<!-- /.modal-content -->
+												<!-- /.modal-dialog -->
 											</div>
-											<!-- /.modal-dialog -->
+											<!-- /.modal -->
 										</div>
-										<!-- /.modal -->
 									</div>
-								</div>
 
 
-								<div class="row clearfix">
-									<div class="col-md-12 column">
-										<img src="img/fenge.png" width="100px" />
+									<div class="row clearfix">
+										<div class="col-md-12 column">
+											<img src="img/fenge.png" width="100px" />
+										</div>
 									</div>
-								</div>
-								<div class="row clearfix">
-									<div class="col-md-12 column">
-										<button class="btn btn-primary btn-lg"  onclick="lock_delete()">删除或禁言</button>
-										<div style="color: blue">${result1}</div>
+									<div class="row clearfix">
+										<div class="col-md-12 column">
+											<button class="btn btn-primary btn-lg"
+												onclick="lock_delete()">删除或禁言</button>
+											<div style="color: blue">${result1}</div>
+										</div>
 									</div>
-								</div>
-								<div class="row clearfix">
-									<div class="col-md-12 column">
-										<img src="img/fenge.png" width="100px" />
+									<div class="row clearfix">
+										<div class="col-md-12 column">
+											<img src="img/fenge.png" width="100px" />
+										</div>
 									</div>
-								</div>
-								<div class="row clearfix">
-									<div class="col-md-12 column"></div>
+									<div class="row clearfix">
+										<div class="col-md-12 column"></div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row clearfix">
-					<div class="col-md-1 column"></div>
-					<div class="col-md-1 column"></div>
-					<div class="col-md-1 column"></div>
-					<div class="col-md-1 column"></div>
-					<div class="col-md-1 column"></div>
-					<div class="col-md-1 column"></div>
-					<div class="col-md-1 column"></div>
-					<div class="col-md-1 column"></div>
-					<div class="col-md-1 column"></div>
-					<div class="col-md-1 column"></div>
-					<div class="col-md-1 column"></div>
-					<div class="col-md-1 column"></div>
+					<div class="row clearfix">
+						<div class="col-md-1 column"></div>
+						<div class="col-md-1 column"></div>
+						<div class="col-md-1 column"></div>
+						<div class="col-md-1 column"></div>
+						<div class="col-md-1 column"></div>
+						<div class="col-md-1 column"></div>
+						<div class="col-md-1 column"></div>
+						<div class="col-md-1 column"></div>
+						<div class="col-md-1 column"></div>
+						<div class="col-md-1 column"></div>
+						<div class="col-md-1 column"></div>
+						<div class="col-md-1 column"></div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>

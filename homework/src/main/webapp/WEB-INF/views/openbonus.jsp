@@ -14,8 +14,6 @@
 <link rel="stylesheet" type="text/css" href="css/admin.css">
 <script type="text/javascript">
 	function check(value) {
-		 var temp="reward"+value;
-		 document.getElementById(temp).disabled=true;
          document.form1.pid.value=value;
          form1.submit();
 	}
@@ -32,12 +30,12 @@
 			<div class="col-md-12 column">
 				<div class="row clearfix">
 					<div class="col-md-4 column">
-						<img alt="140x140" src="img/sss.img" class="smaimg img-rounded " />
+						<img alt="140x140" src="img/logo.png" class="img-rounded" width="250" height="70"/>
 					</div>
 					<div class="col-md-6 column">
 						<div>
 							<h3>
-								Example page header <small>Subtext for header</small>
+								只看表演不打赏就是耍流氓
 							</h3>
 						</div>
 					</div>
@@ -72,7 +70,7 @@
 					<li><a class="bar" href="luckyrecord">红包记录</a></li>
 					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
 					<li><a class="bar" href="rechargerecord">充值记录</a></li>
-					<li><a class="bar" href="user">返回年会</a></li>
+					<li><a class="bar" href="goBackToChat">返回年会</a></li>
 
 
 				</ul>
@@ -126,22 +124,17 @@
 												</tr>
 											</thead>
 											<tbody>
-												<%
-													int i = 0;
-												%>
+											
 												<c:forEach items="${list}" var="s">
 													<tr class="error">
-														<%
-															i++;
-														%>
+													
 														<td><c:out value="${s.getPid()}" /></td>
 														<td><c:out value="${s.getPro_name()}" /></td>
 														<td><c:out value="${s.getPerformer()}" /></td>
 														<td><c:out value="${s.getStart_time()}" /></td>
-														<td><input name="reward<%out.print(i);%>"
-															id="reward<%out.print(i);%>"
+														<td><input
 															class="btn btn-primary btn-xs but_in_table" type="button"
-															value="节目打赏" onclick="check(<%out.print(i);%>)" /></td>
+															value="节目打赏" onclick="check(${s.getPid()})" /></td>
 													</tr>
 												</c:forEach>
 											</tbody>

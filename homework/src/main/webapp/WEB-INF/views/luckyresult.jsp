@@ -25,12 +25,12 @@
 			<div class="col-md-12 column">
 				<div class="row clearfix">
 					<div class="col-md-4 column">
-						<img alt="140x140" src="img/sss.img" class="smaimg img-rounded " />
+						<img alt="140x140" src="img/logo.png" class="img-rounded" width="250" height="70"/>
 					</div>
 					<div class="col-md-6 column">
 						<div>
 							<h3>
-								Example page header <small>Subtext for header</small>
+								看节目，发家致富
 							</h3>
 						</div>
 					</div>
@@ -65,7 +65,7 @@
 					<li><a class="bar" href="luckyrecord">红包记录</a></li>
 					<li><a class="bar" href="rewardrecord">打赏记录</a></li>
 					<li><a class="bar" href="rechargerecord">充值记录</a></li>
-					<li><a class="bar" href="user">返回年会</a></li>
+					<li><a class="bar" href="goBackToChat">返回年会</a></li>
 
 
 				</ul>
@@ -181,60 +181,48 @@
 														<h4 class="modal-title" id="newModalLabel">条件搜索</h4>
 													</div>
 													<div class="modal-body" style="text-align: center;">
-														<form id="form1" name="form1" action="luckyresult">
-															<table>
-																<tr>
-																	<td>请输入用户编号</td>
-																	<td><input name="itcode" id="itcode"
-																		style="width: 150px"></td>
-																	<td><div id="textit" style="color: #FF0000"></div></td>
-																</tr>
-																<tr>
-																	<td>请选择红包雨</td>
-																	<td><input type="radio" name="round" id="round"
-																		value="1">第一轮红包雨</td>
-																</tr>
-																<tr>
-																	<td></td>
-																	<td><input type="radio" name="round" id="round"
-																		value="2">第二轮红包雨</td>
-																</tr>
-																<tr>
-																	<td></td>
-																	<td><input type="radio" name="round" id="round"
-																		value="3">第三轮红包雨</td>
-																</tr>
-																<tr>
-																	<td></td>
-																	<td><input type="radio" name="round" id="round"
-																		value="4">第四轮红包雨</td>
-																</tr>
-																<tr>
-																	<td></td>
-																	<td><input type="radio" name="round" id="round"
-																		value="5">第五轮红包雨</td>
-																</tr>
-																<tr>
-																	<td></td>
-																	<td><input type="radio" name="round" id="round"
-																		value="0" checked="checked">显示所有记录</td>
-																</tr>
-																<tr>
-																	<td>请选择查询数量</td>
-																	<td><select id="number" name="number"
-																		style="width: 155px">
+														<form role="form" id="form1" name="form1" action="luckyresult">
+															<div class="form-group">
+																<label for="itcode">请输入用户编号</label><input
+																	class="form-control" id="itcode" name="itcode"
+																	style="width: 30%; display: inline;" />
+																<div id="textit" style="color: #FF0000"></div>
+															</div>
+															<div class="form-group">
+																<label for="itcode">请选择红包雨</label><input type="radio" 
+																	name="round" id="round" value="1"
+																	style="width: 1000%; display: inline;" />第一轮红包雨
+																<input type="radio" 
+																	name="round" id="round" value="2"
+																	style="width: 100%; display: inline;" />第二轮红包雨
+																<input type="radio" 
+																	name="round" id="round" value="3"
+																	style="width: 100%; display: inline;" />第三轮红包雨
+																<input type="radio" 
+																	name="round" id="round" value="4"
+																	style="width: 100%; display: inline;" />第四轮红包雨
+																<input type="radio" 
+																	name="round" id="round" value="5"
+																	style="width: 100%; display: inline;" />第五轮红包雨	
+																<input type="radio" 
+																	name="round" id="round" value="0"
+																	style="width: 100%; display: inline;" />显示所有记录
+																	
+																<div id="textit" style="color: #FF0000"></div>
+															</div>
+															<div class="form-group">
+																<label for="number">请选择查询数量</label><select id="number" name="number"
+																		style="width: 155px;display: inline;"
+																		class="form-control">
 																			<option value="10">10</option>
 																			<option value="30">30</option>
 																			<option value="50">50</option>
 																			<option value="100">100</option>
 																			<option value="0" selected="selected">无限制</option>
 
-																	</select></td>
-
-																</tr>
-
-															</table>
-														</form>
+																	</select>
+															</div>
+														
 													</div>
 													<div class="modal-footer">
 														<button type="button" class="btn btn-default"
